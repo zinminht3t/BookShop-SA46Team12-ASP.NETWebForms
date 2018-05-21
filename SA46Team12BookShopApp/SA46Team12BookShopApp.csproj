@@ -77,7 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cart.aspx" />
-    <Content Include="Login.aspx" />
     <Content Include="Members\Checkout.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -128,12 +127,18 @@
     <Content Include="images\9781616205676.jpg" />
     <Content Include="images\9781619634480.jpg" />
     <Content Include="images\9781911015222.jpg" />
+    <Content Include="Members\ConfirmOrder.aspx" />
     <Content Include="Owner\Default.aspx" />
+    <Content Include="product-page.css" />
     <Content Include="Products.aspx" />
     <Content Include="Style\css\Style.css" />
     <Content Include="Style\images\getbooksv3.png" />
     <Content Include="Style\images\getbooksv4.png" />
+<<<<<<< HEAD
+=======
+    <Content Include="Style\images\mac.png" />
     <Content Include="UnauthorizedAccess.aspx" />
+>>>>>>> 855326a8e7a5f7101333d166f4548d07dfd4bfe5
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -144,13 +149,6 @@
     </Compile>
     <Compile Include="Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Members\Checkout.aspx.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
@@ -172,6 +170,13 @@
     </Compile>
     <Compile Include="Layout.Master.designer.cs">
       <DependentUpon>Layout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Members\ConfirmOrder.aspx.cs">
+      <DependentUpon>ConfirmOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Members\ConfirmOrder.aspx.designer.cs">
+      <DependentUpon>ConfirmOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BooksDB.cs" />
@@ -197,19 +202,11 @@
       <DependentUpon>Products.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnauthorizedAccess.aspx.cs">
-      <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UnauthorizedAccess.aspx.designer.cs">
-      <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Bookshop.bak" />
     <Content Include="Layout.Master" />
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
