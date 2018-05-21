@@ -108,5 +108,6 @@ namespace SA46Team12BookShopApp
 
             return String.Format("{0:0%}", myValue);
         }
+
     }
 }
