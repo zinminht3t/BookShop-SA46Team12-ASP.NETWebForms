@@ -5,7 +5,8 @@
     
     &nbsp;
 <asp:Label ID="lblCategoryFilter" runat="server" Text="Category:"></asp:Label>
-<asp:DropDownList ID="ddlCategoryFilter" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged">
+<asp:DropDownList ID="ddlCategoryFilter" AutoPostBack="true" AppendDataBoundItems="true" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged">
+    <asp:ListItem Value="0">All</asp:ListItem>
 </asp:DropDownList>
 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString2 %>" SelectCommand="SELECT [Name], [CategoryID] FROM [Category]"></asp:SqlDataSource>
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -18,7 +19,7 @@
 <asp:Label ID="lblSearchBooks" runat="server" Text="Search:"></asp:Label>
 <asp:TextBox ID="txtSearchBooks" runat="server"></asp:TextBox>
     <asp:Button ID="btnSearchBooks" runat="server" Text="Search" OnClick="btnSearchBooks_Click" />
-&nbsp;<asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3">
+&nbsp;<asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupItemCount="3">
         
         <EmptyDataTemplate>
             <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
@@ -89,7 +90,13 @@
     </SelectParameters>  
 </asp:SqlDataSource>
 
-<asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="">
+<asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID ORDER BY Book.Price DESC">
+</asp:SqlDataSource>
+
+<asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID ORDER BY Book.Price ASC">
 </asp:SqlDataSource>
     
+<asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="">
+</asp:SqlDataSource>
+
 </asp:Content>

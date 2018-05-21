@@ -37,9 +37,21 @@ namespace SA46Team12BookShopApp
             {
                 string orderString = GetOrderString();
 
-                SqlDataSource4.SelectCommand = "SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID where Book.CategoryID = " + ddlCategoryFilter.SelectedValue.ToString() + " AND Book.Title like '" + txtSearchBooks.Text + "%' or Book.Author like '" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
-                lvProductsList.DataSourceID = "SqlDataSource4";
-                lvProductsList.DataBind();
+                if (ddlCategoryFilter.SelectedValue == "0")
+                {
+
+                    SqlDataSource6.SelectCommand = "SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID where Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
+                    lvProductsList.DataSourceID = "SqlDataSource6";
+                    lvProductsList.DataBind();
+                }
+                else
+                {
+
+                    SqlDataSource6.SelectCommand = "SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID where Book.CategoryID = " + ddlCategoryFilter.SelectedValue.ToString() + " AND Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
+                    lvProductsList.DataSourceID = "SqlDataSource6";
+                    lvProductsList.DataBind();
+                }
+
             }
            
         }
@@ -62,18 +74,29 @@ namespace SA46Team12BookShopApp
 
         protected void ddlFilters_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlPriceSort.SelectedIndex == 1)
+            if (ddlPriceSort.SelectedIndex == 0 && ddlCategoryFilter.SelectedValue=="0")
             {
-                lvProductsList.DataSourceID = "SqlDataSource3"; //Sort products price by Descending
+                lvProductsList.DataSourceID = "SqlDataSource5"; //Sort ALL products price by Ascending
+                lvProductsList.DataBind();
+            }
+            else if (ddlPriceSort.SelectedIndex == 1 && ddlCategoryFilter.SelectedValue == "0")
+            {
+                lvProductsList.DataSourceID = "SqlDataSource4"; //Sort ALL products price by Descending
+                lvProductsList.DataBind();
+            }
+            else if (ddlPriceSort.SelectedIndex == 0 && ddlCategoryFilter.SelectedValue != "0")
+            {
+                lvProductsList.DataSourceID = "SqlDataSource1"; //Sort products of specified CATEGORY, price by Ascending
                 lvProductsList.DataBind();
             }
             else
             {
-                lvProductsList.DataSourceID = "SqlDataSource1"; //Sort products price by Ascending
+                lvProductsList.DataSourceID = "SqlDataSource3"; //Sort products of specified CATEGORY, price by Ascending
                 lvProductsList.DataBind();
             }
 
-            txtSearchBooks.Text = "";
+
+                txtSearchBooks.Text = "";
         }
     }
 }
