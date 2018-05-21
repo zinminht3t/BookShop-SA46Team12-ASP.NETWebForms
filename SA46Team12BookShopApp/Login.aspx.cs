@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace SA46Team12BookShopApp
 {
@@ -17,6 +18,12 @@ namespace SA46Team12BookShopApp
                     // This is an unauthorized, authenticated request...
                     Response.Redirect("~/UnauthorizedAccess.aspx");
             }
+        }
+
+        protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
+        {
+            string username = CreateUserWizard1.UserName;
+            Roles.AddUserToRole(username, "Member");
         }
     }
 }
