@@ -22,6 +22,13 @@ namespace SA46Team12BookShopApp
             lstBooks = BusinessLogic.GetBooks();
             cartBooks.DataSource = lstBooks;
             cartBooks.DataBind();
+            if(lstBooks.Count < 1)
+            {
+                Response.Redirect("../");
+            }
+
+            lblBooks.Text = lstBooks.Count.ToString();
+
 
             foreach (Book b in lstBooks)
             {
@@ -45,7 +52,16 @@ namespace SA46Team12BookShopApp
         }
         protected void btnPay_Click(object sender, EventArgs e)
         {
-            BusinessLogic.AddOrder(total, 1, lstOD);
+
+            OrderHeader order = new OrderHeader();
+            order.OrderDate = DateTime.Today;
+            order.Total = (decimal) total;
+            order.UserID = 1;
+            order.Address = txtAddress.Text;
+            order.Email = txtEmail.Text;
+            order.PostalCode = Convert.ToInt32(txtPostCode.Text);
+            order.Name = txtName.Text;
+            BusinessLogic.AddOrder(order, lstOD);
         }
 
     }

@@ -3,12 +3,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <div class="col-12">
+        <h1 class="text-center"><i class="fa fa-cart-plus text-primary"></i> Checkout</h1>
+        <hr />
+    </div>
     <div class="col-2"></div>
     <div class="col-8">
         <div class="row">
             <div class="col-6">
-                <h4>Books</h4>
+                <h4>
+                    <i class="fa fa-book text-warning"></i>
+                    Books Cart
+                    <asp:Label ID="lblBooks" runat="server" Text="0" CssClass="float-right text-primary"></asp:Label>
+                </h4>
                 <br />
                 <asp:GridView ID="cartBooks" runat="server" AutoGenerateColumns="False" CssClass="table table-hover">
                     <Columns>
@@ -40,7 +47,9 @@
             </div>
             <div class="col-6">
 
-                <h4>Personal Details</h4>
+                <h4>
+                    <i class="text-warning fa fa-user"></i>
+                    Personal Details</h4>
                 <br />
                 <div class="form-group">
                     <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Name"></asp:TextBox>
@@ -55,12 +64,17 @@
                     <asp:TextBox ID="txtPostCode" runat="server" CssClass="form-control" placeholder="Postal Code" TextMode="Number"></asp:TextBox>
                 </div>
 
+                
+                <button runat="server" id="btnPay" onserverclick="btnPay_Click" class="float-right btn btn-primary" title="Pay and Order">
+                    <i class="fa fa-credit-card"></i> Pay and Order
+                </button>
+
 
             </div>
         </div>
         <div class="row">
             <div class="col-2">
-                <a href="#" class="btn btn-warning">
+                <a href="../Cart.aspx" class="btn btn-warning">
                     <i class="fa fa-arrow-left"></i>
                     Edit Orders
                 </a>
@@ -70,9 +84,6 @@
             <div class="col-8">
             </div>
             <div class="col-2">
-                <button runat="server" id="btnPay" onserverclick="btnPay_Click" class="btn btn-primary" title="Pay and Order">
-                    <i class="fa fa-credit-card"></i> Pay and Order
-                </button>
 
             </div>
         </div>
