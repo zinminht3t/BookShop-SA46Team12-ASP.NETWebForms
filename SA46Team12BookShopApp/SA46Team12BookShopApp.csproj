@@ -76,6 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\9780060555665.jpg" />
     <Content Include="images\9780062377210.jpg" />
@@ -124,10 +125,19 @@
     <Content Include="images\9781616205676.jpg" />
     <Content Include="images\9781619634480.jpg" />
     <Content Include="images\9781911015222.jpg" />
+    <Content Include="Style\css\Style.css" />
+    <Content Include="Style\images\getbooksv3.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\BusinessLogic.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layout.Master.cs">
       <DependentUpon>Layout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,7 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Owner\" />
-    <Folder Include="Style\css\" />
     <Folder Include="Style\fonts\" />
     <Folder Include="Style\js\" />
   </ItemGroup>
@@ -174,7 +183,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49895</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
