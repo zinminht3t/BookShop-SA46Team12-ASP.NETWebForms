@@ -134,8 +134,14 @@
     <Content Include="Style\css\Style.css" />
     <Content Include="Style\images\getbooksv3.png" />
     <Content Include="Style\images\getbooksv4.png" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8c0e2880111a811751aa7fd55852a65a7a83cb71
     <Content Include="Style\images\mac.png" />
     <Content Include="UnauthorizedAccess.aspx" />
+>>>>>>> 855326a8e7a5f7101333d166f4548d07dfd4bfe5
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
