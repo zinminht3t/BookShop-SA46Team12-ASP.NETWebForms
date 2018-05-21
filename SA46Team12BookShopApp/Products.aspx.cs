@@ -13,5 +13,19 @@ namespace SA46Team12BookShopApp
         {
 
         }
+
+        protected void ddlPriceSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlPriceSort.SelectedIndex == 1)
+            {
+                lvProductsList.DataSourceID = "SqlDataSource3"; //Sort products price by Descending
+                lvProductsList.DataBind();
+            }
+            else
+            {
+                lvProductsList.DataSourceID = "SqlDataSource1"; //Sort products price by Ascending
+                lvProductsList.DataBind();
+            }
+        }
     }
 }
