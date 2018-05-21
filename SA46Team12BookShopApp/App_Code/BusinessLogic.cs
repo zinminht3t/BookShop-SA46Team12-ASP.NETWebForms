@@ -71,15 +71,11 @@ namespace SA46Team12BookShopApp
             double price = GetBookPrice(BookID);
             return (discountpercent / 100) * price;
         }
-        public static void AddOrder(double total, int userid, List<OrderDetail> od)
+        public static void AddOrder(OrderHeader o, List<OrderDetail> od)
         {
             using (BooksDB entities = new BooksDB())
             {
-                OrderHeader order = new OrderHeader();
-                order.OrderDate = DateTime.Today;
-                order.Total = (decimal) total;
-                order.UserID = 1;
-                entities.OrderHeaders.Add(order);
+                entities.OrderHeaders.Add(o);
                 entities.SaveChanges();
                 
                 foreach (OrderDetail orddet in od)
@@ -90,7 +86,7 @@ namespace SA46Team12BookShopApp
                     odet.NetPrice = orddet.NetPrice;
                     odet.BookID = orddet.BookID;
                     odet.DiscountID = orddet.DiscountID;
-                    odet.OrderID = order.OrderID;
+                    odet.OrderID = o.OrderID;
                     entities.OrderDetails.Add(odet);
                 }
                 entities.SaveChanges();

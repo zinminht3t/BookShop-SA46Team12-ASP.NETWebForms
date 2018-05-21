@@ -21,12 +21,13 @@ html, body {
 
 .carousel-indicators {
     position: absolute;
-    bottom: 20%;
+    bottom: 0%;
 }
 
 .carousel-inner img {
-    width: 100%;
-    height: 100;
+    width: 20%;
+    height: 20%;
+    margin-top: 2rem;
 }
 
 .carousel-caption {
@@ -61,7 +62,14 @@ html, body {
 .jumbotron {
     padding: 1rem;
     border-radius: 0;
+    font-size: 200%;
+    font-weight: 500;
+    color: brown;
+    position: center;
+    text-shadow: 1px 1px 10px orange;
+    padding-bottom: 1rem;  
 }
+
 
 .padding {
     padding-bottom: 2rem;
@@ -79,69 +87,10 @@ html, body {
         margin-bottom: 1rem;
     }
 
-.fa-code {
-    color: #e54d26;
-}
-
-.fa-bold {
-    color: #563d7c;
-}
-
-.fa-css3 {
-    color: #2163af;
-}
-
-.fa-code, .fa-bold, .fa-css3 {
-    font-size: 4em;
-    margin: 1rem;
-}
-
-.fun {
-    width: 100%;
-    margin-bottom: 2rem;
-}
-
-.gif {
-    max-width: 100%;
-}
-
-.social a {
-    font-size: 4.5em;
-    padding: 3rem;
-}
-
-.fa-facebok {
-    color: #3b5998;
-}
-
-.fa-twitter {
-    color: #00aced;
-}
-
-.fa-google-plus-g {
-    color: #dd4b39;
-}
-
-.fa-instagram {
-    color: #517fa4;
-}
-
-.fa-youtube {
-    color: #bb0000;
-}
-
-    .fa-facebook:hover,
-    .fa-twitter:hover,
-    .fa-google-plus-g:hover,
-    .fa-instagram:hover,
-    .fa-youtube:hover {
-        color: #d5d5d5;
-    }
 
 footer {
     background-color: #3f3f3f;
     color: #d5d5d5;
-    padding-top: 2rem;
 }
 
 hr.light {
@@ -160,15 +109,71 @@ hr.light-100 {
     margin-bottom: 1rem;
 }
 
-
-/*-----Media Queries ---*/
-@media (max-width: 992px) {
-    .social a {
-        font-size: 4rem;
-        padding: 2rem;
-    }
+.jumbotron-default {
+    margin-top: 50px;
 }
 
+.card {
+    width: 100%;
+    min-height: 600px;
+}
+
+.card-img-top {
+    width: 50%;
+    height: 50%;
+    margin-top: 2rem;
+}
+
+.form-login {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    padding-top: 6rem;
+    background-color: #eee;
+    padding-left: 50px;
+}
+
+    .form-login .form-login-heading,
+    .form-login .checkbox {
+        margin-bottom: 10px;
+        
+    }
+
+    .form-login .checkbox {
+        font-weight: normal;
+    }
+
+    .form-login .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+        .form-login .form-control:focus {
+            z-index: 2;
+        }
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.heading td{
+    font-size: 32px;
+}
+
+
+/*-----Media Queries ---*/
 @media (max-width: 768px) {
     .carousel-caption {
         top: 45%;
@@ -189,11 +194,6 @@ hr.light-100 {
 
     .display-4 {
         font-size: 200%;
-    }
-
-    .social a {
-        font-size: 2.5rem;
-        padding: 1.2rem;
     }
 }
 
@@ -221,11 +221,6 @@ hr.light-100 {
 
     .display-4 {
         font-size: 160%;
-    }
-
-    .social a {
-        font-size: 2rem;
-        padding: 0.7rem;
     }
 }
 
@@ -273,9 +268,6 @@ figure {
 [class*="col-"] {
     padding: 1rem;
 }
-
-
-
 
 
 /*
