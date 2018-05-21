@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OwnerPage.aspx.cs" Inherits="SA46Team12BookShopApp.Owner.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SA46Team12BookShopApp.Owner.Default" %>
 
 <!DOCTYPE html>
 

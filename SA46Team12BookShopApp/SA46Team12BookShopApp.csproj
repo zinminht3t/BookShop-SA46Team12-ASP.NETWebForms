@@ -128,7 +128,7 @@
     <Content Include="images\9781616205676.jpg" />
     <Content Include="images\9781619634480.jpg" />
     <Content Include="images\9781911015222.jpg" />
-    <Content Include="Owner\OwnerPage.aspx" />
+    <Content Include="Owner\Default.aspx" />
     <Content Include="Products.aspx" />
     <Content Include="Style\css\Style.css" />
     <Content Include="Style\images\getbooksv3.png" />
@@ -182,12 +182,12 @@
     </Compile>
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\OrderHeader.cs" />
-    <Compile Include="Owner\OwnerPage.aspx.cs">
-      <DependentUpon>OwnerPage.aspx</DependentUpon>
+    <Compile Include="Owner\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Owner\OwnerPage.aspx.designer.cs">
-      <DependentUpon>OwnerPage.aspx</DependentUpon>
+    <Compile Include="Owner\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
