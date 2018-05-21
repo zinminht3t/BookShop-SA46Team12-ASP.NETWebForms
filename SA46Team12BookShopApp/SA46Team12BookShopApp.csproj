@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cart.aspx" />
-    <Content Include="Checkout.aspx" />
+    <Content Include="Members\Checkout.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\9780060555665.jpg" />
@@ -143,11 +143,11 @@
     <Compile Include="Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Checkout.aspx.cs">
+    <Compile Include="Members\Checkout.aspx.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Checkout.aspx.designer.cs">
+    <Compile Include="Members\Checkout.aspx.designer.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
