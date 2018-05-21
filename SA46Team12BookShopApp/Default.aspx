@@ -53,21 +53,19 @@
         </div>
     </div>
 
-    <!-- Jumbotron -->
+    <!-- Jumbotron -->    
     <div class="container-fluid">
         <div class="row jumbotron jumbotron-default">
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
                  <h2 class="display-5 text-center">PROMOTIONAL ITEMS</h2>              
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg=3 col-xl-2">
-            </div>
+            </div>            
         </div>
     </div>
 
     <!-- Promotional Cards -->
     <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-md-3">
+        <div class="row text-center padding">
+		<div class="col-xs-12 col-sm-6 col-md-3">    
                 <div class="card">
                     <img class="card-img-top" src="images/9780744017311.jpg">
                     <div class="card-body">
@@ -79,7 +77,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3">            
                 <div class="card">
                     <img class="card-img-top" src="images/9781593276034.jpg">
                     <div class="card-body">
@@ -91,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="card">
                     <img class="card-img-top" src="images/9780984782857.jpg">
                     <div class="card-body">
@@ -102,7 +100,8 @@
                         </div>
                 </div>
             </div>
-            <div class="col-md-3">
+
+             <div class="col-sm-12 col-md-3">         
                 <div class="card">
                     <img class="card-img-top" src="images/9780262035613.jpg">
                     <div class="card-body">
