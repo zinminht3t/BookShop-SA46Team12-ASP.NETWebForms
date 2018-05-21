@@ -42,14 +42,14 @@ namespace SA46Team12BookShopApp
                 if (ddlCategoryFilter.SelectedValue == "0")
                 {
 
-                    SqlDataSource6.SelectCommand = "SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID where Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
+                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID where Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
                     lvProductsList.DataSourceID = "SqlDataSource6";
                     lvProductsList.DataBind();
                 }
                 else
                 {
 
-                    SqlDataSource6.SelectCommand = "SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID where Book.CategoryID = " + ddlCategoryFilter.SelectedValue.ToString() + " AND Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
+                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID where Book.CategoryID = " + ddlCategoryFilter.SelectedValue.ToString() + " AND Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
                     lvProductsList.DataSourceID = "SqlDataSource6";
                     lvProductsList.DataBind();
                 }
@@ -130,6 +130,17 @@ namespace SA46Team12BookShopApp
         public String getItemClicked()
         {
             return this.itemClicked;
+        }
+
+        protected void ProductsListView_OnItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (String.Equals(e.CommandName, "SelectedItem"))
+            {
+                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
+                this.itemClicked = e.CommandArgument.ToString();
+
+                Server.Transfer("Cart.aspx");
+            }
         }
 
     }
