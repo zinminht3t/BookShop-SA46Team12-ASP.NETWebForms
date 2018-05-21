@@ -9,6 +9,8 @@ namespace SA46Team12BookShopApp
 {
     public partial class Products : System.Web.UI.Page
     {
+        public string itemClicked;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -107,6 +109,27 @@ namespace SA46Team12BookShopApp
             }
 
             return String.Format("{0:0%}", myValue);
+        }
+
+        public void item_click()
+        {
+            //this handles the click event of a list item
+
+        }
+
+        protected void listItem_ItemCommand(object sender,ListViewCommandEventArgs e)
+        {
+            //if(e.CommandName== "passItemToCart")
+            //{
+            //    ListViewItem item = e.Item;
+            //    this.itemClicked = item.DataItemIndex.ToString();
+            //    Server.Transfer("Cart.aspx");
+            //}
+        }
+
+        public String getItemClicked()
+        {
+            return this.itemClicked;
         }
 
     }

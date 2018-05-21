@@ -4,7 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">   
     &nbsp;
 <asp:Label ID="lblCategoryFilter" runat="server" Text="Category:"></asp:Label>
-<asp:DropDownList ID="ddlCategoryFilter" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged">
+<asp:DropDownList ID="ddlCategoryFilter" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged" AppendDataBoundItems="true">
+        <asp:ListItem Value="0">All</asp:ListItem>
 </asp:DropDownList>
 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString2 %>" SelectCommand="SELECT [Name], [CategoryID] FROM [Category]"></asp:SqlDataSource>
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -19,32 +20,47 @@
 
     <asp:Button ID="btnSearchBooks" runat="server" Text="Search" OnClick="btnSearchBooks_Click" />  
         
-
-    <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupItemCount="3"
-         GroupPlaceholderID="groupPlaceHolder1"
-         ItemPlaceholderID="itemPlaceHolder1">
+<asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupPlaceholderID="groupPlaceHolder1"
+    ItemPlaceholderID="itemPlaceHolder1">
+         <GroupTemplate>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-item">  
+                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
+                 </div>
+            </div>
+        </GroupTemplate>
        
-
-        <GroupTemplate>
-                <div class="col-sm-4" id="ProductsRow" runat=server>
-                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
-                </div>
-        </GroupTemplate>       
+         
         <ItemTemplate>
-                <image src="images/<%# Eval("ISBN") %>.jpg"></image>
-                <br />
-                Title:
-                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
-                <br />
-                Author:
-                <asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
-                <br />
-                Price:
-                <asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
-                <br />
-                Category:
-                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
-                <br />
+                <link rel="stylesheet" type="text/css" href="product-page.css" />
+                <div class="post-img-content">
+                <image src="images/<%# Eval("ISBN") %>.jpg" class="img-responsive"></image>
+                <span class="post-title">
+                    <b><asp:Label ID="Label1" runat="server" Text='<%# Eval("Name") %>' /></b>
+                </span>
+            </div>
+            <div class="info">
+		        <div class="row">          
+			        <div class="price col-md-12">
+                        <h5>
+                            <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                        </h5>
+                       </div>
+                        <div class="price col-md-12" >
+                        Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
+                        </div>
+                    <p>
+                    <div class ="col-md-6">
+                        
+                       <h5 class="price-text-color">
+                            &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
+                       </h5>
+                     </div>
+                    <div class ="col-md-6">
+                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="passItemToCart"/>
+                    </div></p>
+                    </div>
+                </div>
                 Discount:
                 <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' />
                 <br />
