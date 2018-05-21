@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width,intial-scale=1">
     <title>Get Books</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -35,16 +36,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Category</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-                 <li class="nav-item">
-                    <a href="Login.aspx" class="nav-link">Login</a>
-                </li>
-                 <li class="nav-item">
-                    <a href="Login.aspx" class="nav-link"><i class="fa fa-cart"></i></a>
-                </li>
-
+                
             </ul>
           
 
@@ -52,9 +44,10 @@
          
     </nav>   
 
+    <form id="form1" runat="server" class="">
 
     <form id="form1" runat="server">
-        <div class="" style="min-height: 640px; padding-top: 120px; padding-left: 0px;">
+        <div class="" style="min-height: 500px; padding-top: 120px; padding-left: 50px;">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
