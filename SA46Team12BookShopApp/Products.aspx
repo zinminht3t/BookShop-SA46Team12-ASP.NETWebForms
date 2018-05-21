@@ -16,6 +16,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:Label ID="lblSearchBooks" runat="server" Text="Search:"></asp:Label>
 <asp:TextBox ID="txtSearchBooks" runat="server"></asp:TextBox>
+<<<<<<< HEAD
 &nbsp;
      <asp:Button ID="btnSearchBooks" runat="server" Text="Search" OnClick="btnSearchBooks_Click" />
 <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource1" GroupPlaceholderID="groupPlaceHolder1"
@@ -23,11 +24,25 @@
          <GroupTemplate>
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="col-item">  
+=======
+
+    <asp:Button ID="btnSearchBooks" runat="server" Text="Search" OnClick="btnSearchBooks_Click" />  
+        
+
+    <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupItemCount="3"
+         GroupPlaceholderID="groupPlaceHolder1"
+         ItemPlaceholderID="itemPlaceHolder1">
+       
+
+        <GroupTemplate>
+                <div class="col-sm-4" id="ProductsRow" runat=server>
+>>>>>>> 8c0e2880111a811751aa7fd55852a65a7a83cb71
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
                 </div>
             </div>
         </GroupTemplate>
         <ItemTemplate>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <link rel="stylesheet" type="text/css" href="product-page.css" />
                 <div class="post-img-content">
@@ -61,6 +76,27 @@
              Discount:
                 <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' />
                 <br />           
+=======
+                <image src="images/<%# Eval("ISBN") %>.jpg"></image>
+                <br />
+                Title:
+                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                <br />
+                Author:
+                <asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
+                <br />
+                Price:
+                <asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
+                <br />
+                Category:
+                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                <br />
+                Discount:
+                <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' />
+                <br />
+            </td>
+
+>>>>>>> 8c0e2880111a811751aa7fd55852a65a7a83cb71
         </ItemTemplate>
 
         <LayoutTemplate>
@@ -84,6 +120,10 @@
         <asp:Controlparameter Name="state_categoryID" ControlID="ddlCategoryFilter" PropertyName="SelectedValue"/>
     </SelectParameters>  
 </asp:SqlDataSource>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8c0e2880111a811751aa7fd55852a65a7a83cb71
 <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID ORDER BY Book.Price DESC">
 </asp:SqlDataSource>
 

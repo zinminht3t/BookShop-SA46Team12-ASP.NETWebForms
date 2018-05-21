@@ -91,6 +91,7 @@ html, body {
 footer {
     background-color: #3f3f3f;
     color: #d5d5d5;
+<<<<<<< HEAD
 }
 
 hr.light {
@@ -173,6 +174,99 @@ hr.light-100 {
 }
 
 
+=======
+}
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75% margin-top: .8rem;
+    margin-bottom: 1rem;
+}
+
+footer a {
+    color: #d5d5d5;
+}
+
+hr.light-100 {
+    border-top: 1px solid #d5d5d5;
+    width: 100% margin-top: .8rem;
+    margin-bottom: 1rem;
+}
+
+.jumbotron-default {
+    margin-top: 50px;
+}
+
+.card {
+    width: 100%;
+    min-height: 520px;
+    margin-bottom: -80px;
+}
+.cardPrice {
+    width: 100%;
+    min-height: 10px;
+}
+.card-body{
+    background-color:bisque
+}
+.cardprice-body {
+    background-color: beige;
+}
+.card-img-top {
+    width: 50%;
+    height: 50%;
+    margin-top: 2rem;  
+    padding-bottom: 20px;
+}
+
+.form-login {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    padding-top: 6rem;
+    background-color: #eee;
+    padding-left: 50px;
+}
+
+    .form-login .form-login-heading,
+    .form-login .checkbox {
+        margin-bottom: 10px;
+        
+    }
+
+    .form-login .checkbox {
+        font-weight: normal;
+    }
+
+    .form-login .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+        .form-login .form-control:focus {
+            z-index: 2;
+        }
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+
+>>>>>>> 8c0e2880111a811751aa7fd55852a65a7a83cb71
 /*-----Media Queries ---*/
 @media (max-width: 768px) {
     .carousel-caption {
