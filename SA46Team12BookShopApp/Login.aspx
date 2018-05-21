@@ -16,10 +16,12 @@
                             <tr>
                                 <td>
                                     <table cellpadding="0">
-                                        <caption>
-                                            <h3 class="form-signin-heading">Login</h3>
-                                            <%-- <td align="center" colspan="2">Login</td>--%>
-                                        </caption>
+                                         
+                                            <tr>
+                                                <td align="left" colspan="2"><h3>Login</h3></td>
+                                                
+                                            </tr>
+                                      
                                     </table>
                                 </td>
                             </tr>
@@ -74,13 +76,9 @@
                     <WizardSteps>
                         <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                             <ContentTemplate>
-                                   <form class="form-login">
                                 <table>
                                     <tr>
-                                       <%-- <td align="center" colspan="2">Sign Up for Your New Account</td>--%>
-                                         <caption>
-                                             <h3 class="form-signin-heading">Sign Up for Your New Account</h3>
-                                        </caption>
+                                        <td align="left" colspan="2"><h3>Sign Up</h3></td>
                                     </tr>
                                     <tr>
                                         <td align="right">
@@ -147,7 +145,6 @@
                                         </td>
                                     </tr>
                                 </table>
-                              </form>
                             </ContentTemplate>
                         </asp:CreateUserWizardStep>
                         <asp:CompleteWizardStep ID="CompleteWizardStep1" runat="server">

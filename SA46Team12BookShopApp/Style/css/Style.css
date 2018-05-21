@@ -64,10 +64,10 @@ html, body {
     border-radius: 0;
     font-size: 200%;
     font-weight: 500;
-    color:brown;   
-    position:center;
+    color: brown;
+    position: center;
     text-shadow: 1px 1px 10px orange;
-    padding-bottom: 1rem;   
+    padding-bottom: 1rem;  
 }
 
 
@@ -91,8 +91,6 @@ html, body {
 footer {
     background-color: #3f3f3f;
     color: #d5d5d5;
-  
-   
 }
 
 hr.light {
@@ -110,18 +108,22 @@ hr.light-100 {
     width: 100% margin-top: .8rem;
     margin-bottom: 1rem;
 }
-.jumbotron-default{
-    margin-top:50px;
+
+.jumbotron-default {
+    margin-top: 50px;
 }
+
 .card {
     width: 100%;
     min-height: 600px;
 }
+
 .card-img-top {
     width: 50%;
-    height: 50%;    
+    height: 50%;
     margin-top: 2rem;
 }
+
 .form-login {
     max-width: 330px;
     padding: 15px;
@@ -134,12 +136,12 @@ hr.light-100 {
     .form-login .form-login-heading,
     .form-login .checkbox {
         margin-bottom: 10px;
+        
     }
 
     .form-login .checkbox {
         font-weight: normal;
-        
-    }    
+    }
 
     .form-login .form-control {
         position: relative;
@@ -155,17 +157,20 @@ hr.light-100 {
             z-index: 2;
         }
 
-    .form-signin input[type="email"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-    }
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
-    .form-signin input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.heading td{
+    font-size: 32px;
+}
 
 
 /*-----Media Queries ---*/
