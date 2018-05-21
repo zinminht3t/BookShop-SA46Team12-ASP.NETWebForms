@@ -115,13 +115,24 @@ hr.light-100 {
 
 .card {
     width: 100%;
-    min-height: 600px;
+    min-height: 520px;
+    margin-bottom: -80px;
 }
-
+.cardPrice {
+    width: 100%;
+    min-height: 10px;
+}
+.card-body{
+    background-color:bisque
+}
+.cardprice-body {
+    background-color: beige;
+}
 .card-img-top {
     width: 50%;
     height: 50%;
-    margin-top: 2rem;
+    margin-top: 2rem;  
+    padding-bottom: 20px;
 }
 
 .form-login {
@@ -168,9 +179,7 @@ hr.light-100 {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-.heading td{
-    font-size: 32px;
-}
+
 
 
 /*-----Media Queries ---*/
