@@ -5,18 +5,19 @@
     
     &nbsp;
 <asp:Label ID="lblCategoryFilter" runat="server" Text="Category:"></asp:Label>
-<asp:DropDownList ID="ddlCategoryFilter" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID">
+<asp:DropDownList ID="ddlCategoryFilter" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged">
 </asp:DropDownList>
 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString2 %>" SelectCommand="SELECT [Name], [CategoryID] FROM [Category]"></asp:SqlDataSource>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <asp:Label ID="lblPriceSort" runat="server" Text="Price:"></asp:Label>
-<asp:DropDownList ID="ddlPriceSort" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlPriceSort_SelectedIndexChanged">
+<asp:DropDownList ID="ddlPriceSort" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged">
     <asp:ListItem Value="0">Lowest - Highest</asp:ListItem>
     <asp:ListItem Value="1">Highest - Lowest</asp:ListItem>
 </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <asp:Label ID="lblSearchBooks" runat="server" Text="Search:"></asp:Label>
 <asp:TextBox ID="txtSearchBooks" runat="server"></asp:TextBox>
+    <asp:Button ID="btnSearchBooks" runat="server" Text="Search" OnClick="btnSearchBooks_Click" />
 &nbsp;<asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource1" GroupItemCount="3">
         
         <EmptyDataTemplate>
@@ -86,6 +87,9 @@
     <SelectParameters>
         <asp:Controlparameter Name="state_categoryID" ControlID="ddlCategoryFilter" PropertyName="SelectedValue"/>
     </SelectParameters>  
+</asp:SqlDataSource>
+
+<asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="">
 </asp:SqlDataSource>
     
 </asp:Content>
