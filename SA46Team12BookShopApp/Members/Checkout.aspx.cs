@@ -62,6 +62,15 @@ namespace SA46Team12BookShopApp
             order.PostalCode = Convert.ToInt32(txtPostCode.Text);
             order.Name = txtName.Text;
             BusinessLogic.AddOrder(order, lstOD);
+
+            string message = "Your details have been saved successfully.";
+            string script = "window.onload = function(){ alert('";
+            script += message;
+            script += "')};";
+            ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+
+            //Response.Redirect("../");
+
         }
 
     }

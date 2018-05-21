@@ -75,10 +75,6 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                             ControlToValidate="txtPostCode" ForeColor="Red"
                             ErrorMessage="RequiredFieldValidator">Postal is required</asp:RequiredFieldValidator>
-                        <asp:RangeValidator ID="RangeValidator1" runat="server"
-                            ErrorMessage="RangeValidator" ControlToValidate="txtPostCode"
-                            ForeColor="Red" Type="Integer"
-                            MaximumValue="7" MinimumValue="6">Postal Code should be 6 letters.</asp:RangeValidator>
                     </div>
 
 
