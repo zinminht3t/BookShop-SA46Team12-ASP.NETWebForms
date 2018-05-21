@@ -69,6 +69,53 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="images\9780060555665.jpg" />
+    <Content Include="images\9780062377210.jpg" />
+    <Content Include="images\9780062390851.jpg" />
+    <Content Include="images\9780062498533.jpg" />
+    <Content Include="images\9780262035613.jpg" />
+    <Content Include="images\9780307279187.jpg" />
+    <Content Include="images\9780316468978.jpg" />
+    <Content Include="images\9780374300210.jpg" />
+    <Content Include="images\9780385376716.jpg" />
+    <Content Include="images\9780385537353.jpg" />
+    <Content Include="images\9780399255373.jpg" />
+    <Content Include="images\9780399588174.jpg" />
+    <Content Include="images\9780425285176.jpg" />
+    <Content Include="images\9780544633384.jpg" />
+    <Content Include="images\9780691135144.jpg" />
+    <Content Include="images\9780691169019.jpg" />
+    <Content Include="images\9780735214149.jpg" />
+    <Content Include="images\9780744017311.jpg" />
+    <Content Include="images\9780803741713.jpg" />
+    <Content Include="images\9780812988406.jpg" />
+    <Content Include="images\9780812995800.jpg" />
+    <Content Include="images\9780812996937.jpg" />
+    <Content Include="images\9780984782857.jpg" />
+    <Content Include="images\9780997584714.jpg" />
+    <Content Include="images\9781101875681.jpg" />
+    <Content Include="images\9781101904404.jpg" />
+    <Content Include="images\9781119144755.jpg" />
+    <Content Include="images\9781119259756.jpg" />
+    <Content Include="images\9781259589515.jpg" />
+    <Content Include="images\9781419721373.jpg" />
+    <Content Include="images\9781442468405.jpg" />
+    <Content Include="images\9781476763828.jpg" />
+    <Content Include="images\9781484732748.jpg" />
+    <Content Include="images\9781484746424.jpg" />
+    <Content Include="images\9781491962299.jpg" />
+    <Content Include="images\9781497644892.jpg" />
+    <Content Include="images\9781501163807.jpg" />
+    <Content Include="images\9781506703350.jpg" />
+    <Content Include="images\9781506703671.jpg" />
+    <Content Include="images\9781506705408.jpg" />
+    <Content Include="images\9781524766498.jpg" />
+    <Content Include="images\9781535585958.jpg" />
+    <Content Include="images\9781589795471.jpg" />
+    <Content Include="images\9781593276034.jpg" />
+    <Content Include="images\9781616205676.jpg" />
+    <Content Include="images\9781619634480.jpg" />
+    <Content Include="images\9781911015222.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +125,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Bookshop.bak" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -87,8 +135,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Code\" />
     <Folder Include="Models\" />
+    <Folder Include="Style\css\" />
+    <Folder Include="Style\fonts\" />
+    <Folder Include="Style\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
