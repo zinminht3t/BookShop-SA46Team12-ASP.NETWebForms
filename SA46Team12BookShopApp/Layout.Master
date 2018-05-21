@@ -35,15 +35,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Category</a>
                 </li>
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+
             </ul>
-            <button class="btn btn-primary btn-sm" data-target="#loginModal" data-toggle="modal">Login</button>
-            <%--<form class="form-inline my-2 my-lg-0"> 
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> 
-            </form> --%>
+            <button class="btn btn-primary btn-sm" data-target="#loginModal" data-toggle="modal">Login</button>	
         </div>
+         
     </nav>
+
+
+
     <div class="modal fade" data-keyboard="false" data-backdrop="static" id="loginModal" tabindex="-1">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -73,44 +76,17 @@
 
 
     <form id="form1" runat="server">
-        <div class="" style="min-height: 500px; padding-top: 120px; padding-left: 50px;">
+        <div class="" style="min-height: 640px; padding-top: 120px; padding-left: 0px;">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-    </form>      
+    </form>
 
 
     <!-- Footer -->
     <footer>
         <div class="container-fluid padding">
             <div class="row text-center">
-                <div class="col-md-4">
-
-                    <hr class="light">
-                    <h5>Our Contact</h5>
-                    <hr class="light">
-                    <p>555-555-5555</p>
-                    <p>email@myemail.com</p>
-                    <p>100 Street Name</p>
-                    <p>City, State, 00000</p>
-                </div>
-                <div class="col-md-4">
-                    <hr class="light">
-                    <h5>Our hours</h5>
-                    <hr class="light">
-                    <p>Monday:9am - 5pm</p>
-                    <p>Saturday:10am - 4pm</p>
-                    <p>Sunday:Closed</p>
-                </div>
-                <div class="col-md-4">
-                    <hr class="light">
-                    <h5>Service Area</h5>
-                    <hr class="light">
-                    <p>City, State, 00000</p>
-                    <p>City, State, 00000</p>
-                    <p>City, State, 00000</p>
-                    <p>City, State, 00000</p>
-                </div>
                 <div class="col-12">
                     <hr class="light-100">
                     <h5>&copy; GDip SA46 Team 12</h5>
