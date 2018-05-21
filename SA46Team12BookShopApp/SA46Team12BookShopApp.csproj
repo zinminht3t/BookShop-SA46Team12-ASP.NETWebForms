@@ -133,6 +133,7 @@
     <Content Include="Style\css\Style.css" />
     <Content Include="Style\images\getbooksv3.png" />
     <Content Include="Style\images\getbooksv4.png" />
+    <Content Include="Style\images\mac.png" />
     <Content Include="UnauthorizedAccess.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
