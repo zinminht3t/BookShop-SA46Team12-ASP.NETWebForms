@@ -16,9 +16,7 @@
             <div class="carousel-item active">
                 <img src="images/9780060555665.jpg">
                 <div class="carousel-caption">
-                    <h1 class="display-2">Get Books</h1>
-                    <%--<h3></h3>--%>
-                    <%--<button type="button" class="btn btn-outline-light btn-lg">VIEW DEMO</button>--%>
+                    <h1 class="display-2">Get Books</h1>                   
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
