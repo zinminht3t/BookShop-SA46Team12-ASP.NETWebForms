@@ -67,7 +67,7 @@ html, body {
     color: brown;
     position: center;
     text-shadow: 1px 1px 10px orange;
-    padding-bottom: 1rem;  
+    padding-bottom: 1rem;
 }
 
 
@@ -118,20 +118,24 @@ hr.light-100 {
     min-height: 520px;
     margin-bottom: -80px;
 }
+
 .cardPrice {
     width: 100%;
     min-height: 10px;
 }
-.card-body{
-    background-color:bisque
+
+.card-body {
+    background-color: bisque
 }
+
 .cardprice-body {
     background-color: beige;
 }
+
 .card-img-top {
     width: 50%;
     height: 50%;
-    margin-top: 2rem;  
+    margin-top: 2rem;
     padding-bottom: 20px;
 }
 
@@ -147,7 +151,6 @@ hr.light-100 {
     .form-login .form-login-heading,
     .form-login .checkbox {
         margin-bottom: 10px;
-        
     }
 
     .form-login .checkbox {
@@ -282,16 +285,12 @@ figure {
 /*
 Extra small (xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap
-
 Small (sm) devices (landscape phones, 576px and up)
 @media (min-width: 576px) { ... }
-
 Medium (md) devices (tablets, 768px and up)
 @media (min-width: 768px) { ... }
-
 Large (lg) devices (desktops, 992px and up)
 @media (min-width: 992px) { ... }
-
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
