@@ -64,7 +64,7 @@
                             <a class="nav-link" href="aboutus.aspx">AboutUs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="confirmorder.aspx">My Orders</a>
+                            <a class="nav-link" href="confirmorder.aspx">Orders</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" runat="server" onserverclick="logout">Logout</a>
