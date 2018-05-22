@@ -185,9 +185,9 @@
                         </asp:GridView>
                     </div>
                     <br />
-                    <asp:Label ID="lblSuccess" Text="Save Success!" runat="server" ForeColor="White" BackColor="ForestGreen" Visible="False" />
+                    <asp:Label ID="lblSuccess" Text="Save Success!" runat="server" CssClass="alert alert-success" Visible="False" />
                     <br />
-                    <asp:Label ID="lblError" Text="Error" runat="server" ForeColor="White" BackColor="#CC3300" Visible="False" />
+                    <br />
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString2 %>" SelectCommand="SELECT [Name], [CategoryID] FROM [Category]"></asp:SqlDataSource>
                 </div>
             </div>
