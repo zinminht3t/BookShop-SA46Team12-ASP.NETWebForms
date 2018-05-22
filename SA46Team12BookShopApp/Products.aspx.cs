@@ -113,7 +113,7 @@ namespace SA46Team12BookShopApp
                 return null;
             }
 
-            return String.Format("{0:0%}", myValue);
+            return String.Format("{0:0%} off", myValue);
         }
 
         public int getItemClicked()
@@ -136,10 +136,7 @@ namespace SA46Team12BookShopApp
                 MessageBox.Show(this, "Book has been added to cart.");
             }
         }
-
-
-
-
+   
     }
 
     public static class MessageBox
