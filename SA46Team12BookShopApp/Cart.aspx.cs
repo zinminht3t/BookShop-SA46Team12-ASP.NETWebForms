@@ -25,8 +25,12 @@ namespace SA46Team12BookShopApp
 
             List<int> carts = (List<int>)Session["cart_items"];
 
+            if (carts == null)
+            {
+                carts = new List<int>();
+            }
 
-            if(carts == null)
+            if (carts.Count < 1)
             {
                 Response.Redirect("Products.aspx");
             }
@@ -65,7 +69,7 @@ namespace SA46Team12BookShopApp
                 ca.Discount = (decimal)BusinessLogic.GetDiscountPrice(b.BookID);
                 ca.Discount = Math.Round(ca.Discount, 2);
                 ca.Qty = entry.Value;
-                ca.Amount = ca.Qty * ((decimal)ca.Price - (ca.Price * (ca.Discount / 100)));
+                ca.Amount = ca.Qty * ((decimal)(ca.Price - ca.Discount));
                 ca.Amount = Math.Round(ca.Amount, 2);
                 lstCart.Add(ca);
             }

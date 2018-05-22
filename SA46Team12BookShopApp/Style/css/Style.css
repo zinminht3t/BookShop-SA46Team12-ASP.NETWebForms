@@ -9,8 +9,11 @@ html, body {
     background-color: ghostwhite;
 }
 
+img {
+    object-fit: cover;
+}
 #imgLogo{
-    font-family: 'Tangerine'
+    font-family: 'Tangerine';
 }
 
 .navbar {
@@ -23,6 +26,13 @@ html, body {
 
 .nav-link {
     font-size: 1.1em !important;
+}
+
+.carousel-bg {
+    width: 100%;
+    height: auto;
+    opacity: 0.2;
+    filter: blur(5px);
 }
 
 .carousel-indicators {
@@ -44,29 +54,29 @@ html, body {
     color: #540000;
 }
 
-    .carousel-caption h1 {
-        font-size: 500%;
-        text-transform: uppercase;
-        font-family:'tangerine', sans-serif;
-        /*text-shadow: 1px 1px 15px #000;*/
-    }
+.carousel-caption h1 {
+    font-size: 500%;
+    text-transform: uppercase;
+    font-family:'tangerine', sans-serif;
+    /*text-shadow: 1px 1px 15px #000;*/
+}
 
-    .carousel-caption h3 {
-        font-size: 200%;
-        font-weight: 500;
-        text-shadow: 1px 1px 10px #000;
-        padding-bottom: 1rem;
-    }
+.carousel-caption h3 {
+    font-size: 200%;
+    font-weight: 500;
+    text-shadow: 1px 1px 10px #000;
+    padding-bottom: 1rem;
+}
 
 .btn-primary {
     background-color: #6648b1;
     border: 1px solid #6648b1;
 }
 
-    .btn-primary:hover {
-        background-color: #563d7c;
-        border: 1px solid #563d7c;
-    }
+.btn-primary:hover {
+    background-color: #563d7c;
+    border: 1px solid #563d7c;
+}
 
 .jumbotron {
     padding: 1rem;
@@ -88,6 +98,20 @@ html, body {
     color: brown;
     position: center;
     padding-bottom: 1rem;
+}
+
+.overlay {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 10;
+    /*height:100%;
+    width:100%;*/
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
 }
 
 .jumbotron-default {
@@ -153,14 +177,114 @@ hr.light-100 {
     padding-bottom: 20px;
 }
 
-/*.cartqty {
-    color: white;   
-    position:relative;
-    top: -23px;
-    left: 978px;  
-    width:22px;
-    height: 23px;
-}*/
+.col-item {
+    border: 1px solid #E1E1E1;
+    border-radius: 10px;
+    background: #FFF;
+    min-height: 540px;       
+}
+
+    .col-item:hover {
+        box-shadow: 0px 2px 5px -1px #000;
+        -moz-box-shadow: 0px 2px 5px -1px #000;
+        -webkit-box-shadow: 0px 2px 5px -1px #000;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 10px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        border-bottom: 2px solid #52A1D5;
+    }
+
+    .col-item .photo img {
+        margin: 0 auto;
+        width: 100%;
+        padding: 1px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .col-item .info {
+        padding: 10px;
+        border-radius: 0 0 5px 5px;
+        margin-top: 1px;
+    }
+
+    .col-item .price {
+        /*width: 50%;*/
+        float: left;
+        margin-top: 5px;
+    }
+
+        .col-item .price h5 {
+            line-height: 20px;
+        }
+
+.price-text-color {
+    color: #219FD1;
+}
+
+.disctprice-text-color {
+    color: red;
+}
+
+.col-item .info .rating {
+    color: #777;
+}
+
+.col-item .rating {
+    /*width: 50%;*/
+    float: left;
+    font-size: 17px;
+    text-align: right;
+    line-height: 52px;
+    margin-bottom: 10px;
+    height: 52px;
+}
+
+.col-item .separator {
+    border-top: 1px solid #E1E1E1;
+}
+
+.clear-left {
+    clear: left;
+}
+
+.col-item .separator p {
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 10px;
+    text-align: center;
+}
+
+    .col-item .separator p i {
+        margin-right: 5px;
+    }
+
+.col-item .btn-add {
+    width: 50%;
+    float: left;
+}
+
+.col-item .btn-add {
+    border-right: 1px solid #E1E1E1;
+}
+
+.col-item .btn-details {
+    width: 50%;
+    float: left;
+    padding-left: 10px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+[data-slide="prev"] {
+    margin-right: 10px;
+}
 
 
 
@@ -170,26 +294,29 @@ hr.light-100 {
         top: 45%;
     }
 
-        .carousel-caption h1 {
-            font-size: 350%;
-        }
+    .carousel-caption h1 {
+        font-size: 350%;
+    }
+
     .carosel-caption h2 {
         font-size: 120%;
         font-family: 'Baskerville Old Face';
         color: dodgerblue;
     }
-        .carousel-caption h3 {
-            font-size: 140%;
-        }
 
-        .carousel-caption .btn {
-            font-size: 95%;
-            padding: 8px 14px;
-        }
+    .carousel-caption h3 {
+        font-size: 140%;
+    }
+
+    .carousel-caption .btn {
+        font-size: 95%;
+        padding: 8px 14px;
+    }
 
     .display-4 {
         font-size: 200%;
     }
+
 }
 
 @media (max-width: 576px) {
@@ -253,3 +380,16 @@ Large (lg) devices (desktops, 992px and up)
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
+
+/*.owl-carousel.owl-loaded {
+    display: inline-block;
+}
+
+.img-wrap {
+    background-size: cover;
+    background-position: bottom;
+    height: 300px;
+    width: 300px;
+
+    img{visibility:hidden;}
+}*/

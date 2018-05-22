@@ -31,15 +31,6 @@ namespace SA46Team12BookShopApp {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
         
         /// <summary>
-        /// lblPriceSort control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPriceSort;
-        
-        /// <summary>
         /// ddlPriceSort control.
         /// </summary>
         /// <remarks>
@@ -47,15 +38,6 @@ namespace SA46Team12BookShopApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPriceSort;
-        
-        /// <summary>
-        /// lblSearchBooks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchBooks;
         
         /// <summary>
         /// txtSearchBooks control.
