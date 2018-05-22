@@ -14,6 +14,20 @@ namespace SA46Team12BookShopApp
                 return entities.Books.Take(4).ToList<Book>(); //todo
             }
         }
+        public static Book GetBookbyID(int BookID)
+        {
+            using (BooksDB entities = new BooksDB())
+            {
+                return entities.Books.Where(x => x.BookID == BookID).FirstOrDefault(); //todo
+            }
+        }
+        public static Book GetBookbyISBN(string ISBN)
+        {
+            using (BooksDB entities = new BooksDB())
+            {
+                return entities.Books.Where(x => x.ISBN == ISBN).FirstOrDefault(); //todo
+            }
+        }
         public static int GetDiscountID(int BookID)
         {
             int discountid = -1;
@@ -77,7 +91,7 @@ namespace SA46Team12BookShopApp
             {
                 entities.OrderHeaders.Add(o);
                 entities.SaveChanges();
-                
+
                 foreach (OrderDetail orddet in od)
                 {
                     OrderDetail odet = new OrderDetail();
@@ -90,6 +104,13 @@ namespace SA46Team12BookShopApp
                     entities.OrderDetails.Add(odet);
                 }
                 entities.SaveChanges();
+            }
+        }
+        public static List<OrderHeader> GetUserOrders()
+        {
+            using (BooksDB entities = new BooksDB())
+            {
+                return entities.OrderHeaders.Where(x => x.UserID == 1).ToList<OrderHeader>(); //todo
             }
         }
     }

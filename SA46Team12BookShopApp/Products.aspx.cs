@@ -128,9 +128,9 @@ namespace SA46Team12BookShopApp
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
                 this.itemClicked = int.Parse(e.CommandArgument.ToString());
 
-                cartItems = (List<int>)Session["cart_items"];    // GET
+                cartItems = (List<int>)ViewState["cart_items"];    // GET
                 cartItems.Add(this.itemClicked);
-                Session["cart_items"] = cartItems;
+                ViewState["cart_items"] = cartItems;
 
                 //check if selected book is already in cart
                 MessageBox.Show(this, "Book has been added to cart.");

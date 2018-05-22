@@ -13,35 +13,72 @@ namespace SA46Team12BookShopApp
         double discount = 0;
         List<Book> lstBooks;
         List<OrderDetail> lstOD;
-    
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lstBooks = new List<Book>();
             lstOD = new List<OrderDetail>();
+
+            if (!IsPostBack)
+            {
+                List<int> cartItems = (List<int>)Session["cart_items"];    //todo
+                cartItems.Add(1);
+                cartItems.Add(2);
+                cartItems.Add(3);
+                cartItems.Add(4);
+                cartItems.Add(1);
+                Session["cart_items"] = cartItems;
+            }
+
+
+            List<int> carts = (List<int>)Session["cart_items"];    //todo
+
+            foreach (int id in carts)
+            {
+                Book b = new Book();
+                b = BusinessLogic.GetBookbyID(id);
+                lstBooks.Add(b);
+            }
+
             txtName.Focus();
-            lstBooks = BusinessLogic.GetBooks();
-            cartBooks.DataSource = lstBooks;
-            cartBooks.DataBind();
-            if(lstBooks.Count < 1)
+
+            if (lstBooks.Count < 1)
             {
                 Response.Redirect("../");
             }
+            cartBooks.DataSource = lstBooks;
+            cartBooks.DataBind();
 
-            lblBooks.Text = lstBooks.Count.ToString();
-
-
+            Dictionary<string, int> cartDis = new Dictionary<string, int>();
             foreach (Book b in lstBooks)
             {
+                if (!cartDis.ContainsKey(b.ISBN))
+                {
+                    cartDis.Add(b.ISBN, 1);
+                }
+                else
+                {
+                    int count = 0;
+                    cartDis.TryGetValue(b.ISBN, out count);
+                    cartDis.Remove(b.ISBN);
+                    cartDis.Add(b.ISBN, count + 1);
+                }
+            }
+            foreach (KeyValuePair<string, int> entry in cartDis)
+            {
+                Book b = BusinessLogic.GetBookbyISBN(entry.Key);
                 total += (double)b.Price;
                 discount += BusinessLogic.GetDiscountPrice(b.BookID);
                 OrderDetail od = new OrderDetail();
                 od.BookID = b.BookID;
                 od.DiscountID = BusinessLogic.GetDiscountID(b.BookID);
-                od.Qty = 3; //todo
+                od.Qty = entry.Value; //todo
                 od.UnitPrice = b.Price;
-                od.NetPrice = (b.Price - (decimal) BusinessLogic.GetDiscountPrice(b.BookID));
+                od.NetPrice = (b.Price - (decimal)BusinessLogic.GetDiscountPrice(b.BookID));
                 lstOD.Add(od);
             }
+
+            lblBooks.Text = lstBooks.Count.ToString();
 
             string samount = String.Format("{0:C}", total);
             string sdiscount = String.Format("{0:C}", discount);
@@ -55,19 +92,17 @@ namespace SA46Team12BookShopApp
 
             OrderHeader order = new OrderHeader();
             order.OrderDate = DateTime.Today;
-            order.Total = (decimal) total;
-            order.UserID = 1;
+            order.Total = (decimal)total;
+            order.UserID = 1; //todo
             order.Address = txtAddress.Text;
             order.Email = txtEmail.Text;
             order.PostalCode = Convert.ToInt32(txtPostCode.Text);
             order.Name = txtName.Text;
             BusinessLogic.AddOrder(order, lstOD);
+            Session["cart_items"] = null;
+            Response.Redirect("ConfirmOrder.aspx?Ordered=" + true);
 
-            string message = "Your details have been saved successfully.";
-            string script = "window.onload = function(){ alert('";
-            script += message;
-            script += "')};";
-            ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+            //Response.Redirect("/ConfirmOrder.aspx" & Request.QueryString("LOCATION"));
 
             //Response.Redirect("../");
 

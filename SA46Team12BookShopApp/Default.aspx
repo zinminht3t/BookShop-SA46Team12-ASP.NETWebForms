@@ -14,35 +14,35 @@
         </ul>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/9780060555665.jpg">
+                <img src="images/bornACrimeCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/9780062377210.jpg">
+                <img src="images/everybodyLiesCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/9780399588174.jpg">
+                <img src="images/overwatchCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/9781911015222.jpg">
+                <img src="images/personaCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/9780425285176.jpg">
+                <img src="images/zeldaCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
@@ -59,98 +59,132 @@
             </div>
         </div>
     </div>
+    
 
-    <!-- Promotional Cards -->
-    <div class="container-fluid padding">
-        <div class="row text-center padding">
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="card">                 
-                    <img class="card-img-top" src="images/9780744017311.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">The Art of Personas 5</h4>
-                        <p class="card-text">Persona 5 isn’t just a fantastic video game, it’s an absolute feast for the senses, with a strong, confident art style that runs from its character design all the way through to its menus.</p>
-                    </div>
-                </div>
-            </div>
+    <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1"
+    ItemPlaceholderID="itemPlaceHolder1" GroupPlaceholderID="groupPlaceHolder1">              
+        <GroupTemplate>
+          <%--  <tr id="itemPlaceholderContainer" runat="server">
+                <td id="itemPlaceholder" runat="server"></td>
+            </tr>--%>
 
-            <div class="col-xs-12 col-sm-6 col-md-3">
+             <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="card">  
-                    <img class="card-img-top" src="images/9781593276034.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">Python Crash Course</h4>
-                        <p class="card-text">Python Crash Course is a fast-paced, thorough introduction to Python that will have you writing programs, solving problems, and making things that work in no time.</p>
+                    <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
+                </div>
+            </div>
+        </GroupTemplate>
+      
+        <ItemTemplate>
+           <%-- <td runat="server" style="">BookID:--%>
+                <%--<asp:Label ID="BookIDLabel" runat="server" Text='<%# Eval("BookID") %>' />
+                <br />Title:
+                <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                <br />CategoryID:
+                <asp:Label ID="CategoryIDLabel" runat="server" Text='<%# Eval("CategoryID") %>' />
+                <br />ISBN:
+                <asp:Label ID="ISBNLabel" runat="server" Text='<%# Eval("ISBN") %>' />
+                <br />Author:
+                <asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
+                <br />Stock:
+                <asp:Label ID="StockLabel" runat="server" Text='<%# Eval("Stock") %>' />
+                <br />Price:
+                <asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
+                <br />CategoryID1:
+                <asp:Label ID="CategoryID1Label" runat="server" Text='<%# Eval("CategoryID1") %>' />
+                <br />Name:
+                <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                <br />DiscountID:
+                <asp:Label ID="DiscountIDLabel" runat="server" Text='<%# Eval("DiscountID") %>' />
+                <br />BookID1:
+                <asp:Label ID="BookID1Label" runat="server" Text='<%# Eval("BookID1") %>' />
+                <br />DiscountDesc:
+                <asp:Label ID="DiscountDescLabel" runat="server" Text='<%# Eval("DiscountDesc") %>' />
+                <br />DiscountPercent:
+                <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# Eval("DiscountPercent") %>' />
+                <br /></td>--%>
+
+             <%-- <link rel="stylesheet" type="text/css" href="product-page.css" />--%>
+            <link href="style/css/style.css" rel="stylesheet">
+                <div class="post-img-content">
+                <image src="images/<%# Eval("ISBN") %>.jpg" class="img-responsive"></image>
+                <span class="post-title">
+                <b><asp:Label ID="lblSalesTag" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' /></b>
+                </span>
+            </div>
+            <div class="info">
+		        <div class="row">          
+			        <div class="price col-md-12">
+                        <h5>
+                            <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                        </h5>
+                       </div>
+                        <div class="price col-md-12" >
+                        Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
+                        </div>
+                    <p>
+                    <div class ="col-md-6">
+                        
+                       <h5 class="price-text-color">
+                            &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
+                       </h5>
+                     </div>
+                    <%--<div class ="col-md-6">
+                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem" 
+                 CommandArgument='<%# Eval("BookID") %>' />
+                    </div>--%></p>
                     </div>
                 </div>
-            </div>
+             <%--Discount:
+                <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' />
+                <br />  --%> 
 
-            <div class="col-xs-12 col-sm-6 col-md-3">
-               <div class="card">  
-                    <img class="card-img-top" src="images/9780984782857.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">Cracking the Coding Interview: 189 Programming Questions and Solutions</h4>
-                        <p class="card-text">This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book includes 189 programming interview questions and answers, as well as other advice.</p>
-                    </div>
-                </div>
-            </div>
+        </ItemTemplate>
+        <LayoutTemplate>
+           <%-- <table runat="server">
+                <tr runat="server">
+                    <td runat="server">
+                        <table id="groupPlaceholderContainer" runat="server" border="0" style="">
+                            <tr id="groupPlaceholder" runat="server">
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr runat="server">
+                    <td runat="server" style=""></td>
+                </tr>
+            </table>--%>
 
-            <div class="col-sm-12 col-md-3">
-                 <div class="card">  
-                    <img class="card-img-top" src="images/9780262035613.jpg">
-                    <div class="card-body">
-                        <h4 class="card-title">Deep Learning</h4>
-                        <p class="card-text">The hierarchy of concepts allows the computer to learn complicated concepts by building them out of simpler ones; a graph of these hierarchies would be many layers deep. This book introduces a broad range of topics in deep learning.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            <div class="container-fluid" id="groupContainer" runat="server" >
+                <div class="row" id="groupPlaceholder" runat="server">
+                    <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
+                 </div>
+             </div>
+        </LayoutTemplate> 
+        
 
-    <!-- Promotional Cards Pricing -->
-    <div class="container-fluid padding">
-        <div class="row text-center padding">
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="cardPrice">
-                    <div class="cardprice-body">
-                    <h5 class="orig-price">Original Price: 39.99</h5>
-                    <h5 class="promo-price">Discounted Price: 31.99</h5>
-                </div>
-                </div>
-            </div>
+    </asp:ListView>
 
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="cardPrice">
-                    <div class="cardprice-body">
-                        <h5 class="orig-price">Original Price: 39.95</h5>
-                        <h5 class="promo-price">Discounted Price: 31.96</h5>
-                    </div>
-                </div>
-            </div>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString3 %>" SelectCommand="SELECT * FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID"></asp:SqlDataSource>
 
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="cardPrice">
-                    <div class="cardprice-body">
-                        <h5 class="orig-price">Original Price: 26.79</h5>
-                        <h5 class="promo-price">Discounted Price: 21.43</h5>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-12 col-md-3">
-                <div class="cardPrice">
-                    <div class="cardprice-body">
-                        <h5 class="orig-price">Original Price: 80.00</h5>
-                        <h5 class="promo-price">Discounted Price: 64.00</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   <%-- <SelectParameters>
+        <asp:Controlparameter Name="state_categoryID" ControlID="ddlCategoryFilter" PropertyName="SelectedValue"/>
+    </SelectParameters> --%> 
 
-    <div class="row padding">
-        <div class="col-10"></div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">View More</a>
-        </div>
-    </div>
+
+<%--<asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.CategoryID=@state_categoryID ORDER BY Book.Price DESC">--%>
+    <%--<SelectParameters>
+        <asp:Controlparameter Name="state_categoryID" ControlID="ddlCategoryFilter" PropertyName="SelectedValue"/>
+    </SelectParameters> --%> 
+<%--</asp:SqlDataSource>--%>
+<asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID ORDER BY Book.Price DESC">
+</asp:SqlDataSource>
+
+<asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID ORDER BY Book.Price ASC">
+</asp:SqlDataSource>
+
+<asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="">
+</asp:SqlDataSource>
 
 </asp:Content>
