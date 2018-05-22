@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SA46Team12BookShopApp.Default" %>
+﻿<%@ Page Title="Herzlich Willkommen!" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SA46Team12BookShopApp.Default" %>
 <%@ MasterType VirtualPath="~/Layout.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -6,8 +6,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
     <!-- Image Slider -->
+    <%--<script src="Style/js/carousel.js"></script>--%>
     <div class="container-fluid" style="align-content: center; padding-left:100px;">
-    <div id="slides" class="carousel slide" data-ride="carousel">
+    <div id="slides" class="carousel slide" data-ride="carousel" data-interval="3000">
         <ul class="carousel-indicators">
             <li data-target="#slides" data-slide-to="0" class="active"></li>
             <li data-target="#slides" data-slide-to="1"></li>
