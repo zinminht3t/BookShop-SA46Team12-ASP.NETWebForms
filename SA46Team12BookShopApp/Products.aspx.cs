@@ -201,7 +201,7 @@ namespace SA46Team12BookShopApp
 
             int dataItemBookID = int.Parse(btnAdd.CommandArgument);
             cartItems = (List<int>)Session["cart_items"];    // GET
-            cartItems = new List<int>();
+            //cartItems = new List<int>();
             bool alreadyExist = cartItems.Contains(dataItemBookID);
 
             if (alreadyExist)
