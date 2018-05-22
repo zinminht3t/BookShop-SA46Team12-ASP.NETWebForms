@@ -1,5 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Tangerine');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
 
 html, body {
     height: 100%;
@@ -12,6 +13,7 @@ html, body {
 img {
     object-fit: cover;
 }
+
 #imgLogo{
     font-family: 'Tangerine';
 }
@@ -109,6 +111,10 @@ img {
     width:100%;*/
 }
 
+.promo{
+    font-family:'Lobster', cursive;
+}
+
 .responsive {
     width: 100%;
     height: auto;
@@ -170,6 +176,39 @@ hr.light-100 {
     height: 196px;
     position: relative;
 }
+
+    .post-img-content img {
+        position: absolute;
+        padding: 1px;
+        border-radius: 10px 10px 0 0;
+    }
+
+.post-title {
+    display: table-cell;
+    vertical-align: bottom;
+    z-index: 2;
+    position: relative;
+}
+
+    .post-title b {
+        background-color: #ff597d;
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-left: 2px;
+        color: #FFF;
+        padding: 0;
+        margin-top: 10px;
+        font-size: 25px;
+        padding-right: 8px;
+        padding-left: 8px;
+        box-shadow: 2px 2px 20px #ff597d;
+    }
+
+        .post-title b:first-child {
+            font-size: 14px;
+        }
+
+
 .card-img-top {
     width: 50%;
     height: 50%;

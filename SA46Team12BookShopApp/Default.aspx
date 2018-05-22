@@ -62,7 +62,7 @@
     <div class="row jumbotron jumbotron-default">
         <div class="container-fluid" style="width:100%;">
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-12 col-xl-12">            
-                <h2 class="display-5 text-center">PROMOTIONAL ITEMS</h2>
+                <h1 class="text-center promo">PROMOTIONAL ITEMS</h1>
             </div>
         </div>
     </div>
@@ -85,8 +85,7 @@
             <div class="post-img-content">
                 <image src="images/<%# Eval("ISBN") %>.jpg" class="img-responsive"></image>
                 <span class="post-title">
-                    <b>
-                        <asp:Label ID="lblSalesTag" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' /></b>
+                    <b><asp:Label ID="lblSalesTag" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' /></b>
                 </span>
             </div>
             <div class="info">
