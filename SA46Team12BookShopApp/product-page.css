@@ -4,8 +4,8 @@
     border: 1px solid #E1E1E1;
     border-radius: 10px;
     background: #FFF;
-    min-height: 500px;
-    max-height: 500px;
+    min-height: 510px;
+    max-height: 510px;
     overflow:hidden;
 }
 
@@ -173,8 +173,68 @@ Hover the image
     height: auto;
 }
 
-.sortitem{
+col-xs-12.col-sm-6 col-sm-4 col-md-3.sortitem {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.disctprice-text-color{
+    color:red;
+}
+.col-item1 {
+    border: 1px solid #E1E1E1;
+    border-radius: 10px;
+    background: #FFF;
+    min-height: 540px;
+    max-height: 540px;
+    overflow: hidden;
+}
+.row.search {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.col-xs-12.col-sm-6.col-sm-4.col-md-3.search{
     margin-left:auto;
     margin-right: auto;
-    width:50%;
+}
+.container{
+    margin-left: auto;
+    margin-right: auto;
+}
+#custom-search-input {
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+    #custom-search-input input {
+        border: 0;
+        box-shadow: none;
+    }
+    #custom-search-input button {
+        margin: 2px 0 0 0;
+        background: none;
+        box-shadow: none;
+        border: 0;
+        color: #666666;
+        padding: 0 8px 0 10px;
+        border-left: solid 1px #ccc;
+    }
+
+        #custom-search-input button:hover {
+            border: 0;
+            box-shadow: none;
+            border-left: solid 1px #ccc;
+        }
+
+    #custom-search-input .glyphicon-search {
+        font-size: 23px;
+    }
+.btn.btn-primary.searchbtn {
+    background-color: #555555;
+    border-color: #555555;
 }
