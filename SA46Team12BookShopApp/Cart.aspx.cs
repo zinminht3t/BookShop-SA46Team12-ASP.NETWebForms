@@ -28,7 +28,6 @@ namespace SA46Team12BookShopApp
                 //    //                                        new DataColumn("Qty"), new DataColumn("Subtotal")});
                 //    //Session["Customers"] = dt;
                 //count = 0;
-                lblBookID.Text = "(Added Book ID: "+PreviousPage.itemClicked+")";
                 lstBooks = new List<Book>();
                 lstOD = new List<OrderDetail>();
                 lstBooks = BusinessLogic.GetBooks();

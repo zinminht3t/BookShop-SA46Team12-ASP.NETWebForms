@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Shopping Cart" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SA46Team12BookShopApp.Cart" %>
-<%@ PreviousPageType VirtualPath="~/Products.aspx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 
@@ -10,8 +9,7 @@
         <div class="container">   
             <div class="jumbotron">
                 <h3>Cart&nbsp;
-                    <asp:Label ID="lblBookID" runat="server" Text="Test"></asp:Label>
-                </h3>
+                    </h3>
             </div>
         <div class="row">  
         <div class="col-lg-12">  
