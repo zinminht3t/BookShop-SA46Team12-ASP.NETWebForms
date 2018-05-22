@@ -15,13 +15,13 @@
             <br />
             <div class="mPanel">
                         <asp:Panel ID="Panel1" runat="server">
-                            <asp:DropDownList ID="ddlCategoryFilter" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlCategoryFilter_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlCategoryFilter" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlCategoryFilter_SelectedIndexChanged" TabIndex="1">
                                 <asp:ListItem>All</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblSearch" runat="server" Text="Search: "></asp:Label>
-                            <asp:TextBox ID="tbSearch" runat="server" AutoPostBack="true"></asp:TextBox>
-                            <asp:Button ID="btnSubmit" runat="server" Text="Search" OnClick="btnSubmit_Click" />
-                            <asp:Button ID="btnViewAll" runat="server" OnClick="btnViewAll_Click" Text="View All" />
+                            <asp:TextBox ID="tbSearch" runat="server" AutoPostBack="true" TabIndex="2"></asp:TextBox>
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSubmit_Click" TabIndex="3" />
+                            <asp:Button ID="btnViewAll" runat="server" OnClick="btnViewAll_Click" Text="View All" TabIndex="4" />
                         </asp:Panel>
                         <br />
                 <div>
@@ -81,7 +81,7 @@
                                     <asp:Label Text='<%#Eval("Stock") %>' runat="server"/>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:Textbox ID="tbQty" Text='<%#Eval("Stock") %>' runat="server" Type="number"/>
+                                    <asp:Textbox ID="tbQty" TabIndex="5" Text='<%#Eval("Stock") %>' runat="server" Type="number"/>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Price (Per Unit)">
@@ -89,7 +89,7 @@
                                     <asp:Label Text='<%#Eval("Price") %>' runat="server"/>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:Textbox ID="tbPrice" Text='<%#Eval("Price") %>' runat="server"/>
+                                    <asp:Textbox ID="tbPrice" TabIndex="6" Text='<%#Eval("Price") %>' runat="server"/>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Discount (%)">
@@ -97,7 +97,7 @@
                                     <asp:Label Text='<%#Eval("DiscountPercent") %>' runat="server"/>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:Textbox ID="tbDiscP" Text='<%#Eval("DiscountPercent") %>' runat="server"/>
+                                    <asp:Textbox ID="tbDiscP" TabIndex="7" Text='<%#Eval("DiscountPercent") %>' runat="server"/>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Discounted Price">
