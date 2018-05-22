@@ -50,6 +50,11 @@ namespace SA46Team12BookShopApp
             return String.Format("{0:0}"+"%", myValue);
         }
 
+        public int getItemClicked()
+        {
+            return this.itemClicked;
+        }
+
         protected void ProductsListView_OnItemCommand(object sender, ListViewCommandEventArgs e)
         {
             if (String.Equals(e.CommandName, "SelectedItem"))
@@ -57,14 +62,27 @@ namespace SA46Team12BookShopApp
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
                 this.itemClicked = int.Parse(e.CommandArgument.ToString());
 
-                cartItems = (List<int>)ViewState["cart_items"];    // GET
+                cartItems = (List<int>)Session["cart_items"];    // GET
                 cartItems.Add(this.itemClicked);
-                ViewState["cart_items"] = cartItems;
+                Master.ChangeCartItemQty(cartItems.Count.ToString());
+
+                Session["cart_items"] = cartItems;
 
                 //check if selected book is already in cart
-                MessageBox.Show(this, "Book has been added to cart.");
+                MessageBox1.Show(this, "Book has been added to cart.");
             }
         }
+    }
 
+    public static class MessageBox1
+    {
+        public static void Show(this Page Page, String Message)
+        {
+            Page.ClientScript.RegisterStartupScript(
+               Page.GetType(),
+               "MessageBox",
+               "<script language='javascript'>alert('" + Message + "');</script>"
+            );
+        }
     }
 }

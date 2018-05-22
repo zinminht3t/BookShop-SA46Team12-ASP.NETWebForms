@@ -9,6 +9,10 @@ html, body {
     background-color: ghostwhite;
 }
 
+img {
+    object-fit: cover;
+}
+
 .navbar {
     padding: .8rem;
 }
@@ -19,6 +23,13 @@ html, body {
 
 .nav-link {
     font-size: 1.1em !important;
+}
+
+.carousel-bg {
+    width: 100%;
+    height: auto;
+    opacity: 0.2;
+    filter: blur(5px);
 }
 
 .carousel-indicators {
@@ -40,29 +51,29 @@ html, body {
     color: #540000;
 }
 
-    .carousel-caption h1 {
-        font-size: 500%;
-        text-transform: uppercase;
-        font-family:'tangerine', sans-serif;
-        /*text-shadow: 1px 1px 15px #000;*/
-    }
+.carousel-caption h1 {
+    font-size: 500%;
+    text-transform: uppercase;
+    font-family:'tangerine', sans-serif;
+    /*text-shadow: 1px 1px 15px #000;*/
+}
 
-    .carousel-caption h3 {
-        font-size: 200%;
-        font-weight: 500;
-        text-shadow: 1px 1px 10px #000;
-        padding-bottom: 1rem;
-    }
+.carousel-caption h3 {
+    font-size: 200%;
+    font-weight: 500;
+    text-shadow: 1px 1px 10px #000;
+    padding-bottom: 1rem;
+}
 
 .btn-primary {
     background-color: #6648b1;
     border: 1px solid #6648b1;
 }
 
-    .btn-primary:hover {
-        background-color: #563d7c;
-        border: 1px solid #563d7c;
-    }
+.btn-primary:hover {
+    background-color: #563d7c;
+    border: 1px solid #563d7c;
+}
 
 .jumbotron {
     padding: 1rem;
@@ -84,6 +95,20 @@ html, body {
     color: brown;
     position: center;
     padding-bottom: 1rem;
+}
+
+.overlay {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 10;
+    /*height:100%;
+    width:100%;*/
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
 }
 
 .jumbotron-default {
@@ -166,26 +191,29 @@ hr.light-100 {
         top: 45%;
     }
 
-        .carousel-caption h1 {
-            font-size: 350%;
-        }
+    .carousel-caption h1 {
+        font-size: 350%;
+    }
+
     .carosel-caption h2 {
         font-size: 120%;
         font-family: 'Baskerville Old Face';
         color: dodgerblue;
     }
-        .carousel-caption h3 {
-            font-size: 140%;
-        }
 
-        .carousel-caption .btn {
-            font-size: 95%;
-            padding: 8px 14px;
-        }
+    .carousel-caption h3 {
+        font-size: 140%;
+    }
+
+    .carousel-caption .btn {
+        font-size: 95%;
+        padding: 8px 14px;
+    }
 
     .display-4 {
         font-size: 200%;
     }
+
 }
 
 @media (max-width: 576px) {
@@ -249,3 +277,16 @@ Large (lg) devices (desktops, 992px and up)
 Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 */
+
+/*.owl-carousel.owl-loaded {
+    display: inline-block;
+}
+
+.img-wrap {
+    background-size: cover;
+    background-position: bottom;
+    height: 300px;
+    width: 300px;
+
+    img{visibility:hidden;}
+}*/
