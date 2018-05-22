@@ -131,7 +131,7 @@ namespace SA46Team12BookShopApp.Owner
                     lblSuccess.Visible = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
