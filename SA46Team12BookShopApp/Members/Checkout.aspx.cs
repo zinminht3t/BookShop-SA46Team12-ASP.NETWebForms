@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SA46Team12BookShopApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,6 +15,7 @@ namespace SA46Team12BookShopApp
         double discount = 0;
         List<Book> lstBooks;
         List<OrderDetail> lstOD;
+        List<CartModel> lstCart;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,8 +49,6 @@ namespace SA46Team12BookShopApp
             {
                 Response.Redirect("../");
             }
-            cartBooks.DataSource = lstBooks;
-            cartBooks.DataBind();
 
             Dictionary<string, int> cartDis = new Dictionary<string, int>();
             foreach (Book b in lstBooks)
@@ -76,7 +77,20 @@ namespace SA46Team12BookShopApp
                 od.UnitPrice = b.Price;
                 od.NetPrice = (b.Price - (decimal)BusinessLogic.GetDiscountPrice(b.BookID));
                 lstOD.Add(od);
+
+
+                CartModel ca = new CartModel();
+                ca.Title = b.Title;
+                ca.Price = b.Price;
+                ca.BookID = b.BookID;
+                ca.Discount = (decimal)BusinessLogic.GetDiscountPrice(b.BookID);
+                ca.Qty = entry.Value;
+                ca.Amount = (decimal)ca.Price - (ca.Price * (ca.Discount / 100));
+                lstCart.Add(ca);
             }
+
+            cartBooks.DataSource = lstCart;
+            cartBooks.DataBind();
 
             lblBooks.Text = lstBooks.Count.ToString();
 
@@ -93,7 +107,11 @@ namespace SA46Team12BookShopApp
             OrderHeader order = new OrderHeader();
             order.OrderDate = DateTime.Today;
             order.Total = (decimal)total;
-            order.UserID = 1; //todo
+
+            //MembershipUser user = Membership.GetUser();
+            //Guid UserID = (Guid)user.ProviderUserKey;
+            //order.UserID = UserID.ToString();
+            order.UserID = ""; //todo
             order.Address = txtAddress.Text;
             order.Email = txtEmail.Text;
             order.PostalCode = Convert.ToInt32(txtPostCode.Text);
@@ -101,10 +119,6 @@ namespace SA46Team12BookShopApp
             BusinessLogic.AddOrder(order, lstOD);
             Session["cart_items"] = null;
             Response.Redirect("ConfirmOrder.aspx?Ordered=" + true);
-
-            //Response.Redirect("/ConfirmOrder.aspx" & Request.QueryString("LOCATION"));
-
-            //Response.Redirect("../");
 
         }
 

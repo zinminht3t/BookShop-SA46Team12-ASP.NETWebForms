@@ -20,9 +20,9 @@
                 </div>
             </asp:Panel>
             <asp:Panel ID="ShowOrders" runat="server">
-                <table class="table table-light">
+                <table class="table table-light table-responsive">
                     <tr>
-                        <th>Order ID</th>
+                        <th class="hidden-xs">Order ID</th>
                         <th>Order Date</th>
                         <th>Book Title</th>
                         <th>Unit Price</th>
@@ -55,7 +55,7 @@
                     </asp:ListView>
                     <asp:SqlDataSource ID="SQLDataSourceConfirmOrder" runat="server" ConnectionString="<%$ 
                         ConnectionStrings:BooksDB %>" 
-                        SelectCommand="SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = 1 Order by OrderHeader.OrderDate DESC"></asp:SqlDataSource>
+                        SelectCommand="SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = 'Blah' Order by OrderHeader.OrderDate DESC"></asp:SqlDataSource>
 
                 </table>
             </asp:Panel>

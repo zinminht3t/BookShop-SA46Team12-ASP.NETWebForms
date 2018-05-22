@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 
 namespace SA46Team12BookShopApp
 {
@@ -110,7 +111,11 @@ namespace SA46Team12BookShopApp
         {
             using (BooksDB entities = new BooksDB())
             {
-                return entities.OrderHeaders.Where(x => x.UserID == 1).ToList<OrderHeader>(); //todo
+
+                MembershipUser user = Membership.GetUser();
+                Guid UserID = (Guid)user.ProviderUserKey;
+                string userid = UserID.ToString(); //todo
+                return entities.OrderHeaders.Where(x => x.UserID == userid).ToList<OrderHeader>(); //todo
             }
         }
     }

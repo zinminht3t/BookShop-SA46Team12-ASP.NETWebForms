@@ -8,10 +8,10 @@
         <hr />
     </div>
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
+        <div class="col-md-1 col-sm-12"></div>
+        <div class="col-md-10 col-sm-12">
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6 col-sm-12">
                     <h4>
                         <i class="fa fa-book text-warning"></i>
                         Books Cart
@@ -21,6 +21,7 @@
                     <asp:GridView ID="cartBooks" runat="server" AutoGenerateColumns="False" CssClass="table table-hover">
                         <Columns>
                             <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
+                            <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
                             <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
                         </Columns>
                     </asp:GridView>
@@ -46,7 +47,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6 col-sm-12">
 
                     <h4>
                         <i class="text-warning fa fa-user"></i>
@@ -79,13 +80,13 @@
 
 
                     <button runat="server" id="btnPay" onserverclick="btnPay_Click" class="float-right btn btn-primary" title="Pay and Order">
-                        <i class="fa fa-credit-card"></i> Pay and Order</button>
+                        <i class="fa fa-credit-card"></i>Pay and Order</button>
 
 
                 </div>
             </div>
             <div class="row">
-                <div class="col-2">
+                <div class="col-md-2 col-sm-12">
                     <a href="../Cart.aspx" class="btn btn-warning">
                         <i class="fa fa-arrow-left"></i>
                         Edit Orders
@@ -93,13 +94,13 @@
 
                 </div>
 
-                <div class="col-8">
+                <div class="col-md-8 col-sm-12">
                 </div>
-                <div class="col-2">
+                <div class="col-md-2 col-sm-12">
                 </div>
             </div>
         </div>
-        <div class="col-2"></div>
+        <div class="col-1"></div>
     </div>
 
 
