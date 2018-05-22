@@ -6,49 +6,55 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">   
 
 <link rel="stylesheet" type="text/css" href="product-page.css" />
-<div class="container-fluid">
-    <div class="sortitem">
-    <div class ="row">
-            <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3">
+
+<div class="container">
+    <div class="row search">
+            <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3 search">
+                <div id="custom-search-input">
+                    <div class="input-group">
                 <asp:DropDownList ID="ddlCategoryFilter" AutoPostBack="true" runat="server" 
                             DataSourceID="SqlDataSource2" DataTextField="Name" 
-                            DataValueField="CategoryID" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged" 
+                            DataValueField="CategoryID" class="form-control input-lg" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged" 
                             AppendDataBoundItems="true">
                     <asp:ListItem Value="0">All</asp:ListItem>
                     <asp:ListItem Value="sales">Sales</asp:ListItem>
                 </asp:DropDownList>
+                        </div>
+                    </div>
             </div>
-
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString2 %>" 
                     SelectCommand="SELECT [Name], [CategoryID] FROM [Category]">
                 </asp:SqlDataSource>
-
-                <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3">
-                    <asp:Label ID="lblPriceSort" runat="server" Text="Price:"></asp:Label>
-                    <asp:DropDownList ID="ddlPriceSort" runat="server" AutoPostBack="true" 
-                        OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged">
-                        <asp:ListItem Value="0">Lowest - Highest</asp:ListItem>
-                        <asp:ListItem Value="1">Highest - Lowest</asp:ListItem>
-                    </asp:DropDownList>
+                <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3 search">
+                    <div id="custom-search-input">
+                    <div class="input-group">
+                            <asp:DropDownList ID="ddlPriceSort" runat="server" AutoPostBack="true" class="form-control input-lg" 
+                                OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged">
+                                <asp:ListItem Value="0">Lowest - Highest</asp:ListItem>
+                                <asp:ListItem Value="1">Highest - Lowest</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                        </div>
+                   </div>   
+           <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3 search">
+                <div id="custom-search-input">
+                    <div class="input-group">
+                        <asp:TextBox ID="txtSearchBooks" class="form-control input-lg" placeholder="Search" runat="server"></asp:TextBox>                
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3">
-                    <asp:Label ID="lblSearchBooks" runat="server" Text="Search:"></asp:Label>
-                    <asp:TextBox ID="txtSearchBooks" runat="server"></asp:TextBox>
-                </div>    
-                <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3">
-                    <asp:Button ID="btnSearchBooks" runat="server" class="btn btn-secondary" Text="Search" 
-                         OnClick="btnSearchBooks_Click" />
-                </div>
-            </div>
-        </div>
-    </div>
-
+           </div>
+                <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3 search">
+                        <asp:Button ID="btnSearchBooks" runat="server" class="btn btn-primary searchbtn"
+                                     OnClick="btnSearchBooks_Click" Text="Search" />
+                 </div>
+        </div>         
+</div>
 
 
 <asp:Literal ID="PopupBox" runat="server"></asp:Literal>
 <asp:ScriptManager ID="ScriptManager1" runat="server"/>
 <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupPlaceholderID="groupPlaceHolder1"
-    ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand">
+    ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand" OnItemDataBound="lvProductsList_ItemDataBound">
          <GroupTemplate>
             <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3">
                 <div class="col-item">  
@@ -96,7 +102,10 @@
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                  </div>
              </div>
-        </LayoutTemplate> 
+        </LayoutTemplate>
+    <EmptyItemTemplate>
+        <h5 class="price price-text-color">No Products to Show</h5>
+    </EmptyItemTemplate>
 </asp:ListView>
 
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.CategoryID=@state_categoryID ORDER BY Book.Price ASC">

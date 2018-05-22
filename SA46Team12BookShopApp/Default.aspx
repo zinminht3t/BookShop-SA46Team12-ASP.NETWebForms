@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SA46Team12BookShopApp.Default" %>
+<%@ MasterType VirtualPath="~/Layout.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
     <!-- Image Slider -->
+    <div class="container-fluid" style="align-content: center; padding-left:100px;">
     <div id="slides" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
             <li data-target="#slides" data-slide-to="0" class="active"></li>
@@ -14,44 +16,52 @@
             <li data-target="#slides" data-slide-to="4"></li>
         </ul>
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active responsive">
                 <img src="Style/images/bornACrimeCover.png">
                 <div class="carousel-caption">
-                    <h1 style="font-family:'Tangerine', serif;">Get Books</h1>                   
+                    <h2 style="font-size:4vw; font-family:'Tangerine', serif;">"If you laugh with somebody, then you know you share something."</h2>   
+                    <h2 style="font-size:2vw; font-family:'Tangerine', serif; text-align:right;">~ The Daily Show</h2>
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item responsive">
                 <img src="Style/images/everybodyLiesCover.png">
                 <div class="carousel-caption">
-                    <h1>Get Books</h1>                   
+                    <h2 style="font-size:4vw; font-family:'Tangerine', serif;">"It's a basic truth of the human condition that everybody lies. The only variable is about what."</h2>   
+                    <h2 style="font-size:2vw; font-family:'Tangerine', serif; text-align:right;">~ Dr. Gregory House, M.D. </h2>                  
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item responsive">
                 <img src="Style/images/overwatchCover.png">
                 <div class="carousel-caption">
-                    <h1>Get Books</h1>                  
+                    <h2 style="font-size:5vw; font-family:'Tangerine', serif;">"Cheers, luv! The calvary's here!"</h2>   
+                    <h2 style="font-size:2vw; font-family:'Tangerine', serif; text-align:right;">~ Lena Oxton</h2>                      
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item responsive">
                 <img src="Style/images/personaCover.png">
                 <div class="carousel-caption">
-                    <h1>Get Books</h1>                  
+                    <h2 style="font-size:5vw; font-family:'Tangerine', serif;">"Steal Back Your Future!"</h2>   
+                    <h2 style="font-size:2vw; font-family:'Tangerine', serif; text-align:right;">~ Atlus</h2>                      
                 </div>
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item responsive">
                 <img src="Style/images/zeldaCover.png">
                 <div class="carousel-caption">
-                    <h1>Get Books</h1>                  
+                    <h2 style="font-size:3vw; font-family:'Tangerine', serif;">" It's quite a vast world isn't it? You can even reach those mountains in the distance, if you walk far enough. We couldn't create such a wide world like this in the past."</h2>   
+                    <h2 style="font-size:2vw; font-family:'Tangerine', serif; text-align:right;">~ Eiji Aonuma</h2>                     
                 </div>
             </div>
         </div>
     </div>
-
+    </div>
 
     <!-- Jumbotron -->
-    <div class="container-fluid">
-        <div class="row jumbotron jumbotron-default">
-            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-12">            
+   <%-- <div class="container-fluid" style="width:100%;">
+        
+    </div>--%>
+    <div class="row jumbotron jumbotron-default">
+        <div class="container-fluid" style="width:100%;">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-12 col-xl-12">            
                 <h2 class="display-5 text-center">PROMOTIONAL ITEMS</h2>
             </div>
         </div>
@@ -96,7 +106,7 @@
                     <p>
                         <div class="col-md-6">
 
-                            <h5 class="price-text-color"><strike>Original Price: &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' /></strike>
+                            <h5 class="price-text-color"><strike>Original Price: &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' /></strike></>
                             </h5>
                         </div>
 
@@ -108,6 +118,11 @@
 
 
                     </p>
+
+                    <div class ="col-md-12">
+                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem"
+                             CommandArgument='<%# Eval("BookID") %>' />
+                    </div>
                 </div>
             </div>
 
