@@ -33,27 +33,49 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="default.aspx">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.aspx">Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="aboutus.aspx">AboutUs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.aspx">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cart.aspx"><i class="fa fa-cart-plus"></i></a>
-                    </li>
-                </ul>                
-            </div>            
-                  <asp:Label ID="CartItemQty" runat="server" Text="0" ForeColor="White" style="top:10px; left:708px; margin-right: 65px;" BorderStyle="None" Font-Bold="True" Font-Strikeout="False" Height="29px" Width="16px" />    
-           
-             
+                <asp:Panel ID="AllUserNav" runat="server">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="default.aspx">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="products.aspx">Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.aspx">AboutUs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.aspx">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.aspx"><i class="fa fa-cart-plus"></i></a>
+                        </li>
+                    </ul>
+                </asp:Panel>
+                <asp:Panel ID="UserNav" runat="server">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="default.aspx">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="products.aspx">Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="confirmorder.aspx">My Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" runat="server" onserverclick="logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.aspx"><i class="fa fa-cart-plus"></i></a>
+                        </li>
+                    </ul>
+                </asp:Panel>
+            <asp:Label ID="CartItemQty" runat="server" Text="0" ForeColor="White" Style="top: 10px; left: 708px; margin-right: 65px;" BorderStyle="None" Font-Bold="True" Font-Strikeout="False" Height="29px" Width="16px" />
+
+            </div>
+
+
         </nav>
 
         <div class="" style="min-height: 700px; padding-top: 120px; padding-left: 0px;">
