@@ -22,13 +22,16 @@ namespace SA46Team12BookShopApp
         {
             if (!this.IsPostBack)
             {
+<<<<<<< HEAD
+                lblBookID.Text = "(Added Book ID: "+PreviousPage.itemClicked+")";
+=======
                 //    //DataTable dt = new DataTable();
                 //    //dt.Columns.AddRange(new DataColumn[6] { new DataColumn("List"), new DataColumn("Title"),
                 //    //                                        new DataColumn("Price"), new DataColumn("Discount"),
                 //    //                                        new DataColumn("Qty"), new DataColumn("Subtotal")});
                 //    //Session["Customers"] = dt;
                 //count = 0;
-                lblBookID.Text = "(Added Book ID: "+PreviousPage.itemClicked+")";
+>>>>>>> 7b4656b7abefd8fe45f629d4be13fe9a84b82af6
                 lstBooks = new List<Book>();
                 lstOD = new List<OrderDetail>();
                 lstBooks = BusinessLogic.GetBooks();
@@ -37,10 +40,6 @@ namespace SA46Team12BookShopApp
 
                 foreach (Book b in lstBooks)
                 {
-                    //Label myLabel = ((Label)e.Row.FindControl("lblList"));
-                    //myLabel.Text = count.ToString();
-                    //count++;
-
                     total += (double)b.Price;
                     discount += BusinessLogic.GetDiscountPrice(b.BookID);
                     OrderDetail od = new OrderDetail();
@@ -57,16 +56,9 @@ namespace SA46Team12BookShopApp
 
             else
             {
-                //count = Convert.ToInt32(Session["count"]);
-                //this.BindGrid();
+
             }
         }
-
-        //protected void BindGrid()
-        //{
-        //    cartGridview.DataSource = (DataTable)Session["Customers"];
-        //    cartGridview.DataBind();
-        //}
 
         protected void Checkout(object sender, EventArgs e)
         {
@@ -78,16 +70,5 @@ namespace SA46Team12BookShopApp
             Response.Redirect("Products.aspx");
         }
 
-        //protected void Checkout(object sender, EventArgs e)
-        //{
-        //    count++;
-        //    Session["count"] = count;
-        //    DataTable dt = (DataTable)Session["Customers"];
-        //    dt.Rows.Add(count, titleBox.Text.Trim(), priceBox.Text.Trim());
-        //    Session["Customers"] = dt;
-        //    this.BindGrid();
-        //    titleBox.Text = string.Empty;
-        //    priceBox.Text = string.Empty;
-        //}
     }
 }

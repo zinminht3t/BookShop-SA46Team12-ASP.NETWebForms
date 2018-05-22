@@ -64,7 +64,7 @@
     <div class="container-fluid padding">
         <div class="row text-center padding">
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="card">
+                <div class="card">                 
                     <img class="card-img-top" src="images/9780744017311.jpg">
                     <div class="card-body">
                         <h4 class="card-title">The Art of Personas 5</h4>
@@ -74,7 +74,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="card">
+                <div class="card">  
                     <img class="card-img-top" src="images/9781593276034.jpg">
                     <div class="card-body">
                         <h4 class="card-title">Python Crash Course</h4>
@@ -84,7 +84,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="card">
+               <div class="card">  
                     <img class="card-img-top" src="images/9780984782857.jpg">
                     <div class="card-body">
                         <h4 class="card-title">Cracking the Coding Interview: 189 Programming Questions and Solutions</h4>
@@ -94,7 +94,7 @@
             </div>
 
             <div class="col-sm-12 col-md-3">
-                <div class="card">
+                 <div class="card">  
                     <img class="card-img-top" src="images/9780262035613.jpg">
                     <div class="card-body">
                         <h4 class="card-title">Deep Learning</h4>

@@ -19,6 +19,8 @@
 <asp:TextBox ID="txtSearchBooks" runat="server"></asp:TextBox>
 <asp:Button ID="btnSearchBooks" runat="server" Text="Search" OnClick="btnSearchBooks_Click" />  
         
+<asp:Literal ID="PopupBox" runat="server"></asp:Literal>
+
 <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupPlaceholderID="groupPlaceHolder1"
 
     ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand">
