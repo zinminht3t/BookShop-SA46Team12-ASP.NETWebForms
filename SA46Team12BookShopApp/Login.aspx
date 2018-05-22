@@ -10,8 +10,7 @@
 		<div class="col-lg-6">
 			 <asp:Login ID="Login2" runat="server">
                    
-                 <LayoutTemplate>
-                      <form class="form-login">
+                 <LayoutTemplate>                  
                         <table style="border-collapse:collapse">
                             <tr>
                                 <td>
@@ -56,14 +55,13 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" />
+                                    <asp:Button ID="LoginButton" class="btn btn-lg btn-primary btn-block" runat="server" CommandName="Login" Text="Login" ValidationGroup="Login1" />
                                 </td>
                             </tr>
                         </table>
                           </td>
                           </tr>
-                          </table>
-                          </form>
+                          </table>                        
                     </LayoutTemplate>
                     
                 </asp:Login>
@@ -71,7 +69,7 @@
 
 		</div>
 		<div class="col-lg-6">
-			 <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser" ActiveStepIndex="1">
+			 <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser">
                     <WizardSteps>
                         <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                             <ContentTemplate>
@@ -159,10 +157,13 @@
                             <ContentTemplate>
                                 <table>
                                     <tr>
-                                        <td align="center" colspan="2">Complete</td>
+                                        
+                                         <td align="center"colspan="2"><h3>Complete</h3></td>
+                                        <br />
+                                        <br />
                                     </tr>
                                     <tr>
-                                        <td>Your account has been successfully created.</td>
+                                        <td>Your account has been successfully created.<i class="fa fa-check" style="color:darkseagreen"></i></td>
                                     </tr>
                                     <tr>
                                         <td align="right" colspan="2">
