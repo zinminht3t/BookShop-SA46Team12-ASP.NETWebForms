@@ -13,7 +13,7 @@
 
             <asp:Panel ID="ShowAlert" runat="server">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong class="text-center">Your order is success!</strong>
+                    <strong class="text-center">Your order is successful!</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
