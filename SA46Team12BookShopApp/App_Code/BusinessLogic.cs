@@ -77,7 +77,7 @@ namespace SA46Team12BookShopApp
             {
                 entities.OrderHeaders.Add(o);
                 entities.SaveChanges();
-                
+
                 foreach (OrderDetail orddet in od)
                 {
                     OrderDetail odet = new OrderDetail();
@@ -90,6 +90,13 @@ namespace SA46Team12BookShopApp
                     entities.OrderDetails.Add(odet);
                 }
                 entities.SaveChanges();
+            }
+        }
+        public static List<OrderHeader> GetUserOrders()
+        {
+            using (BooksDB entities = new BooksDB())
+            {
+                return entities.OrderHeaders.Where(x => x.UserID == 1).ToList<OrderHeader>(); //todo
             }
         }
     }
