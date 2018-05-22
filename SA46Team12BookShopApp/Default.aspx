@@ -81,8 +81,7 @@
         <ItemTemplate>
 
 
-             <link rel="stylesheet" type="text/css" href="product-page.css" />
-          <%--  <link href="style/css/style.css" rel="stylesheet">--%>
+            <link href="style/css/style.css" rel="stylesheet">
             <div class="post-img-content">
                 <image src="images/<%# Eval("ISBN") %>.jpg" class="img-responsive"></image>
                 <span class="post-title">
@@ -120,7 +119,7 @@
                     </p>
 
                     <div class ="col-md-12">
-                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem"
+                        <asp:Button ID="Button1" class="btn btn-lg btn-primary btn-block" runat="server" Text="Add to Cart" CommandName="SelectedItem"
                              CommandArgument='<%# Eval("BookID") %>' />
                     </div>
                 </div>
