@@ -193,6 +193,7 @@
     </Compile>
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BooksDB.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Discount.cs" />
     <Compile Include="Global.asax.cs">
