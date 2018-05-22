@@ -87,8 +87,7 @@ img {
     font-weight: 500;  
     width:100%;
     color: brown;
-    position: center;
-    text-shadow: 1px 1px 10px orange;
+    position: center;    
     padding-bottom: 1rem;
 }
 
@@ -220,7 +219,8 @@ hr.light-100 {
     border: 1px solid #E1E1E1;
     border-radius: 10px;
     background: #FFF;
-    min-height: 540px;       
+    min-height: 540px;   
+    width:100%
 }
 
     .col-item:hover {
