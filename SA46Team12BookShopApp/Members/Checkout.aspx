@@ -14,7 +14,7 @@
                 <div class="col-6">
                     <h4>
                         <i class="fa fa-book text-warning"></i>
-                        Books Carta
+                        Books Cart
                     <asp:Label ID="lblBooks" runat="server" Text="0" CssClass="float-right text-primary"></asp:Label>
                     </h4>
                     <br />
