@@ -19,48 +19,35 @@ namespace SA46Team12BookShopApp
             {
                 cartItems = new List<int>();
             }
+        }        
+
+        public string ProcessMyDiscountedDataItem(object discountPercentage, object originalPrice)
+        {       
+            string discPerc = discountPercentage.ToString();        
+            Decimal.TryParse(discPerc, out decimal percentDisc);
+
+            string oriPrice = originalPrice.ToString();
+            Decimal.TryParse(oriPrice, out decimal priceOri);
+
+            decimal disPrice = priceOri * (1 - (percentDisc / 100));
+
+            if (discountPercentage == DBNull.Value)
+            {
+                return null;
+            }
+
+            return String.Format("{0:0.00}", disPrice);
         }
 
-        //protected string getOrderString()
-        //{
-        //    string orderString = null;
-
-        //    if (ddlPriceSort.SelectedIndex == 0)
-        //    {
-        //        orderString = "ASC";
-        //    }
-        //    else
-        //    {
-        //        orderString = "DESC";
-        //    }
-
-        //    return orderString;
-        //}
-
-        //protected string GetOrderString()
-        //{
-        //    string orderString = null;
-
-        //    if (ddlPriceSort.SelectedIndex == 0)
-        //    {
-        //        orderString = "ASC";
-        //    }
-        //    else
-        //    {
-        //        orderString = "DESC";
-        //    }
-
-        //    return orderString;
-        //}
-       
         public string ProcessMyDataItem(object myValue)
         {
+  
             if (myValue == DBNull.Value)
             {
                 return null;
             }
 
-            return String.Format("{0:0%}", myValue);
+            return String.Format("{0:0}"+"%", myValue);
         }
 
         protected void ProductsListView_OnItemCommand(object sender, ListViewCommandEventArgs e)

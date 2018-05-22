@@ -67,13 +67,13 @@ namespace SA46Team12BookShopApp.Owner {
         protected global::System.Web.UI.WebControls.TextBox tbSearch;
         
         /// <summary>
-        /// btnReset control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
         /// btnViewAll control.
