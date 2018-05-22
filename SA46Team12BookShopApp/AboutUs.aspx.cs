@@ -7,18 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace SA46Team12BookShopApp
 {
-    public partial class Layout : System.Web.UI.MasterPage
+    public partial class AboutUs : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-        }
 
-        public void ChangeCartItemQty(string newQty)
-        {
-            Label lbl = (Label)this.FindControl("CartItemQty");
-            lbl.Text = newQty;
         }
     }
 }
