@@ -22,7 +22,6 @@
 <asp:Literal ID="PopupBox" runat="server"></asp:Literal>
 
 <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupPlaceholderID="groupPlaceHolder1"
-
     ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand">
          <GroupTemplate>
             <div class="col-xs-12 col-sm-6 col-md-3">
