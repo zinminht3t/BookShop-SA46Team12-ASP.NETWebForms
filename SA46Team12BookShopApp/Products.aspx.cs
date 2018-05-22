@@ -143,11 +143,12 @@ namespace SA46Team12BookShopApp
             {
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
                 Button buttonclicked = (Button)dataItem.FindControl("Button1");
+                this.itemClicked = int.Parse(e.CommandArgument.ToString());
+
                 if (buttonclicked.Text != "Remove from Cart")
                 {
                     buttonclicked.Text = "Remove from Cart";
                     buttonclicked.CssClass = "btn btn-primary buttonClicked";
-                    this.itemClicked = int.Parse(e.CommandArgument.ToString());
                     cartItems = (List<int>)Session["cart_items"];    // GET
                     cartItems.Add(this.itemClicked);
                     Session["cart_items"] = cartItems;
@@ -156,12 +157,32 @@ namespace SA46Team12BookShopApp
                 {
                     buttonclicked.Text = "Add to Cart";
                     buttonclicked.CssClass = "btn btn-primary";
+
+                    //remove bookid from session state
+                    cartItems = (List<int>)Session["cart_items"];    // GET
+                    cartItems.Remove(this.itemClicked);
+                    Session["cart_items"] = cartItems;
                 }
                 //check if selected book is already in cart
                // MessageBox.Show(this, "Book has been added to cart.");
             }
         }
-   
+
+        protected void lvProductsList_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            ListViewDataItem dataItem = (ListViewDataItem)e.Item;
+            Button btnAdd = (Button)dataItem.FindControl("Button1");
+
+            int dataItemBookID = int.Parse(btnAdd.CommandArgument);
+            cartItems = (List<int>)Session["cart_items"];    // GET
+            bool alreadyExist = cartItems.Contains(dataItemBookID);
+
+            if (alreadyExist)
+            {
+                btnAdd.Text = "Remove from Cart";
+                btnAdd.CssClass = "btn btn-primary buttonClicked";
+            }
+        }
     }
 
     public static class MessageBox
