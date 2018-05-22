@@ -15,12 +15,12 @@
             <br />
             <div class="mPanel">
                         <asp:Panel ID="Panel1" runat="server">
-                            <asp:DropDownList ID="ddlCategoryFilter" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlCategoryFilter_SelectedIndexChanged" TabIndex="1">
-                                <asp:ListItem>All</asp:ListItem>
+                            <asp:DropDownList ID="ddlCategoryFilter" runat="server" AutoPostBack="true" AppendDataBoundItems="true" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlCategoryFilter_SelectedIndexChanged" TabIndex="1">
+                                        <asp:ListItem Value="0">All</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblSearch" runat="server" Text="Search: "></asp:Label>
                             <asp:TextBox ID="tbSearch" runat="server" AutoPostBack="true" TabIndex="2"></asp:TextBox>
-                            <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSubmit_Click" TabIndex="3" />
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSubmit_Click" AutoPostBack="true" TabIndex="3" />
                             <asp:Button ID="btnViewAll" runat="server" OnClick="btnViewAll_Click" Text="View All" TabIndex="4" />
                         </asp:Panel>
                         <br />
@@ -98,6 +98,14 @@
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <asp:Textbox ID="tbDiscP" TabIndex="7" Text='<%#Eval("DiscountPercent") %>' runat="server"/>
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Discount Description">
+                                <ItemTemplate>
+                                    <asp:Label Text='<%#Eval("DiscountDesc") %>' runat="server"/>
+                                </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:Textbox ID="tbDiscDesc" TabIndex="7" Text='<%#Eval("DiscountDesc") %>' runat="server"/>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Discounted Price">
