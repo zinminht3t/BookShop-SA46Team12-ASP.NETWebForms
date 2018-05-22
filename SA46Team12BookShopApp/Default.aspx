@@ -14,35 +14,35 @@
         </ul>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/bornACrimeCover.png">
+                <img src="Style/images/bornACrimeCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/everybodyLiesCover.png">
+                <img src="Style/images/everybodyLiesCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/overwatchCover.png">
+                <img src="Style/images/overwatchCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/personaCover.png">
+                <img src="Style/images/personaCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="images/zeldaCover.png">
+                <img src="Style/images/zeldaCover.png">
                 <div class="carousel-caption">
                     <h1 class="display-2">Get Books</h1>
                     <button type="button" class="btn btn-primary btn-lg">Add to Cart</button>
@@ -119,6 +119,9 @@
                             <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
                         </h5>
                        </div>
+                    <div class="price col-md-12" >
+                        Category:<asp:Label ID="CategoryLabel" runat="server" Text='<%# Eval("Name") %>' />
+                        </div>
                         <div class="price col-md-12" >
                         Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
                         </div>
@@ -126,34 +129,24 @@
                     <div class ="col-md-6">
                         
                        <h5 class="price-text-color">
-                            &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
+                            Original Price: &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
                        </h5>
                      </div>
-                    <%--<div class ="col-md-6">
-                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem" 
-                 CommandArgument='<%# Eval("BookID") %>' />
-                    </div>--%></p>
+
+                        <div class ="col-md-6">
+                        
+                       <h5 class="price-text-color">
+                            Discounted Price: &#36<asp:Label ID="DiscountedPriceLabel" runat="server" Text='<%# ProcessMyDiscountedDataItem(Eval("DiscountPercent"), Eval("Price")) %>' />
+                       </h5>
+                     </div>
+                   
+
+                    </p>
                     </div>
                 </div>
-             <%--Discount:
-                <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' />
-                <br />  --%> 
 
         </ItemTemplate>
         <LayoutTemplate>
-           <%-- <table runat="server">
-                <tr runat="server">
-                    <td runat="server">
-                        <table id="groupPlaceholderContainer" runat="server" border="0" style="">
-                            <tr id="groupPlaceholder" runat="server">
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr runat="server">
-                    <td runat="server" style=""></td>
-                </tr>
-            </table>--%>
 
             <div class="container-fluid" id="groupContainer" runat="server" >
                 <div class="row" id="groupPlaceholder" runat="server">
@@ -165,7 +158,7 @@
 
     </asp:ListView>
 
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString3 %>" SelectCommand="SELECT * FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID"></asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString3 %>" SelectCommand="SELECT * FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID WHERE Discount.DiscountID IS NOT NULL"></asp:SqlDataSource>
 
 
    <%-- <SelectParameters>

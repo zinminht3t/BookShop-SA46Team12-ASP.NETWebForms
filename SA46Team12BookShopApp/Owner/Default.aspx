@@ -16,10 +16,11 @@
             <div class="mPanel">
                         <asp:Panel ID="Panel1" runat="server">
                             <asp:DropDownList ID="ddlCategoryFilter" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlCategoryFilter_SelectedIndexChanged">
+                                <asp:ListItem>All</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblSearch" runat="server" Text="Search: "></asp:Label>
-                            <asp:TextBox ID="tbSearch" runat="server" AutoPostBack="true" onTextChanged="tbSearch_TextChanged"></asp:TextBox>
-                            <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" />
+                            <asp:TextBox ID="tbSearch" runat="server" AutoPostBack="true"></asp:TextBox>
+                            <asp:Button ID="btnSubmit" runat="server" Text="Search" OnClick="btnSubmit_Click" />
                             <asp:Button ID="btnViewAll" runat="server" OnClick="btnViewAll_Click" Text="View All" />
                         </asp:Panel>
                         <br />
@@ -91,7 +92,7 @@
                                     <asp:Textbox ID="tbPrice" Text='<%#Eval("Price") %>' runat="server"/>
                                 </EditItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Discount">
+                            <asp:TemplateField HeaderText="Discount (%)">
                                 <ItemTemplate>
                                     <asp:Label Text='<%#Eval("DiscountPercent") %>' runat="server"/>
                                 </ItemTemplate>

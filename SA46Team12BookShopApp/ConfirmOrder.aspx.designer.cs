@@ -7,63 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SA46Team12BookShopApp {
+namespace SA46Team12BookShopApp.Members {
     
     
-    public partial class Layout {
+    public partial class ConfirmOrder {
         
         /// <summary>
-        /// head control.
+        /// ShowAlert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Panel ShowAlert;
         
         /// <summary>
-        /// form1 control.
+        /// ShowOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Panel ShowOrders;
         
         /// <summary>
-        /// AllUserNav control.
+        /// lstOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel AllUserNav;
+        protected global::System.Web.UI.WebControls.ListView lstOrders;
         
         /// <summary>
-        /// UserNav control.
+        /// SQLDataSourceConfirmOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel UserNav;
+        protected global::System.Web.UI.WebControls.SqlDataSource SQLDataSourceConfirmOrder;
         
         /// <summary>
-        /// CartItemQty control.
+        /// HideOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CartItemQty;
-        
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Panel HideOrders;
     }
 }

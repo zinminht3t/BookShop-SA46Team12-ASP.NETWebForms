@@ -13,28 +13,101 @@ namespace SA46Team12BookShopApp.Owner
     {
         private string connection;
         private string sqlquery;
-        private DataTable dtbl;
+        private static DataTable dtbl;
+        private static string sqlwhere;
+
+        private static string Sqlwhere
+        {
+            get
+            {
+                return sqlwhere;
+            }
+            set
+            {
+                sqlwhere = value;
+            }
+        }
+
+        private static DataTable Dtbl
+        {
+            get
+            {
+                return dtbl;
+            }
+            set
+            {
+                dtbl = value;
+            }
+        }
+
+        public string Sqlquery
+        {
+            get
+            {
+                sqlquery = "SELECT Book.BookID, Book.Title, Category.Name, Book.Author, " +
+                "Book.ISBN, Book.Stock, Book.Price, ISNULL(Discount.DiscountPercent, '0') AS DiscountPercent, " +
+                "CAST(ROUND(Book.Price*((100-ISNULL(Discount.DiscountPercent, 0))/100), 2) AS numeric(10,2)) AS TOTAL " +
+                "FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID " +
+                "LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID ";
+                return sqlquery;
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             connection = @"Data Source=localhost; Initial Catalog=Bookshop; Integrated Security=SSPI;";
             if (!IsPostBack)
             {
-                populate();
+                populate(Sqlquery);
             }
         }
 
         protected void gbEditBooks_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvEditBooks.EditIndex = e.NewEditIndex;
-            populate();
+            populate(Sqlquery);
         }
 
         protected void gbEditBooks_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             try
             {
-                UpdateDatabase(e);
+                using (SqlConnection sqlcon = new SqlConnection(connection))
+                {
+                    sqlcon.Open();
+                    string sql = "  Update book set Stock = @qty , price = @price where bookid = @id";
+                    SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
+                    sqlcom.Parameters.AddWithValue("qty", (gvEditBooks.Rows[e.RowIndex].FindControl("tbQty") as TextBox).Text.Trim());
+                    sqlcom.Parameters.AddWithValue("price", (gvEditBooks.Rows[e.RowIndex].FindControl("tbPrice") as TextBox).Text.Trim());
+                    sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
+                    sqlcom.ExecuteNonQuery();
+
+                    string sqlinsertupdate = "Select * from discount where bookid ='" +
+                        (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text + "'";
+                    sqlcom = new SqlCommand(sqlinsertupdate, sqlcon);
+                    using (SqlDataReader reader = sqlcom.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            sql = "Update Discount set DiscountPercent = @disc where bookid = @id";
+                            sqlcom = new SqlCommand(sql, sqlcon);
+                            sqlcom.Parameters.AddWithValue("disc", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscP") as TextBox).Text.Trim());
+                            sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
+                        }
+                        else
+                        {
+                            sql = "Insert into Discount (Bookid, DiscountDesc, DiscountPercent) values (@id , @discD, @disc)";
+                            sqlcom = new SqlCommand(sql, sqlcon);
+                            sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
+                            sqlcom.Parameters.AddWithValue("discD", "0");
+                            sqlcom.Parameters.AddWithValue("disc", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscP") as TextBox).Text.Trim());
+                        }
+                    }
+                    sqlcom.ExecuteNonQuery();
+                    gvEditBooks.EditIndex = -1;
+                    populate(Sqlquery);
+                    lblSuccess.Visible = true;
+                }
             }
             catch (Exception ex)
             {
@@ -46,111 +119,63 @@ namespace SA46Team12BookShopApp.Owner
         protected void gbEditBooks_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvEditBooks.PageIndex = e.NewPageIndex;
-            populate();
+            gvEditBooks.DataSource = Dtbl;
+            gvEditBooks.DataBind();
         }
         protected void gbEditBooks_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvEditBooks.EditIndex = -1;
-            populate();
+            populate(Sqlquery);
         }
 
-        protected void populate()
+        protected void populate(string query)
         {
-            sqlquery = "SELECT Book.BookID, Book.Title, Category.Name, Book.Author, " +
-                "Book.ISBN, Book.Stock, Book.Price, ISNULL(Discount.DiscountPercent, '1') AS DiscountPercent, CAST(ROUND(Book.Price*ISNULL(Discount.DiscountPercent,1), 2) AS numeric(10,2)) AS TOTAL " +
-                "FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID " +
-                "LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID";
-
-            SearchDatabase(sqlquery);
-        }
-
-        protected void tbSearch_TextChanged(object sender, EventArgs e)
-        {
-            sqlquery = "SELECT Book.BookID, Book.Title, Category.Name, Book.Author, " +
-                "Book.ISBN, Book.Stock, Book.Price, ISNULL(Discount.DiscountPercent, '1') AS DiscountPercent, CAST(ROUND(Book.Price*ISNULL(Discount.DiscountPercent,1), 2) AS numeric(10,2)) AS TOTAL " +
-                "FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID " +
-                "LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID " +
-                "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
-
-            SearchDatabase(sqlquery);
-        }
-
-        protected void NoRecordsFound()
-        {
-            dtbl.Rows.Add(dtbl.NewRow());
-            gvEditBooks.DataSource = dtbl;
-            gvEditBooks.DataBind();
-            gvEditBooks.Rows[0].Cells.Clear();
-            gvEditBooks.Rows[0].Cells.Add(new TableCell());
-            gvEditBooks.Rows[0].Cells[0].ColumnSpan = dtbl.Columns.Count;
-            gvEditBooks.Rows[0].Cells[0].Text = "No Records Found";
-            gvEditBooks.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
-        }
-
-        protected void SearchDatabase(string sqlquery)
-        {
-            dtbl = new DataTable();
+            Dtbl = new DataTable();
             using (SqlConnection sqlcon = new SqlConnection(connection))
             {
                 sqlcon.Open();
-                SqlDataAdapter sqlda = new SqlDataAdapter(sqlquery, sqlcon);
-                sqlda.Fill(dtbl);
+                SqlDataAdapter sqlda = new SqlDataAdapter(query, sqlcon);
+                sqlda.Fill(Dtbl);
                 sqlcon.Close();
             }
-            if (dtbl.Rows.Count > 0)
-            {
-                gvEditBooks.DataSource = dtbl;
+                gvEditBooks.DataSource = Dtbl;
                 gvEditBooks.DataBind();
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (ddlCategoryFilter.SelectedItem.Text == "All")
+            {
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
             }
             else
             {
-                NoRecordsFound();
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
             }
-        }
-
-        protected void UpdateDatabase(GridViewUpdateEventArgs e)
-        {
-            using (SqlConnection sqlcon = new SqlConnection(connection))
-            {
-                sqlcon.Open();
-                string sql = "  Update book set Stock = @qty , price = @price where bookid = @id";
-                SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
-                sqlcom.Parameters.AddWithValue("qty", (gvEditBooks.Rows[e.RowIndex].FindControl("tbQty") as TextBox).Text.Trim());
-                sqlcom.Parameters.AddWithValue("price", (gvEditBooks.Rows[e.RowIndex].FindControl("tbPrice") as TextBox).Text.Trim());
-                sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
-                sqlcom.ExecuteNonQuery();
-
-                sql = "Update Discount set DiscountPercent=@disc where bookid =@id";
-                sqlcom = new SqlCommand(sql, sqlcon);
-                sqlcom.Parameters.AddWithValue("disc", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscP") as TextBox).Text.Trim());
-                sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
-                sqlcom.ExecuteNonQuery();
-
-                gvEditBooks.EditIndex = -1;
-                populate();
-                lblSuccess.Visible = true;
-            }
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            tbSearch.Text = String.Empty;
+            populate(Sqlwhere);
         }
 
         protected void btnViewAll_Click(object sender, EventArgs e)
         {
-            populate();
+            populate(Sqlquery);
         }
 
         protected void ddlCategoryFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            sqlquery = "SELECT Book.BookID, Book.Title, Category.Name, Book.Author, " +
-                "Book.ISBN, Book.Stock, Book.Price, ISNULL(Discount.DiscountPercent, '1') AS DiscountPercent, CAST(ROUND(Book.Price*ISNULL(Discount.DiscountPercent,1), 2) AS numeric(10,2)) AS TOTAL " +
-                "FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID " +
-                "LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID " +
-                "WHERE Category.Name = '" + ddlCategoryFilter.SelectedItem.Text + "'";
-
-            SearchDatabase(sqlquery);
+            if(tbSearch.Text.Trim() == null)
+            {
+                Sqlwhere = Sqlquery + "WHERE Category.Name = '" + ddlCategoryFilter.SelectedItem.Text + "'";
+            }
+            else
+                if(ddlCategoryFilter.SelectedItem.Text == "All")
+            {
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
+            }
+            else
+            {
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
+            }
+            populate(Sqlwhere);
         }
     }
 }
