@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.UI.HtmlControls;
+using System.Web.Security;
 
 namespace SA46Team12BookShopApp.Owner
 {
@@ -17,6 +18,13 @@ namespace SA46Team12BookShopApp.Owner
         private string sqlquery;
         private static DataTable dtbl;
         private static string sqlwhere;
+
+        protected void logout(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            Response.Redirect("../default.aspx");
+        }
 
         private static string Sqlwhere
         {
