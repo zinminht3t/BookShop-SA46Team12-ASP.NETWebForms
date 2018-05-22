@@ -9,13 +9,11 @@ html, body {
     background-color: ghostwhite;
 }
 
-<<<<<<< HEAD
 img {
     object-fit: cover;
-=======
+}
 #imgLogo{
     font-family: 'Tangerine'
->>>>>>> 2769b30e94bce4a7526e463da15b3ce79597cb6c
 }
 
 .navbar {
