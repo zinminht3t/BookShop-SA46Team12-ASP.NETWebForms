@@ -6,49 +6,84 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using System.Data;
-
+using SA46Team12BookShopApp.Models;
 
 namespace SA46Team12BookShopApp
 {
     public partial class Cart : System.Web.UI.Page
     {
         //int count;
-        double total = 0;
-        double discount = 0;
+        //double total = 0;
+        //double discount = 0;
         List<Book> lstBooks;
-        List<OrderDetail> lstOD;
+        List<CartModel> lstCart;
+        //List<OrderDetail> lstOD;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
             {
-                //lblBookID.Text = "(Added Book ID: "+PreviousPage.itemClicked+")";
-                lstBooks = new List<Book>();
-                lstOD = new List<OrderDetail>();
-                lstBooks = BusinessLogic.GetBooks();
-                cartGridview.DataSource = lstBooks;
-                cartGridview.DataBind();
-
-                foreach (Book b in lstBooks)
-                {
-                    total += (double)b.Price;
-                    discount += BusinessLogic.GetDiscountPrice(b.BookID);
-                    OrderDetail od = new OrderDetail();
-                    od.BookID = b.BookID;
-                    od.DiscountID = BusinessLogic.GetDiscountID(b.BookID);
-                    od.Qty = 3; //todo
-                    od.UnitPrice = b.Price;
-                    od.NetPrice = (b.Price - (decimal)BusinessLogic.GetDiscountPrice(b.BookID));
-                    lstOD.Add(od);
-                }
-
-            
+                //if (Session["cart_items"] == null)
+                //{
+                //    List<int> cartItems = (List<int>)Session["cart_items"];    //todo
+                //    cartItems.Add(1);
+                //    cartItems.Add(2);
+                //    cartItems.Add(3);
+                //    cartItems.Add(4);
+                //    cartItems.Add(1);
+                //    Session["cart_items"] = cartItems;
+                //}
             }
 
-            else
+            lstBooks = new List<Book>();
+
+            List<int> carts = (List<int>)Session["cart_items"];
+
+            foreach (int id in carts)
             {
-
+                Book b = new Book();
+                b = BusinessLogic.GetBookbyID(id);
+                lstBooks.Add(b);
             }
+            //lblBookID.Text = "(Added Book ID: "+PreviousPage.itemClicked+")";
+            //lstOD = new List<OrderDetail>();
+            //lstBooks = BusinessLogic.GetBooks();
+
+            lstCart = new List<CartModel>();
+
+
+            Dictionary<string, int> cartDis = new Dictionary<string, int>();
+            foreach (Book b in lstBooks)
+            {
+                if (!cartDis.ContainsKey(b.ISBN))
+                {
+                    cartDis.Add(b.ISBN, 1);
+                }
+                else
+                {
+                    int count = 0;
+                    cartDis.TryGetValue(b.ISBN, out count);
+                    cartDis.Remove(b.ISBN);
+                    cartDis.Add(b.ISBN, count + 1);
+                }
+            }
+            foreach (KeyValuePair<string, int> entry in cartDis)
+            {
+                Book b = BusinessLogic.GetBookbyISBN(entry.Key);
+                CartModel ca = new CartModel();
+                ca.Title = b.Title;
+                ca.Price = b.Price;
+                ca.BookID = b.BookID;
+                ca.Discount = (decimal)BusinessLogic.GetDiscountPrice(b.BookID);
+                ca.Qty = entry.Value;
+                ca.Amount = (decimal)ca.Price - (ca.Price * (ca.Discount / 100));
+                lstCart.Add(ca);
+            }
+
+
+            cartGridview.DataSource = lstCart;
+            cartGridview.DataBind();
+
         }
 
         protected void Checkout(object sender, EventArgs e)
@@ -59,6 +94,31 @@ namespace SA46Team12BookShopApp
         protected void Products(object sender, EventArgs e)
         {
             Response.Redirect("Products.aspx");
+        }
+        protected void MyButtonClick(object sender, System.EventArgs e)
+        {
+            //Get the button that raised the event
+            LinkButton btn = (LinkButton)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            CartModel cm = new CartModel();
+            cm = lstCart[gvr.RowIndex];
+
+            List<int> ids = new List<int>();
+
+            ids = (List<int>) Session["cart_items"];
+
+            var index = ids.FindIndex(x => x == cm.BookID);
+            if(index >= 0)
+            {
+                ids.RemoveAt(index);
+            }
+
+
+            Session["cart_items"] = ids;
+            Response.Redirect("cart.aspx");
+
         }
 
     }
