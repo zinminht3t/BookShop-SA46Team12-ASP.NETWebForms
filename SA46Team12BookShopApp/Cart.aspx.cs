@@ -78,7 +78,7 @@ namespace SA46Team12BookShopApp
                 ca.BookID = b.BookID;
                 ca.Discount = (decimal)BusinessLogic.GetDiscountPrice(b.BookID);
                 ca.Qty = entry.Value;
-                ca.Amount = (decimal)ca.Price - (ca.Price * (ca.Discount / 100));
+                ca.Amount = ca.Qty * ((decimal)ca.Price - (ca.Price * (ca.Discount / 100)));
                 lstCart.Add(ca);
             }
 

@@ -22,16 +22,16 @@ namespace SA46Team12BookShopApp
             lstBooks = new List<Book>();
             lstOD = new List<OrderDetail>();
 
-            if (!IsPostBack)
-            {
-                List<int> cartItems = (List<int>)Session["cart_items"];    //todo
-                cartItems.Add(1);
-                cartItems.Add(2);
-                cartItems.Add(3);
-                cartItems.Add(4);
-                cartItems.Add(1);
-                Session["cart_items"] = cartItems;
-            }
+            //if (!IsPostBack)
+            //{
+            //    //List<int> cartItems = (List<int>)Session["cart_items"];    //todo
+            //    //cartItems.Add(1);
+            //    //cartItems.Add(2);
+            //    //cartItems.Add(3);
+            //    //cartItems.Add(4);
+            //    //cartItems.Add(1);
+            //    //Session["cart_items"] = cartItems;
+            //}
 
 
             List<int> carts = (List<int>)Session["cart_items"];    //todo
