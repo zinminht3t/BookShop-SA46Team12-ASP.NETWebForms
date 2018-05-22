@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="col-12">
-        <h1 class="text-center"><i class="fa fa-cart-plus text-primary"></i>Checkout</h1>
+        <h1 class="text-center"><i class="fa fa-cart-plus text-primary"></i>&nbsp;Checkout</h1>
         <hr />
     </div>
     <div class="row">
@@ -14,7 +14,7 @@
                 <div class="col-md-6 col-sm-12">
                     <h4>
                         <i class="fa fa-book text-warning"></i>
-                        Books Cart
+                        &nbsp;Books Cart
                     <asp:Label ID="lblBooks" runat="server" Text="0" CssClass="float-right text-primary"></asp:Label>
                     </h4>
                     <br />
@@ -51,7 +51,7 @@
 
                     <h4>
                         <i class="text-warning fa fa-user"></i>
-                        Personal Details</h4>
+                        &nbsp;Personal Details</h4>
                     <br />
                     <div class="form-group">
                         <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Name" ToolTip="Enter your name" ValidateRequestMode="Enabled"></asp:TextBox>
@@ -80,7 +80,7 @@
 
 
                     <button runat="server" id="btnPay" onserverclick="btnPay_Click" class="float-right btn btn-primary" title="Pay and Order">
-                        <i class="fa fa-credit-card"></i>Pay and Order</button>
+                        <i class="fa fa-credit-card"></i>&nbsp;&nbsp;Pay and Order</button>
 
 
                 </div>

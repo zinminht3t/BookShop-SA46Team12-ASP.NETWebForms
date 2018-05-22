@@ -65,6 +65,7 @@ namespace SA46Team12BookShopApp
                     cartDis.Add(b.ISBN, count + 1);
                 }
             }
+            lstCart = new List<CartModel>();
             foreach (KeyValuePair<string, int> entry in cartDis)
             {
                 Book b = BusinessLogic.GetBookbyISBN(entry.Key);
@@ -108,10 +109,10 @@ namespace SA46Team12BookShopApp
             order.OrderDate = DateTime.Today;
             order.Total = (decimal)total;
 
-            //MembershipUser user = Membership.GetUser();
-            //Guid UserID = (Guid)user.ProviderUserKey;
-            //order.UserID = UserID.ToString();
-            order.UserID = ""; //todo
+            MembershipUser user = Membership.GetUser();
+            Guid UserID = (Guid)user.ProviderUserKey;
+            order.UserID = UserID.ToString();
+            //order.UserID = ""; //todo
             order.Address = txtAddress.Text;
             order.Email = txtEmail.Text;
             order.PostalCode = Convert.ToInt32(txtPostCode.Text);
