@@ -38,5 +38,17 @@ namespace SA46Team12BookShopApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnContinueShopping;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new SA46Team12BookShopApp.Layout Master {
+            get {
+                return ((SA46Team12BookShopApp.Layout)(base.Master));
+            }
+        }
     }
 }

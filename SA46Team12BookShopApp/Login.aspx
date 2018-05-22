@@ -158,16 +158,18 @@
                                 <table>
                                     <tr>
                                         
-                                         <td align="center"colspan="2"><h3>Complete</h3></td>
+                                         <td align="center"colspan="2"><h3><i class="fa fa-check" style="color:darkseagreen"></i>&nbsp;Complete</h3></td>
                                         <br />
                                         <br />
                                     </tr>
                                     <tr>
-                                        <td>Your account has been successfully created.<i class="fa fa-check" style="color:darkseagreen"></i></td>
+                                        <td>Your account has been successfully created.</td>
                                     </tr>
                                     <tr>
                                         <td align="right" colspan="2">
-                                            <asp:Button ID="ContinueButton" class="btn btn-lg btn-primary btn-block" runat="server" CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard1" />
+                                            <br />
+                                            <br />
+                                            <asp:Button ID="ContinueButton" class="btn btn-lg btn-primary btn-block" runat="server" CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard1" OnClick="ContinueButton_Click"/>
                                         </td>
                                     </tr>
                                 </table>

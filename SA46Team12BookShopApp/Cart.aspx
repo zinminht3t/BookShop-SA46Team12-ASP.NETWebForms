@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Shopping Cart" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SA46Team12BookShopApp.Cart" %>
+<%@ MasterType VirtualPath="~/Layout.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 

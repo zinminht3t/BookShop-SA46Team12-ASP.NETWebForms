@@ -63,8 +63,10 @@ namespace SA46Team12BookShopApp
                 ca.Price = b.Price;
                 ca.BookID = b.BookID;
                 ca.Discount = (decimal)BusinessLogic.GetDiscountPrice(b.BookID);
+                ca.Discount = Math.Round(ca.Discount, 2);
                 ca.Qty = entry.Value;
                 ca.Amount = ca.Qty * ((decimal)ca.Price - (ca.Price * (ca.Discount / 100)));
+                ca.Amount = Math.Round(ca.Amount, 2);
                 lstCart.Add(ca);
             }
 
@@ -77,7 +79,7 @@ namespace SA46Team12BookShopApp
         #region Checkout/Catalogue buttons
         protected void Checkout(object sender, EventArgs e)
         {
-            Response.Redirect("Members/Checkout.aspx");
+            Response.Redirect("Checkout.aspx");
         }
 
         protected void Products(object sender, EventArgs e)
@@ -108,6 +110,7 @@ namespace SA46Team12BookShopApp
 
 
             Session["cart_items"] = ids;
+            Master.ChangeCartItemQty(ids.Count.ToString());
             Response.Redirect("cart.aspx");
 
         }
@@ -134,6 +137,7 @@ namespace SA46Team12BookShopApp
 
 
             Session["cart_items"] = ids;
+            Master.ChangeCartItemQty(ids.Count.ToString());
             Response.Redirect("cart.aspx");
 
         }

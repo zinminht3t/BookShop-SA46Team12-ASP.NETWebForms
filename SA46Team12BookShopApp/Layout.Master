@@ -25,7 +25,7 @@
     <form id="form1" runat="server" class="">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a class="navbar-brand" href="default.aspx">
-                <img src="style/images/getbooksv4.png" style="height: 7%; width: 7%;">
+                <img src="style/images/getbooksv4.png" style="height: 7%; width: 7%; font-family: tangerine">
                 GetBooks
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +42,7 @@
                             <a class="nav-link" href="products.aspx">Category</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="aboutus.aspx">AboutUs</a>
+                            <a class="nav-link" href="aboutus.aspx">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="login.aspx">Login</a>
@@ -54,14 +54,14 @@
                 </asp:Panel>
                 <asp:Panel ID="UserNav" runat="server">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="default.aspx">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="products.aspx">Category</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="aboutus.aspx">AboutUs</a>
+                            <a class="nav-link" href="aboutus.aspx">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="confirmorder.aspx">Orders</a>
@@ -93,8 +93,7 @@
         <div class="container-fluid padding">
             <div class="row text-center">
                 <div class="col-12">
-                    <hr class="light-100">
-                    <h5>&copy; GDip SA46 Team 12</h5>
+                    <h5>2018 Copyrights &copy; GDip SA46 Team 12 - All Rights Reserved.</h5>
                 </div>
             </div>
         </div>
