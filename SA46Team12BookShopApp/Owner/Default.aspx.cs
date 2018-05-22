@@ -146,11 +146,11 @@ namespace SA46Team12BookShopApp.Owner
         {
             if (ddlCategoryFilter.SelectedItem.Text == "All")
             {
-                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%" + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" + tbSearch.Text + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%'";
             }
             else
             {
-                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
+                Sqlwhere = Sqlquery + "WHERE (Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%" + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" + tbSearch.Text + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%') AND Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
             }
             populate(Sqlwhere);
         }
@@ -158,6 +158,7 @@ namespace SA46Team12BookShopApp.Owner
         protected void btnViewAll_Click(object sender, EventArgs e)
         {
             populate(Sqlquery);
+            tbSearch.Text = "";
         }
 
         protected void ddlCategoryFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -169,11 +170,11 @@ namespace SA46Team12BookShopApp.Owner
             else
                 if(ddlCategoryFilter.SelectedItem.Text == "All")
             {
-                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%" + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" + tbSearch.Text + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%'";
             }
             else
             {
-                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
+                Sqlwhere = Sqlquery + "WHERE (Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%" + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" + tbSearch.Text + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%') AND Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
             }
             populate(Sqlwhere);
         }

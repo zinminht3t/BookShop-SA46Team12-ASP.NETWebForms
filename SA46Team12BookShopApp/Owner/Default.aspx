@@ -15,8 +15,8 @@
             <br />
             <div class="mPanel">
                         <asp:Panel ID="Panel1" runat="server">
-                            <asp:DropDownList ID="ddlCategoryFilter" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlCategoryFilter_SelectedIndexChanged" TabIndex="1">
-                                <asp:ListItem>All</asp:ListItem>
+                            <asp:DropDownList ID="ddlCategoryFilter" runat="server" AutoPostBack="true" AppendDataBoundItems="true" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlCategoryFilter_SelectedIndexChanged" TabIndex="1">
+                                        <asp:ListItem Value="0">All</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblSearch" runat="server" Text="Search: "></asp:Label>
                             <asp:TextBox ID="tbSearch" runat="server" AutoPostBack="true" TabIndex="2"></asp:TextBox>
