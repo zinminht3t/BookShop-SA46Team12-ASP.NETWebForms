@@ -128,7 +128,7 @@
                                         <asp:Label Text='<%#Eval("Stock") %>' runat="server" />
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbQty" TabIndex="5" CssClass="formcon" Text='<%#Eval("Stock") %>' runat="server" Type="number" />
+                                        <asp:TextBox ID="tbQty" TabIndex="5" CssClass="formcon" Text='<%#Eval("Stock") %>' runat="server" Type="number" min="0" />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Unit Price">
@@ -136,7 +136,7 @@
                                         <asp:Label Text='<%#Eval("Price") %>' runat="server" />
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbPrice" CssClass="formcon" TabIndex="6" Text='<%#Eval("Price") %>' runat="server" Type="number" Step=".01" />
+                                        <asp:TextBox ID="tbPrice" CssClass="formcon" TabIndex="6" Text='<%#Eval("Price") %>' runat="server" Type="number" Step=".01" min="0" />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Discount(%)">
@@ -144,7 +144,7 @@
                                         <asp:Label Text='<%#Eval("DiscountPercent") %>' runat="server" />
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbDiscP" CssClass="formcon" TabIndex="7" Text='<%#Eval("DiscountPercent") %>' runat="server" Type="number" Step=".01" />
+                                        <asp:TextBox ID="tbDiscP" CssClass="formcon" TabIndex="7" Text='<%#Eval("DiscountPercent") %>' runat="server" Type="number" Step=".01" min="0" max="100" />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Discount Desc">
