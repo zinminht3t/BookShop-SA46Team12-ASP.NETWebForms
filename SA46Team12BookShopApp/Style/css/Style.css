@@ -9,6 +9,10 @@ html, body {
     background-color: ghostwhite;
 }
 
+#imgLogo{
+    font-family: 'Tangerine'
+}
+
 .navbar {
     padding: .8rem;
 }
