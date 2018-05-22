@@ -84,7 +84,7 @@ namespace SA46Team12BookShopApp
         {
             double discountpercent = GetDiscountPercent(BookID);
             double price = GetBookPrice(BookID);
-            return (discountpercent / 100) * price;
+            return (1 - (discountpercent / 100)) * price;
         }
         public static void AddOrder(OrderHeader o, List<OrderDetail> od)
         {
