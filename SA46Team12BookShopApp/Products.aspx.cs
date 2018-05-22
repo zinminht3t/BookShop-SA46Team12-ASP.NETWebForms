@@ -126,7 +126,7 @@ namespace SA46Team12BookShopApp
                 return null;
             }
 
-            return String.Format("{0:0%} off", myValue);
+            return String.Format("{0:0}% off", myValue);
         }
 
         public int getItemClicked()
@@ -141,7 +141,7 @@ namespace SA46Team12BookShopApp
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
                 Button buttonclicked = (Button)dataItem.FindControl("Button1");
                 this.itemClicked = int.Parse(e.CommandArgument.ToString());
-
+                Response.Write(cartItems.Count.ToString());
                 if (buttonclicked.Text != "Remove from Cart")
                 {
                     buttonclicked.Text = "Remove from Cart";
@@ -166,11 +166,30 @@ namespace SA46Team12BookShopApp
                     cartItems = (List<int>)Session["cart_items"];    // GET
                     cartItems.Remove(this.itemClicked);
                     Master.ChangeCartItemQty(cartItems.Count.ToString());
+                    Response.Write(cartItems.Count.ToString());
                     Session["cart_items"] = cartItems;
                 }
                 //check if selected book is already in cart
                // MessageBox.Show(this, "Book has been added to cart.");
             }
+        }
+
+        public string ProcessProductDiscount(object discountPercentage, object originalPrice)
+        {
+            string discPerc = discountPercentage.ToString();
+            Decimal.TryParse(discPerc, out decimal percentDisc);
+
+            string oriPrice = originalPrice.ToString();
+            Decimal.TryParse(oriPrice, out decimal priceOri);
+
+            decimal disPrice = priceOri * (1 - (percentDisc / 100));
+
+            if (discountPercentage == DBNull.Value)
+            {
+                return string.Format("Price: ${0:0.00}", oriPrice);
+            }
+            else
+                return String.Format("Discounted Price: ${0:0.00}", disPrice);
         }
 
         protected void lvProductsList_ItemDataBound(object sender, ListViewItemEventArgs e)

@@ -8,7 +8,6 @@
     <title>GetBooks - Admin Page</title>
     <link href="../Style/css/cssOwner.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -32,7 +31,7 @@
                     <a class="nav-link" href="default.aspx">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../default.aspx">Logout</a>
+                     <a class="nav-link" href="#" runat="server" onserverclick="logout">Logout</a>
                 </li>
             </ul>
 
@@ -186,9 +185,9 @@
                         </asp:GridView>
                     </div>
                     <br />
-                    <asp:Label ID="lblSuccess" Text="Save Success!" runat="server" ForeColor="White" BackColor="ForestGreen" Visible="False" />
+                    <asp:Label ID="lblSuccess" Text="Save Success!" runat="server" CssClass="alert alert-success" Visible="False" />
                     <br />
-                    <asp:Label ID="lblError" Text="Error" runat="server" ForeColor="White" BackColor="#CC3300" Visible="False" />
+                    <br />
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString2 %>" SelectCommand="SELECT [Name], [CategoryID] FROM [Category]"></asp:SqlDataSource>
                 </div>
             </div>

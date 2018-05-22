@@ -94,15 +94,6 @@ namespace SA46Team12BookShopApp.Owner {
         protected global::System.Web.UI.WebControls.Label lblSuccess;
         
         /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
-        
-        /// <summary>
         /// SqlDataSource2 control.
         /// </summary>
         /// <remarks>
