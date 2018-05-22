@@ -147,14 +147,16 @@ namespace SA46Team12BookShopApp
                     buttonclicked.Text = "Remove from Cart";
                     buttonclicked.CssClass = "btn btn-primary buttonClicked";
                     cartItems = (List<int>)Session["cart_items"];    // GET
-                    cartItems.Add(this.itemClicked);
-                    Master.ChangeCartItemQty(cartItems.Count.ToString());
-                    Session["cart_items"] = cartItems;
 
                     if (cartItems == null)
                     {
                         cartItems = new List<int>();
                     }
+
+                    cartItems.Add(this.itemClicked);
+                    Master.ChangeCartItemQty(cartItems.Count.ToString());
+                    Session["cart_items"] = cartItems;
+
                     
                 }
                 else
@@ -199,7 +201,12 @@ namespace SA46Team12BookShopApp
 
             int dataItemBookID = int.Parse(btnAdd.CommandArgument);
             cartItems = (List<int>)Session["cart_items"];    // GET
-            cartItems = new List<int>();
+
+            if(cartItems == null)
+            {
+                cartItems = new List<int>();
+            }
+            //cartItems = new List<int>();
             bool alreadyExist = cartItems.Contains(dataItemBookID);
 
             if (alreadyExist)

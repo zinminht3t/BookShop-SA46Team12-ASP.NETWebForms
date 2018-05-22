@@ -39,7 +39,7 @@
                             </asp:BoundField>
                             <%--title column--%>
 
-                            <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" ItemStyle-Width="120">
+                            <asp:BoundField DataField="Price" HeaderText="Unit Price" SortExpression="Price" ItemStyle-Width="120">
                                 <ItemStyle Width="120px" HorizontalAlign="Center" />
                             </asp:BoundField>
                             <%--price column--%>
