@@ -130,6 +130,7 @@
     <Content Include="images\9781911015222.jpg" />
     <Content Include="Owner\Default.aspx" />
     <Content Include="Products.aspx" />
+    <Content Include="Style\css\cssOwner.css" />
     <Content Include="Style\css\Style.css" />
     <Content Include="Style\images\getbooksv3.png" />
     <Content Include="Style\images\getbooksv4.png" />

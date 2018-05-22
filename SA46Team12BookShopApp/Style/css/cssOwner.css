@@ -1,0 +1,92 @@
+﻿.mDivGrid {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mPanel {
+    text-align: center;
+}
+/*.UsersGridViewButton
+        {
+            border: solid;
+            border-width: 1px;
+            border-color: brown;
+            font-family: sans-serif;
+            color: #FFFFFF;
+            font-style: normal;
+            text-align: center;
+            font-size: 18px;
+        }*/
+mGrid {
+    width: 600px;
+    background-color: #fff;
+    margin: 5px 0 10px 0;
+    border: solid 2px #525252;
+    border-collapse: collapse;
+    table-layout: auto;
+    Height: 403px;
+    margin: 5px 0 10px 0;
+}
+
+.mGrid td {
+    padding: 2px;
+}
+
+.mGrid th {
+    padding: 4px 2px;
+    color: #fff;
+    background: #424242;
+    border-left: solid 1px #525252;
+    font-size: 0.9em;
+}
+
+.mGrid .alt {
+    background: #fcfcfc url(grd_alt.png) repeat-x top;
+}
+
+.mGrid .pgr {
+    background: #424242 url(grd_pgr.png) repeat-x top;
+}
+
+    .mGrid .pgr table {
+        margin: 5px 0;
+    }
+
+    .mGrid .pgr td {
+        border-width: 0;
+        padding: 0 6px;
+        border-left: solid 1px #666;
+        font-weight: bold;
+        color: #fff;
+        line-height: 12px;
+    }
+
+    .mGrid .pgr span {
+        color: #333;
+        background-color: #F7F7F7;
+        font-weight: bold;
+        text-align: center;
+        display: inline-block;
+        width: 20px;
+        margin-right: 3px;
+        line-height: 150%;
+        border: 1px solid #ccc;
+    }
+
+    .mGrid .pgr a {
+        text-align: center;
+        display: inline-block;
+        width: 20px;
+        border: 1px solid #ccc;
+        color: #fff;
+        color: #333;
+        margin-right: 3px;
+        line-height: 150%;
+        text-decoration: none;
+    }
+
+        .mGrid .pgr a:hover {
+            color: #000;
+            text-decoration: none;
+        }
