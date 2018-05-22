@@ -70,7 +70,7 @@
 
 
     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1"
-        ItemPlaceholderID="itemPlaceHolder1" GroupPlaceholderID="groupPlaceHolder1">
+        ItemPlaceholderID="itemPlaceHolder1" GroupPlaceholderID="groupPlaceHolder1" OnItemCommand="ListView1_ItemCommand" OnItemDataBound="ListView1_ItemDataBound">
         <GroupTemplate>
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="col-item">
