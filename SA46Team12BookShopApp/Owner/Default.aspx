@@ -41,7 +41,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                     <ItemTemplate>
-                                        <image src="/images/<%# Eval("ISBN") %>.jpg" width="90" height="120"></image>
+                                        <image src="../images/<%# Eval("ISBN") %>.jpg" width="90" height="120"></image>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             <asp:TemplateField HeaderText="Title" ItemStyle-Width="100">

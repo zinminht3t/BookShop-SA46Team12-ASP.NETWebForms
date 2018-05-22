@@ -141,7 +141,7 @@ namespace SA46Team12BookShopApp
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
                 Button buttonclicked = (Button)dataItem.FindControl("Button1");
                 this.itemClicked = int.Parse(e.CommandArgument.ToString());
-
+                Response.Write(cartItems.Count.ToString());
                 if (buttonclicked.Text != "Remove from Cart")
                 {
                     buttonclicked.Text = "Remove from Cart";
@@ -166,6 +166,7 @@ namespace SA46Team12BookShopApp
                     cartItems = (List<int>)Session["cart_items"];    // GET
                     cartItems.Remove(this.itemClicked);
                     Master.ChangeCartItemQty(cartItems.Count.ToString());
+                    Response.Write(cartItems.Count.ToString());
                     Session["cart_items"] = cartItems;
                 }
                 //check if selected book is already in cart

@@ -74,7 +74,7 @@
                         </li>
                     </ul>
                 </asp:Panel>
-            <asp:Label ID="CartItemQty" runat="server" Text="0" ForeColor="White" Style="top: 10px; left: 708px; margin-right: 65px;" BorderStyle="None" Font-Bold="True" Font-Strikeout="False" Height="29px" Width="16px" />
+            <asp:Label ID="CartItemQty" runat="server" Text="0" AutoPostBack="True" ForeColor="White" Style="top: 10px; left: 708px; margin-right: 65px;" BorderStyle="None" Font-Bold="True" Font-Strikeout="False" Height="29px" Width="16px" />
 
             </div>
 
