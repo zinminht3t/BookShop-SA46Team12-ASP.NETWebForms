@@ -52,7 +52,7 @@
 
 
 <asp:Literal ID="PopupBox" runat="server"></asp:Literal>
-<asp:ScriptManager ID="ScriptManager1" runat="server"/>
+<%--<asp:ScriptManager ID="ScriptManager1" runat="server"/>--%>
 <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupPlaceholderID="groupPlaceHolder1"
     ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand" OnItemDataBound="lvProductsList_ItemDataBound">
          <GroupTemplate>
@@ -79,17 +79,20 @@
                         Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
                     </div>
                     <div class ="col-md-12" style="margin-top: auto; margin-bottom:auto">                    `
-                        <h5 class="price price-text-color">
+                     <%--   <h5 class="price price-text-color">
                             &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
+                        </h5>--%>
+                         <h5 class="price price-text-color">
+                            <asp:Label ID="Label1" runat="server" Text='<%# ProcessProductDiscount(Eval("DiscountPercent"), Eval("Price")) %>' />
                         </h5>
                     </div>
                     <div class ="col-md-12">
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                             <ContentTemplate>
+                        <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                             <ContentTemplate>--%>
                                 <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem"
                                  CommandArgument='<%# Eval("BookID") %>' />
-                              </ContentTemplate>
-                        </asp:UpdatePanel>
+                              <%--</ContentTemplate>--%>
+                        <%--</asp:UpdatePanel>--%>
                     </div>
                   </div>
              </div>  
@@ -135,5 +138,4 @@
 
 <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Discount.DiscountPercent IS NOT NULL ORDER BY Book.Price ASC">
 </asp:SqlDataSource>
-
 </asp:Content>

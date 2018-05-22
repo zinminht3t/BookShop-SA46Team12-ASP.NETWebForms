@@ -126,7 +126,7 @@ namespace SA46Team12BookShopApp
                 return null;
             }
 
-            return String.Format("{0:0%} off", myValue);
+            return String.Format("{0:0}% off", myValue);
         }
 
         public int getItemClicked()
@@ -171,6 +171,24 @@ namespace SA46Team12BookShopApp
                 //check if selected book is already in cart
                // MessageBox.Show(this, "Book has been added to cart.");
             }
+        }
+
+        public string ProcessProductDiscount(object discountPercentage, object originalPrice)
+        {
+            string discPerc = discountPercentage.ToString();
+            Decimal.TryParse(discPerc, out decimal percentDisc);
+
+            string oriPrice = originalPrice.ToString();
+            Decimal.TryParse(oriPrice, out decimal priceOri);
+
+            decimal disPrice = priceOri * (1 - (percentDisc / 100));
+
+            if (discountPercentage == DBNull.Value)
+            {
+                return string.Format("Price: ${0:0.00}", oriPrice);
+            }
+            else
+                return String.Format("Discounted Price: ${0:0.00}", disPrice);
         }
 
         protected void lvProductsList_ItemDataBound(object sender, ListViewItemEventArgs e)
