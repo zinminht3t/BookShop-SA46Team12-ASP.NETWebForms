@@ -7,7 +7,7 @@
         <br />  
         <div id="mainContainer" class="container">  
         <div class="container">   
-            <div class="jumbotron">
+            <div class="jumbotronKit">
                 <h3>Cart&nbsp;
                     </h3>
             </div>
@@ -60,8 +60,8 @@
         </asp:GridView>
 
         <div class ="container"> 
-            <asp:Button ID="btnCheckout" runat="server" Text="Checkout" OnClick="Checkout" class="btn btn-primary" style="float:right;" />
-            <asp:Button ID="btnContinueShopping" runat="server" Text="Continue Shopping" OnClick="Products" class="btn btn-warning" style="float:left;" />
+            <asp:Button ID="btnCheckout" runat="server" Text="Checkout" OnClick="Checkout" Cssclass="btn btn-primary" style="float:right;" />
+            <asp:Button ID="btnContinueShopping" runat="server" Text="Continue Shopping" OnClick="Products" Cssclass="btn btn-warning" style="float:left;" />
         </div>
         <br />
 

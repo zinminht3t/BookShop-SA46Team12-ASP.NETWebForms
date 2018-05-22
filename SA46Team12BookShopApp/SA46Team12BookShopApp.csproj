@@ -134,9 +134,14 @@
     <Content Include="Products.aspx" />
     <Content Include="Style\css\cssOwner.css" />
     <Content Include="Style\css\Style.css" />
+    <Content Include="Style\images\bornACrimeCover.png" />
+    <Content Include="Style\images\everybodyLiesCover.png" />
     <Content Include="Style\images\getbooksv3.png" />
     <Content Include="Style\images\getbooksv4.png" />
     <Content Include="Style\images\mac.png" />
+    <Content Include="Style\images\overwatchCover.png" />
+    <Content Include="Style\images\personaCover.png" />
+    <Content Include="Style\images\zeldaCover.png" />
     <Content Include="UnauthorizedAccess.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
