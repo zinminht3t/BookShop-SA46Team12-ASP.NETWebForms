@@ -25,5 +25,10 @@ namespace SA46Team12BookShopApp
             string username = CreateUserWizard1.UserName;
             Roles.AddUserToRole(username, "Member");
         }
+
+        protected void ContinueButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("default.aspx");
+        }
     }
 }

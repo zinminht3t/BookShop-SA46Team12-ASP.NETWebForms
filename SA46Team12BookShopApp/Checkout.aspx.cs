@@ -22,18 +22,6 @@ namespace SA46Team12BookShopApp
             lstBooks = new List<Book>();
             lstOD = new List<OrderDetail>();
 
-            //if (!IsPostBack)
-            //{
-            //    //List<int> cartItems = (List<int>)Session["cart_items"];    //todo
-            //    //cartItems.Add(1);
-            //    //cartItems.Add(2);
-            //    //cartItems.Add(3);
-            //    //cartItems.Add(4);
-            //    //cartItems.Add(1);
-            //    //Session["cart_items"] = cartItems;
-            //}
-
-
             List<int> carts = (List<int>)Session["cart_items"];    //todo
 
             foreach (int id in carts)
@@ -47,7 +35,7 @@ namespace SA46Team12BookShopApp
 
             if (lstBooks.Count < 1)
             {
-                Response.Redirect("../");
+                Response.Redirect("default.aspx");
             }
 
             Dictionary<string, int> cartDis = new Dictionary<string, int>();
