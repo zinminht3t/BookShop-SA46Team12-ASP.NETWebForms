@@ -71,7 +71,7 @@
 
 		</div>
 		<div class="col-lg-6">
-			 <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser">
+			 <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser" ActiveStepIndex="1">
                     <WizardSteps>
                         <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                             <ContentTemplate>
@@ -156,6 +156,21 @@
                             </CustomNavigationTemplate>
                         </asp:CreateUserWizardStep>
                         <asp:CompleteWizardStep ID="CompleteWizardStep1" runat="server">
+                            <ContentTemplate>
+                                <table>
+                                    <tr>
+                                        <td align="center" colspan="2">Complete</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Your account has been successfully created.</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" colspan="2">
+                                            <asp:Button ID="ContinueButton" class="btn btn-lg btn-primary btn-block" runat="server" CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard1" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ContentTemplate>
                         </asp:CompleteWizardStep>
                     </WizardSteps>
                 </asp:CreateUserWizard>
