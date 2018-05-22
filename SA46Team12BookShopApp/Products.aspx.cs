@@ -147,13 +147,15 @@ namespace SA46Team12BookShopApp
                     buttonclicked.Text = "Remove from Cart";
                     buttonclicked.CssClass = "btn btn-primary buttonClicked";
                     cartItems = (List<int>)Session["cart_items"];    // GET
-                    if(cartItems == null)
-                    {
-                        cartItems = new List<int>();
-                    }
                     cartItems.Add(this.itemClicked);
                     Master.ChangeCartItemQty(cartItems.Count.ToString());
                     Session["cart_items"] = cartItems;
+
+                    if (cartItems == null)
+                    {
+                        cartItems = new List<int>();
+                    }
+                    
                 }
                 else
                 {
@@ -163,6 +165,7 @@ namespace SA46Team12BookShopApp
                     //remove bookid from session state
                     cartItems = (List<int>)Session["cart_items"];    // GET
                     cartItems.Remove(this.itemClicked);
+                    Master.ChangeCartItemQty(cartItems.Count.ToString());
                     Session["cart_items"] = cartItems;
                 }
                 //check if selected book is already in cart
