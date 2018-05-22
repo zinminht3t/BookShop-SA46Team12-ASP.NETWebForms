@@ -48,7 +48,7 @@
 <asp:Literal ID="PopupBox" runat="server"></asp:Literal>
 <asp:ScriptManager ID="ScriptManager1" runat="server"/>
 <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupPlaceholderID="groupPlaceHolder1"
-    ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand">
+    ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand" OnItemDataBound="lvProductsList_ItemDataBound">
          <GroupTemplate>
             <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3">
                 <div class="col-item">  

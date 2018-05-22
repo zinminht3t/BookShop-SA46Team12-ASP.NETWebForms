@@ -140,21 +140,29 @@ namespace SA46Team12BookShopApp
             {
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
                 Button buttonclicked = (Button)dataItem.FindControl("Button1");
+                this.itemClicked = int.Parse(e.CommandArgument.ToString());
+
                 if (buttonclicked.Text != "Remove from Cart")
                 {
                     buttonclicked.Text = "Remove from Cart";
                     buttonclicked.CssClass = "btn btn-primary buttonClicked";
-                    this.itemClicked = int.Parse(e.CommandArgument.ToString());
                     cartItems = (List<int>)Session["cart_items"];    // GET
                     cartItems.Add(this.itemClicked);
                     Master.ChangeCartItemQty(cartItems.Count.ToString());
                     Session["cart_items"] = cartItems;
+
+                    if (cartItems == null)
+                    {
+                        cartItems = new List<int>();
+                    }
+                    
                 }
                 else
                 {
                     buttonclicked.Text = "Add to Cart";
                     buttonclicked.CssClass = "btn btn-primary";
-                    this.itemClicked = int.Parse(e.CommandArgument.ToString());
+
+                    //remove bookid from session state
                     cartItems = (List<int>)Session["cart_items"];    // GET
                     cartItems.Remove(this.itemClicked);
                     Master.ChangeCartItemQty(cartItems.Count.ToString());
@@ -164,7 +172,22 @@ namespace SA46Team12BookShopApp
                // MessageBox.Show(this, "Book has been added to cart.");
             }
         }
-   
+
+        protected void lvProductsList_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            ListViewDataItem dataItem = (ListViewDataItem)e.Item;
+            Button btnAdd = (Button)dataItem.FindControl("Button1");
+
+            int dataItemBookID = int.Parse(btnAdd.CommandArgument);
+            cartItems = (List<int>)Session["cart_items"];    // GET
+            bool alreadyExist = cartItems.Contains(dataItemBookID);
+
+            if (alreadyExist)
+            {
+                btnAdd.Text = "Remove from Cart";
+                btnAdd.CssClass = "btn btn-primary buttonClicked";
+            }
+        }
     }
 
     public static class MessageBox
