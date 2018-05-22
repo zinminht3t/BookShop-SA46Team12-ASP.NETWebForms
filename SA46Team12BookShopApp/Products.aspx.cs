@@ -154,6 +154,11 @@ namespace SA46Team12BookShopApp
                 {
                     buttonclicked.Text = "Add to Cart";
                     buttonclicked.CssClass = "btn btn-primary";
+                    this.itemClicked = int.Parse(e.CommandArgument.ToString());
+                    cartItems = (List<int>)Session["cart_items"];    // GET
+                    cartItems.Remove(this.itemClicked);
+                    Master.ChangeCartItemQty(cartItems.Count.ToString());
+                    Session["cart_items"] = cartItems;
                 }
                 //check if selected book is already in cart
                // MessageBox.Show(this, "Book has been added to cart.");
