@@ -78,8 +78,9 @@
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
     <Content Include="Cart.aspx" />
+    <Content Include="Checkout.aspx" />
+    <Content Include="ConfirmOrder.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Members\Checkout.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\9780060555665.jpg" />
@@ -129,7 +130,6 @@
     <Content Include="images\9781616205676.jpg" />
     <Content Include="images\9781619634480.jpg" />
     <Content Include="images\9781911015222.jpg" />
-    <Content Include="Members\ConfirmOrder.aspx" />
     <Content Include="Owner\Default.aspx" />
     <Content Include="product-page.css" />
     <Content Include="Products.aspx" />
@@ -164,19 +164,26 @@
     <Compile Include="Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmOrder.aspx.cs">
+      <DependentUpon>ConfirmOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmOrder.aspx.designer.cs">
+      <DependentUpon>ConfirmOrder.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Members\Checkout.aspx.cs">
-      <DependentUpon>Checkout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Members\Checkout.aspx.designer.cs">
-      <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -191,13 +198,6 @@
     </Compile>
     <Compile Include="Layout.Master.designer.cs">
       <DependentUpon>Layout.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Members\ConfirmOrder.aspx.cs">
-      <DependentUpon>ConfirmOrder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Members\ConfirmOrder.aspx.designer.cs">
-      <DependentUpon>ConfirmOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BooksDB.cs" />

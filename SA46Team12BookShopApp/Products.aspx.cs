@@ -146,6 +146,8 @@ namespace SA46Team12BookShopApp
 
                 cartItems = (List<int>)Session["cart_items"];    // GET
                 cartItems.Add(this.itemClicked);
+                Master.ChangeCartItemQty(cartItems.Count.ToString());
+
                 Session["cart_items"] = cartItems;
 
                 //check if selected book is already in cart

@@ -19,7 +19,7 @@
                                 <asp:ListItem>All</asp:ListItem>
                             </asp:DropDownList>
                             <asp:Label ID="lblSearch" runat="server" Text="Search: "></asp:Label>
-                            <asp:TextBox ID="tbSearch" runat="server" AutoPostBack="true" onTextChanged="tbSearch_TextChanged"></asp:TextBox>
+                            <asp:TextBox ID="tbSearch" runat="server" AutoPostBack="true"></asp:TextBox>
                             <asp:Button ID="btnSubmit" runat="server" Text="Search" OnClick="btnSubmit_Click" />
                             <asp:Button ID="btnViewAll" runat="server" OnClick="btnViewAll_Click" Text="View All" />
                         </asp:Panel>
