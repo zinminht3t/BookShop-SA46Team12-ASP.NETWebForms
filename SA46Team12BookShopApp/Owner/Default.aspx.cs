@@ -13,8 +13,9 @@ namespace SA46Team12BookShopApp.Owner
     {
         private string connection;
         private string sqlquery;
-        private DataTable dtbl;
-        private string sqlwhere;
+        private static DataTable dtbl;
+        private static string sqlwhere;
+        int i = 0;
 
         public string getSqlquery()
         {
@@ -31,46 +32,76 @@ namespace SA46Team12BookShopApp.Owner
             connection = @"Data Source=localhost; Initial Catalog=Bookshop; Integrated Security=SSPI;";
             if (!IsPostBack)
             {
-                populate();
+                populate(getSqlquery());
             }
         }
 
         protected void gbEditBooks_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvEditBooks.EditIndex = e.NewEditIndex;
-            populate();
+            populate(getSqlquery());
         }
 
         protected void gbEditBooks_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            //try
-            //{
-                UpdateDatabase(e);
-            //}
-            //catch (Exception ex)
-            //{
-            //    lblError.Visible = true;
-            //    lblError.Text = ex.Message;
-            //}
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(connection))
+                {
+                    sqlcon.Open();
+                    string sql = "  Update book set Stock = @qty , price = @price where bookid = @id";
+                    SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
+                    sqlcom.Parameters.AddWithValue("qty", (gvEditBooks.Rows[e.RowIndex].FindControl("tbQty") as TextBox).Text.Trim());
+                    sqlcom.Parameters.AddWithValue("price", (gvEditBooks.Rows[e.RowIndex].FindControl("tbPrice") as TextBox).Text.Trim());
+                    sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
+                    sqlcom.ExecuteNonQuery();
+
+                    string sqlinsertupdate = "Select * from discount where bookid ='" +
+                        (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text + "'";
+                    sqlcom = new SqlCommand(sqlinsertupdate, sqlcon);
+                    using (SqlDataReader reader = sqlcom.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            sql = "Update Discount set DiscountPercent = @disc where bookid = @id";
+                            sqlcom = new SqlCommand(sql, sqlcon);
+                            sqlcom.Parameters.AddWithValue("disc", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscP") as TextBox).Text.Trim());
+                            sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
+                        }
+                        else
+                        {
+                            sql = "Insert into Discount (Bookid, DiscountDesc, DiscountPercent) values (@id , @discD, @disc)";
+                            sqlcom = new SqlCommand(sql, sqlcon);
+                            sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
+                            sqlcom.Parameters.AddWithValue("discD", "0");
+                            sqlcom.Parameters.AddWithValue("disc", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscP") as TextBox).Text.Trim());
+                        }
+                    }
+                    sqlcom.ExecuteNonQuery();
+                    gvEditBooks.EditIndex = -1;
+                    populate(getSqlquery());
+                    lblSuccess.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblError.Visible = true;
+                lblError.Text = ex.Message;
+            }
         }
 
         protected void gbEditBooks_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvEditBooks.PageIndex = e.NewPageIndex;
-            populate();
+            gvEditBooks.DataSource = dtbl;
+            gvEditBooks.DataBind();
         }
         protected void gbEditBooks_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvEditBooks.EditIndex = -1;
-            populate();
         }
 
-        protected void populate()
-        {
-            SearchDatabase(getSqlquery());
-        }
-
-        protected void SearchDatabase(string query)
+        protected void populate(string query)
         {
             dtbl = new DataTable();
             using (SqlConnection sqlcon = new SqlConnection(connection))
@@ -80,82 +111,26 @@ namespace SA46Team12BookShopApp.Owner
                 sqlda.Fill(dtbl);
                 sqlcon.Close();
             }
-            if (dtbl.Rows.Count > 0)
-            {
                 gvEditBooks.DataSource = dtbl;
                 gvEditBooks.DataBind();
-            }
-            else
-            {
-                NoRecordsFound();
-            }
-        }
-
-        protected void tbSearch_TextChanged(object sender, EventArgs e)
-        {
-            SearchQuery();
-        }
-
-        protected void NoRecordsFound()
-        {
-            dtbl.Rows.Add(dtbl.NewRow());
-            gvEditBooks.DataSource = dtbl;
-            gvEditBooks.DataBind();
-            gvEditBooks.Rows[0].Cells.Clear();
-            gvEditBooks.Rows[0].Cells.Add(new TableCell());
-            gvEditBooks.Rows[0].Cells[0].ColumnSpan = dtbl.Columns.Count;
-            gvEditBooks.Rows[0].Cells[0].Text = "No Records Found";
-            gvEditBooks.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
-        }
-
-        protected void UpdateDatabase(GridViewUpdateEventArgs e)
-        {
-            using (SqlConnection sqlcon = new SqlConnection(connection))
-            {
-                sqlcon.Open();
-                string sql = "  Update book set Stock = @qty , price = @price where bookid = @id";
-                SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
-                sqlcom.Parameters.AddWithValue("qty", (gvEditBooks.Rows[e.RowIndex].FindControl("tbQty") as TextBox).Text.Trim());
-                sqlcom.Parameters.AddWithValue("price", (gvEditBooks.Rows[e.RowIndex].FindControl("tbPrice") as TextBox).Text.Trim());
-                sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
-                sqlcom.ExecuteNonQuery();
-
-                string sqlinsertupdate = "Select * from discount where bookid ='" + 
-                    (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text + "'";
-                sqlcom = new SqlCommand(sqlinsertupdate, sqlcon);
-                    using(SqlDataReader reader = sqlcom.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        sql = "Update Discount set DiscountPercent = @disc where bookid = @id";
-                        sqlcom = new SqlCommand(sql, sqlcon);
-                        sqlcom.Parameters.AddWithValue("disc", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscP") as TextBox).Text.Trim());
-                        sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
-                    }
-                    else
-                    {
-                        //sql = "Insert into Discount (Bookid, DiscountDesc, DiscountPercent) values (bookid = 4, DiscountDesc = '0', DiscountPercent = 10)";
-                        //sqlcom = new SqlCommand(sql, sqlcon);
-                        //sqlcom.Parameters.AddWithValue("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
-                        //sqlcom.Parameters.AddWithValue("discD", "0");
-                        //sqlcom.Parameters.AddWithValue("disc", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscP") as TextBox).Text.Trim());
-                    }
-                }
-                sqlcom.ExecuteNonQuery();
-                gvEditBooks.EditIndex = -1;
-                populate();
-                lblSuccess.Visible = true;
-            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            SearchQuery();
+            if (ddlCategoryFilter.SelectedItem.Text == "All")
+            {
+                sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
+            }
+            else
+            {
+                sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
+            }
+            populate(sqlwhere);
         }
 
         protected void btnViewAll_Click(object sender, EventArgs e)
         {
-            populate();
+            populate(getSqlquery());
         }
 
         protected void ddlCategoryFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -173,20 +148,7 @@ namespace SA46Team12BookShopApp.Owner
             {
                 sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
             }
-            SearchDatabase(sqlwhere);
-        }
-
-        protected void SearchQuery()
-        {
-            if (ddlCategoryFilter.SelectedItem.Text == "All")
-            {
-                sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
-            }
-            else
-            {
-                sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
-            }
-            SearchDatabase(sqlwhere);
+            populate(sqlwhere);
         }
     }
 }
