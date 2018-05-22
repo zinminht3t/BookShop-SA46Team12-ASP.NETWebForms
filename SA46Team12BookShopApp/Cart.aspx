@@ -11,7 +11,7 @@
 
             <%--jumboton--%>
             <div class="jumbotronKit">
-                <h1 class="text-center"><i class="fas fa-cart-arrow-down"></i>&nbsp;Cart</h1>
+                <h1 class="text-center"><i class="fa fa-cart-arrow-down"></i>&nbsp;Cart</h1>
                 <hr />
             </div>
 
