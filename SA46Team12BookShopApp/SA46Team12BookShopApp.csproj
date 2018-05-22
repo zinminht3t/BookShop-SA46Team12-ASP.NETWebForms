@@ -143,7 +143,9 @@
     <Content Include="Style\images\personaCover.png" />
     <Content Include="Style\images\zeldaCover.png" />
     <Content Include="UnauthorizedAccess.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\BusinessLogic.cs" />
