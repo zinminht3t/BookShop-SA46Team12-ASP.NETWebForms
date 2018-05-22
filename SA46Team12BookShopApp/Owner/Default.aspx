@@ -89,7 +89,7 @@
                                     <asp:Label Text='<%#Eval("Price") %>' runat="server"/>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:Textbox ID="tbPrice" TabIndex="6" Text='<%#Eval("Price") %>' runat="server"/>
+                                    <asp:Textbox ID="tbPrice" TabIndex="6" Text='<%#Eval("Price") %>' runat="server" Type="number" Step=".01"/>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Discount (%)">
@@ -97,7 +97,7 @@
                                     <asp:Label Text='<%#Eval("DiscountPercent") %>' runat="server"/>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:Textbox ID="tbDiscP" TabIndex="7" Text='<%#Eval("DiscountPercent") %>' runat="server"/>
+                                    <asp:Textbox ID="tbDiscP" TabIndex="7" Text='<%#Eval("DiscountPercent") %>' runat="server" Type="number" Step=".01"/>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Discount Description">
