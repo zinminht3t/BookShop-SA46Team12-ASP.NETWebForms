@@ -143,6 +143,7 @@
     <Content Include="Style\images\overwatchCover.png" />
     <Content Include="Style\images\personaCover.png" />
     <Content Include="Style\images\zeldaCover.png" />
+    <Content Include="Style\js\carousel.js" />
     <Content Include="UnauthorizedAccess.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -247,7 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Style\fonts\" />
-    <Folder Include="Style\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
