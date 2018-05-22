@@ -21,20 +21,6 @@ namespace SA46Team12BookShopApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                //if (Session["cart_items"] == null)
-                //{
-                //    List<int> cartItems = (List<int>)Session["cart_items"];    //todo
-                //    cartItems.Add(1);
-                //    cartItems.Add(2);
-                //    cartItems.Add(3);
-                //    cartItems.Add(4);
-                //    cartItems.Add(1);
-                //    Session["cart_items"] = cartItems;
-                //}
-            }
-
             lstBooks = new List<Book>();
 
             List<int> carts = (List<int>)Session["cart_items"];
@@ -78,7 +64,7 @@ namespace SA46Team12BookShopApp
                 ca.BookID = b.BookID;
                 ca.Discount = (decimal)BusinessLogic.GetDiscountPrice(b.BookID);
                 ca.Qty = entry.Value;
-                ca.Amount = (decimal)ca.Price - (ca.Price * (ca.Discount / 100));
+                ca.Amount = ca.Qty * ((decimal)ca.Price - (ca.Price * (ca.Discount / 100)));
                 lstCart.Add(ca);
             }
 
