@@ -41,7 +41,7 @@ namespace SA46Team12BookShopApp
 
         public string ProcessMyDataItem(object myValue)
         {
-  
+
             if (myValue == DBNull.Value)
             {
                 return null;
