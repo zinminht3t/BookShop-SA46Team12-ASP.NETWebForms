@@ -15,10 +15,7 @@ namespace SA46Team12BookShopApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
                 cartItems = new List<int>();
-            }
         }
         
 
@@ -149,7 +146,12 @@ namespace SA46Team12BookShopApp
                     buttonclicked.CssClass = "btn btn-primary buttonClicked";
                     this.itemClicked = int.Parse(e.CommandArgument.ToString());
                     cartItems = (List<int>)Session["cart_items"];    // GET
+                    if(cartItems == null)
+                    {
+                        cartItems = new List<int>();
+                    }
                     cartItems.Add(this.itemClicked);
+                    Master.ChangeCartItemQty(cartItems.Count.ToString());
                     Session["cart_items"] = cartItems;
                 }
                 else
