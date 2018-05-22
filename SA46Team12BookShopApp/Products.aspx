@@ -78,7 +78,7 @@
                         </h5>
                         Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
                     </div>
-                    <div class ="col-md-12" style="margin-top: auto; margin-bottom:auto">                    `
+                    <div class ="col-md-12" style="margin-top: auto; margin-bottom:auto">                    
                      <%--   <h5 class="price price-text-color">
                             &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
                         </h5>--%>
