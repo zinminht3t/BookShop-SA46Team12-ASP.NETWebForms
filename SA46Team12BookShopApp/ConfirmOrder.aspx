@@ -63,7 +63,7 @@
             <asp:Panel ID="HideOrders" runat="server" Visible="False">
                 <p class="NoOrder">There is no order history for you at this moment. Go shop some books!</p>
 
-                <a href="../Products.aspx" class="btn btn-warning"><i class="fa fa-arrow-left"></i>Browse Books</a>
+                <a href="Products.aspx" class="btn btn-warning"><i class="fa fa-arrow-left"></i>Browse Books</a>
             </asp:Panel>
         </div>
     </div>
