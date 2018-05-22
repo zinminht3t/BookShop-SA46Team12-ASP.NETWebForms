@@ -39,15 +39,17 @@ namespace SA46Team12BookShopApp
 
             List<int> carts = (List<int>)Session["cart_items"];
 
+
+            if(carts == null)
+            {
+                Response.Redirect("Products.aspx");
+            }
             foreach (int id in carts)
             {
                 Book b = new Book();
                 b = BusinessLogic.GetBookbyID(id);
                 lstBooks.Add(b);
             }
-            //lblBookID.Text = "(Added Book ID: "+PreviousPage.itemClicked+")";
-            //lstOD = new List<OrderDetail>();
-            //lstBooks = BusinessLogic.GetBooks();
 
             lstCart = new List<CartModel>();
 
