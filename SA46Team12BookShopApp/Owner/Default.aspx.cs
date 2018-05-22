@@ -66,7 +66,6 @@ namespace SA46Team12BookShopApp.Owner
         protected void gbEditBooks_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvEditBooks.EditIndex = e.NewEditIndex;
-            populate(Sqlquery);
         }
 
         protected void gbEditBooks_RowUpdating(object sender, GridViewUpdateEventArgs e)
