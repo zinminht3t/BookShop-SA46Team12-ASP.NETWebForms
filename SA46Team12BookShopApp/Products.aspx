@@ -31,11 +31,10 @@
         </GroupTemplate>
         <ItemTemplate>
             <link rel="stylesheet" type="text/css" href="product-page.css" />
-            <link rel="stylesheet" type="text/css" href="product-page.css" />
                 <div class="post-img-content">
                 <image src="images/<%# Eval("ISBN") %>.jpg" class="img-responsive"></image>
                 <span class="post-title">
-                    <b><asp:Label ID="Label1" runat="server" Text='<%# Eval("Name") %>' /></b>
+                <b><asp:Label ID="lblSalesTag" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' /></b>
                 </span>
             </div>
             <div class="info">
@@ -57,13 +56,13 @@
                      </div>
                     <div class ="col-md-6">
                         <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem" 
-                CommandArgument='<%# Eval("BookID") %>' />
+                 CommandArgument='<%# Eval("BookID") %>' />
                     </div></p>
                     </div>
                 </div>
-             Discount:
+             <%--Discount:
                 <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' />
-                <br />           
+                <br />  --%>         
         </ItemTemplate>
 
         <LayoutTemplate>

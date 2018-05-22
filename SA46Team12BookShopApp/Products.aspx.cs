@@ -105,26 +105,10 @@ namespace SA46Team12BookShopApp
         {
             if (myValue == DBNull.Value)
             {
-                return "No Discount";
+                return null;
             }
 
             return String.Format("{0:0%}", myValue);
-        }
-
-        public void item_click()
-        {
-            //this handles the click event of a list item
-
-        }
-
-        protected void listItem_ItemCommand(object sender,ListViewCommandEventArgs e)
-        {
-            //if(e.CommandName== "passItemToCart")
-            //{
-            //    ListViewItem item = e.Item;
-            //    this.itemClicked = item.DataItemIndex.ToString();
-            //    Server.Transfer("Cart.aspx");
-            //}
         }
 
         public String getItemClicked()
