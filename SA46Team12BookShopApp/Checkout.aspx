@@ -87,7 +87,7 @@
             </div>
             <div class="row">
                 <div class="col-md-2 col-sm-12">
-                    <a href="../Cart.aspx" class="btn btn-warning">
+                    <a href="Cart.aspx" class="btn btn-warning">
                         <i class="fa fa-arrow-left"></i>
                         Edit Orders
                     </a>

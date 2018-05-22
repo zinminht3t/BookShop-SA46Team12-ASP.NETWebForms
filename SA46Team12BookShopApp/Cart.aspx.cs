@@ -25,8 +25,12 @@ namespace SA46Team12BookShopApp
 
             List<int> carts = (List<int>)Session["cart_items"];
 
+            if (carts == null)
+            {
+                carts = new List<int>();
+            }
 
-            if(carts == null)
+            if (carts.Count < 1)
             {
                 Response.Redirect("Products.aspx");
             }
