@@ -13,6 +13,14 @@ namespace SA46Team12BookShopApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Label lbl = (Label)this.FindControl("CartItemQty");
+            List<int> cartItems = (List<int>)Session["cart_items"];
+            if (cartItems == null)
+            {
+                cartItems = new List<int>();
+            }
+            lbl.Text = cartItems.Count.ToString();
+
 
             MembershipUser user = Membership.GetUser();
            // Guid UserID = (Guid)user.ProviderUserKey;
