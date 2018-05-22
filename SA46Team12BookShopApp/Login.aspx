@@ -167,7 +167,7 @@
                                     </tr>
                                     <tr>
                                         <td align="right" colspan="2">
-                                            <asp:Button ID="ContinueButton" class="btn btn-lg btn-primary btn-block" runat="server" CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard1" />
+                                            <asp:Button ID="ContinueButton" class="btn btn-lg btn-primary btn-block" runat="server" CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard1" OnClick="ContinueButton_Click"/>
                                         </td>
                                     </tr>
                                 </table>

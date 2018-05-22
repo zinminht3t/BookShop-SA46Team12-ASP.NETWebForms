@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Shopping Cart" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SA46Team12BookShopApp.Cart" %>
+<%@ MasterType VirtualPath="~/Layout.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
 
@@ -10,7 +11,8 @@
 
             <%--jumboton--%>
             <div class="jumbotronKit">
-                <h3><i class="fas fa-cart-arrow-down"></i>Cart&nbsp;</h3>
+                <h1 class="text-center"><i class="fas fa-cart-arrow-down"></i>&nbsp;Cart</h1>
+                <hr />
             </div>
 
             <div class="row">
