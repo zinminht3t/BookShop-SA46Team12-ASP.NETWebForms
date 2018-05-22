@@ -86,6 +86,7 @@ namespace SA46Team12BookShopApp
 
         }
 
+        #region Checkout/Catalogue buttons
         protected void Checkout(object sender, EventArgs e)
         {
             Response.Redirect("Members/Checkout.aspx");
@@ -95,6 +96,8 @@ namespace SA46Team12BookShopApp
         {
             Response.Redirect("Products.aspx");
         }
+        #endregion
+
         protected void MyButtonClick(object sender, System.EventArgs e)
         {
             //Get the button that raised the event
@@ -113,6 +116,32 @@ namespace SA46Team12BookShopApp
             if(index >= 0)
             {
                 ids.RemoveAt(index);
+            }
+
+
+            Session["cart_items"] = ids;
+            Response.Redirect("cart.aspx");
+
+        }
+
+        protected void MyButtonClick2(object sender, System.EventArgs e)
+        {
+            //Get the button that raised the event
+            LinkButton btn = (LinkButton)sender;
+
+            //Get the row that contains this button
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            CartModel cm = new CartModel();
+            cm = lstCart[gvr.RowIndex];
+
+            List<int> ids = new List<int>();
+
+            ids = (List<int>)Session["cart_items"];
+
+            var index = ids.FindIndex(x => x == cm.BookID);
+            if (index >= 0)
+            {
+                ids.Insert(index, cm.BookID);
             }
 
 
