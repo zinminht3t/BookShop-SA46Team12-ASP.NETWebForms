@@ -6,6 +6,8 @@
 <asp:Label ID="lblCategoryFilter" runat="server" Text="Category:"></asp:Label>
 <asp:DropDownList ID="ddlCategoryFilter" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlFilters_SelectedIndexChanged" AppendDataBoundItems="true">
         <asp:ListItem Value="0">All</asp:ListItem>
+            <asp:ListItem Value="sales">Sales</asp:ListItem>
+
 </asp:DropDownList>
 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString2 %>" SelectCommand="SELECT [Name], [CategoryID] FROM [Category]"></asp:SqlDataSource>
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -87,6 +89,7 @@
         <asp:Controlparameter Name="state_categoryID" ControlID="ddlCategoryFilter" PropertyName="SelectedValue"/>
     </SelectParameters>  
 </asp:SqlDataSource>
+
 <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID ORDER BY Book.Price DESC">
 </asp:SqlDataSource>
 
@@ -94,6 +97,12 @@
 </asp:SqlDataSource>
 
 <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="">
+</asp:SqlDataSource>
+
+<asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Discount.DiscountPercent IS NOT NULL ORDER BY Book.Price DESC">
+</asp:SqlDataSource>
+
+<asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Discount.DiscountPercent IS NOT NULL ORDER BY Book.Price ASC">
 </asp:SqlDataSource>
 
 </asp:Content>
