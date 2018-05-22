@@ -22,16 +22,7 @@ namespace SA46Team12BookShopApp
         {
             if (!this.IsPostBack)
             {
-<<<<<<< HEAD
-                lblBookID.Text = "(Added Book ID: "+PreviousPage.itemClicked+")";
-=======
-                //    //DataTable dt = new DataTable();
-                //    //dt.Columns.AddRange(new DataColumn[6] { new DataColumn("List"), new DataColumn("Title"),
-                //    //                                        new DataColumn("Price"), new DataColumn("Discount"),
-                //    //                                        new DataColumn("Qty"), new DataColumn("Subtotal")});
-                //    //Session["Customers"] = dt;
-                //count = 0;
->>>>>>> 7b4656b7abefd8fe45f629d4be13fe9a84b82af6
+                //lblBookID.Text = "(Added Book ID: "+PreviousPage.itemClicked+")";
                 lstBooks = new List<Book>();
                 lstOD = new List<OrderDetail>();
                 lstBooks = BusinessLogic.GetBooks();
