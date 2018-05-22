@@ -51,9 +51,14 @@ namespace SA46Team12BookShopApp
                     lvProductsList.DataSourceID = "SqlDataSource6";
                     lvProductsList.DataBind();
                 }
-                else
+                else if (ddlCategoryFilter.SelectedValue == "sales")
                 {
-
+                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID where Discount.DiscountPercent IS NOT NULL AND (Book.Title like '%" + txtSearchBooks.Text + "%' OR Book.Author like '%" + txtSearchBooks.Text + "%') ORDER BY Book.Price " + orderString;
+                    lvProductsList.DataSourceID = "SqlDataSource6";
+                    lvProductsList.DataBind();
+                }
+                else //category filter selected is sales
+                {
                     SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID where Book.CategoryID = " + ddlCategoryFilter.SelectedValue.ToString() + " AND Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
                     lvProductsList.DataSourceID = "SqlDataSource6";
                     lvProductsList.DataBind();
@@ -91,6 +96,16 @@ namespace SA46Team12BookShopApp
                 lvProductsList.DataSourceID = "SqlDataSource4"; //Sort ALL products price by Descending
                 lvProductsList.DataBind();
             }
+            else if (ddlPriceSort.SelectedIndex == 0 && ddlCategoryFilter.SelectedValue == "sales")
+            {
+                lvProductsList.DataSourceID = "SqlDataSource8"; //Sort products on SALES, price by Asc
+                lvProductsList.DataBind();
+            }
+            else if (ddlPriceSort.SelectedIndex == 1 && ddlCategoryFilter.SelectedValue == "sales")
+            {
+                lvProductsList.DataSourceID = "SqlDataSource7"; //Sort products on SALES, price by Desc
+                lvProductsList.DataBind();
+            }
             else if (ddlPriceSort.SelectedIndex == 0 && ddlCategoryFilter.SelectedValue != "0")
             {
                 lvProductsList.DataSourceID = "SqlDataSource1"; //Sort products of specified CATEGORY, price by Ascending
@@ -98,9 +113,10 @@ namespace SA46Team12BookShopApp
             }
             else
             {
-                lvProductsList.DataSourceID = "SqlDataSource3"; //Sort products of specified CATEGORY, price by Ascending
+                lvProductsList.DataSourceID = "SqlDataSource3"; //Sort products of specified CATEGORY, price by Desc
                 lvProductsList.DataBind();
             }
+            
 
 
                 txtSearchBooks.Text = "";
