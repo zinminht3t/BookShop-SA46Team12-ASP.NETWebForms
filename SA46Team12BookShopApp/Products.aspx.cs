@@ -9,11 +9,16 @@ namespace SA46Team12BookShopApp
 {
     public partial class Products : System.Web.UI.Page
     {
-        public string itemClicked;
+        private int itemClicked;
+        private List<int> cartItems;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                cartItems = new List<int>();
+            }
         }
         
 
@@ -105,29 +110,13 @@ namespace SA46Team12BookShopApp
         {
             if (myValue == DBNull.Value)
             {
-                return "No Discount";
+                return null;
             }
 
             return String.Format("{0:0%}", myValue);
         }
 
-        public void item_click()
-        {
-            //this handles the click event of a list item
-
-        }
-
-        protected void listItem_ItemCommand(object sender,ListViewCommandEventArgs e)
-        {
-            //if(e.CommandName== "passItemToCart")
-            //{
-            //    ListViewItem item = e.Item;
-            //    this.itemClicked = item.DataItemIndex.ToString();
-            //    Server.Transfer("Cart.aspx");
-            //}
-        }
-
-        public String getItemClicked()
+        public int getItemClicked()
         {
             return this.itemClicked;
         }
@@ -137,11 +126,31 @@ namespace SA46Team12BookShopApp
             if (String.Equals(e.CommandName, "SelectedItem"))
             {
                 ListViewDataItem dataItem = (ListViewDataItem)e.Item;
-                this.itemClicked = e.CommandArgument.ToString();
+                this.itemClicked = int.Parse(e.CommandArgument.ToString());
 
-                Server.Transfer("Cart.aspx");
+                cartItems = (List<int>)ViewState["cart_items"];    // GET
+                cartItems.Add(this.itemClicked);
+                ViewState["cart_items"] = cartItems;
+
+                //check if selected book is already in cart
+                MessageBox.Show(this, "Book has been added to cart.");
             }
         }
 
+
+
+
+    }
+
+    public static class MessageBox
+    {
+        public static void Show(this Page Page, String Message)
+        {
+            Page.ClientScript.RegisterStartupScript(
+               Page.GetType(),
+               "MessageBox",
+               "<script language='javascript'>alert('" + Message + "');</script>"
+            );
+        }
     }
 }

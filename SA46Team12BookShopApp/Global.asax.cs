@@ -12,5 +12,11 @@ namespace SA46Team12BookShopApp
         protected void Application_Start(object sender, EventArgs e)
         {
         }
+
+        void Session_Start(object sender, EventArgs e)
+        {    // start of Session
+            Session["cart_items"] = new List<int>();
+        }
+
     }
 }
