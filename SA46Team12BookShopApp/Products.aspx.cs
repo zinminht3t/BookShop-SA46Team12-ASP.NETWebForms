@@ -149,6 +149,10 @@ namespace SA46Team12BookShopApp
                     buttonclicked.CssClass = "btn btn-primary buttonClicked";
                     this.itemClicked = int.Parse(e.CommandArgument.ToString());
                     cartItems = (List<int>)Session["cart_items"];    // GET
+                    if(cartItems == null)
+                    {
+                        cartItems = new List<int>();
+                    }
                     cartItems.Add(this.itemClicked);
                     Session["cart_items"] = cartItems;
                 }
