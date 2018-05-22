@@ -124,17 +124,15 @@ namespace SA46Team12BookShopApp.Owner
                             sqlcom.Parameters.AddWithValue("discD", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscDesc") as TextBox).Text);
                             sqlcom.Parameters.AddWithValue("disc", (gvEditBooks.Rows[e.RowIndex].FindControl("tbDiscP") as TextBox).Text.Trim());
                         }
-                    }   
+                    }
                     sqlcom.ExecuteNonQuery();
                     gvEditBooks.EditIndex = -1;
                     populate(ViewState["SqlQuery"].ToString());
                     lblSuccess.Visible = true;
                 }
-        }
+            }
             catch (Exception ex)
             {
-                lblError.Visible = true;
-                lblError.Text = ex.Message;
             }
         }
 
@@ -155,15 +153,15 @@ namespace SA46Team12BookShopApp.Owner
         {
             if (ddlCategoryFilter.SelectedItem.Text == "All")
             {
-                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%" 
-                    + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" 
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%"
+                    + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%"
                     + tbSearch.Text + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%'";
             }
             else
             {
-                Sqlwhere = Sqlquery + "WHERE (Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%" 
-                    + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" 
-                    + tbSearch.Text + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%') AND Category.Name='" 
+                Sqlwhere = Sqlquery + "WHERE (Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%"
+                    + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%"
+                    + tbSearch.Text + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%') AND Category.Name='"
                     + ddlCategoryFilter.SelectedItem.Text + "'";
             }
             gvEditBooks.PageIndex = 0;
@@ -182,22 +180,22 @@ namespace SA46Team12BookShopApp.Owner
 
         protected void ddlCategoryFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(tbSearch.Text.Trim() == null)
+            if (tbSearch.Text.Trim() == null)
             {
                 Sqlwhere = Sqlquery + "WHERE Category.Name = '" + ddlCategoryFilter.SelectedItem.Text + "'";
             }
             else
-                if(ddlCategoryFilter.SelectedItem.Text == "All")
+                if (ddlCategoryFilter.SelectedItem.Text == "All")
             {
-                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%" 
-                    + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" + tbSearch.Text 
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%"
+                    + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" + tbSearch.Text
                     + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%'";
             }
             else
             {
-                Sqlwhere = Sqlquery + "WHERE (Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%" 
-                    + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" + tbSearch.Text 
-                    + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%') AND Category.Name='" 
+                Sqlwhere = Sqlquery + "WHERE (Book.Title LIKE '%" + tbSearch.Text + "%' OR Book.Author LIKE '%"
+                    + tbSearch.Text + "%' OR Book.BookID LIKE '%" + tbSearch.Text + "%' OR Book.ISBN LIKE '%" + tbSearch.Text
+                    + "%' OR Discount.DiscountDesc LIKE '%" + tbSearch.Text + "%') AND Category.Name='"
                     + ddlCategoryFilter.SelectedItem.Text + "'";
             }
             gvEditBooks.PageIndex = 0;
