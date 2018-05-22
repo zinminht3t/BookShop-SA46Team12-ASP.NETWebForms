@@ -79,7 +79,7 @@ namespace SA46Team12BookShopApp
         #region Checkout/Catalogue buttons
         protected void Checkout(object sender, EventArgs e)
         {
-            Response.Redirect("Members/Checkout.aspx");
+            Response.Redirect("Checkout.aspx");
         }
 
         protected void Products(object sender, EventArgs e)
@@ -110,6 +110,7 @@ namespace SA46Team12BookShopApp
 
 
             Session["cart_items"] = ids;
+            Master.ChangeCartItemQty(ids.Count.ToString());
             Response.Redirect("cart.aspx");
 
         }
@@ -136,6 +137,7 @@ namespace SA46Team12BookShopApp
 
 
             Session["cart_items"] = ids;
+            Master.ChangeCartItemQty(ids.Count.ToString());
             Response.Redirect("cart.aspx");
 
         }
