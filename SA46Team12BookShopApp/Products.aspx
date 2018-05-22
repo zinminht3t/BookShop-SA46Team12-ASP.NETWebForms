@@ -49,21 +49,17 @@
                         Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
                         </div>
                     <p>
-                    <div class ="col-md-6">
-                        
+                    <div class ="col-md-6">                    `
                        <h5 class="price-text-color">
                             &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
                        </h5>
                      </div>
-                    <div class ="col-md-6">
+                    <div class ="col-md-6 button">
                         <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem" 
                  CommandArgument='<%# Eval("BookID") %>' />
                     </div></p>
                     </div>
-                </div>
-             <%--Discount:
-                <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' />
-                <br />  --%>         
+                </div>   
         </ItemTemplate>
 
         <LayoutTemplate>
