@@ -15,16 +15,42 @@ namespace SA46Team12BookShopApp.Owner
         private string sqlquery;
         private static DataTable dtbl;
         private static string sqlwhere;
-        int i = 0;
 
-        public string getSqlquery()
+        private static string Sqlwhere
         {
-            sqlquery = "SELECT Book.BookID, Book.Title, Category.Name, Book.Author, " +
+            get
+            {
+                return sqlwhere;
+            }
+            set
+            {
+                sqlwhere = value;
+            }
+        }
+
+        private static DataTable Dtbl
+        {
+            get
+            {
+                return dtbl;
+            }
+            set
+            {
+                dtbl = value;
+            }
+        }
+
+        public string Sqlquery
+        {
+            get
+            {
+                sqlquery = "SELECT Book.BookID, Book.Title, Category.Name, Book.Author, " +
                 "Book.ISBN, Book.Stock, Book.Price, ISNULL(Discount.DiscountPercent, '0') AS DiscountPercent, " +
                 "CAST(ROUND(Book.Price*((100-ISNULL(Discount.DiscountPercent, 0))/100), 2) AS numeric(10,2)) AS TOTAL " +
                 "FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID " +
                 "LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID ";
-            return sqlquery;
+                return sqlquery;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,14 +58,14 @@ namespace SA46Team12BookShopApp.Owner
             connection = @"Data Source=localhost; Initial Catalog=Bookshop; Integrated Security=SSPI;";
             if (!IsPostBack)
             {
-                populate(getSqlquery());
+                populate(Sqlquery);
             }
         }
 
         protected void gbEditBooks_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvEditBooks.EditIndex = e.NewEditIndex;
-            populate(getSqlquery());
+            populate(Sqlquery);
         }
 
         protected void gbEditBooks_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -79,7 +105,7 @@ namespace SA46Team12BookShopApp.Owner
                     }
                     sqlcom.ExecuteNonQuery();
                     gvEditBooks.EditIndex = -1;
-                    populate(getSqlquery());
+                    populate(Sqlquery);
                     lblSuccess.Visible = true;
                 }
             }
@@ -93,25 +119,26 @@ namespace SA46Team12BookShopApp.Owner
         protected void gbEditBooks_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvEditBooks.PageIndex = e.NewPageIndex;
-            gvEditBooks.DataSource = dtbl;
+            gvEditBooks.DataSource = Dtbl;
             gvEditBooks.DataBind();
         }
         protected void gbEditBooks_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvEditBooks.EditIndex = -1;
+            populate(Sqlquery);
         }
 
         protected void populate(string query)
         {
-            dtbl = new DataTable();
+            Dtbl = new DataTable();
             using (SqlConnection sqlcon = new SqlConnection(connection))
             {
                 sqlcon.Open();
                 SqlDataAdapter sqlda = new SqlDataAdapter(query, sqlcon);
-                sqlda.Fill(dtbl);
+                sqlda.Fill(Dtbl);
                 sqlcon.Close();
             }
-                gvEditBooks.DataSource = dtbl;
+                gvEditBooks.DataSource = Dtbl;
                 gvEditBooks.DataBind();
         }
 
@@ -119,36 +146,36 @@ namespace SA46Team12BookShopApp.Owner
         {
             if (ddlCategoryFilter.SelectedItem.Text == "All")
             {
-                sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
             }
             else
             {
-                sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
             }
-            populate(sqlwhere);
+            populate(Sqlwhere);
         }
 
         protected void btnViewAll_Click(object sender, EventArgs e)
         {
-            populate(getSqlquery());
+            populate(Sqlquery);
         }
 
         protected void ddlCategoryFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(tbSearch.Text.Trim() == null)
             {
-                sqlwhere = getSqlquery() + "WHERE Category.Name = '" + ddlCategoryFilter.SelectedItem.Text + "'";
+                Sqlwhere = Sqlquery + "WHERE Category.Name = '" + ddlCategoryFilter.SelectedItem.Text + "'";
             }
             else
                 if(ddlCategoryFilter.SelectedItem.Text == "All")
             {
-                sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%'";
             }
             else
             {
-                sqlwhere = getSqlquery() + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
+                Sqlwhere = Sqlquery + "WHERE Book.Title LIKE '%" + tbSearch.Text + "%' and Category.Name='" + ddlCategoryFilter.SelectedItem.Text + "'";
             }
-            populate(sqlwhere);
+            populate(Sqlwhere);
         }
     }
 }
