@@ -132,6 +132,7 @@ namespace SA46Team12BookShopApp.Owner
         protected void gbEditBooks_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvEditBooks.PageIndex = e.NewPageIndex;
+            gvEditBooks.EditIndex = -1;
             gvEditBooks.DataSource = Dtbl;
             gvEditBooks.DataBind();
         }
