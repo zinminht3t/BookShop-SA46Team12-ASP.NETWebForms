@@ -9,9 +9,16 @@ namespace SA46Team12BookShopApp
 {
     public partial class Products : System.Web.UI.Page
     {
+        private int itemClicked;
+        private List<int> cartItems;
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                cartItems = new List<int>();
+            }
         }
         
 
@@ -37,9 +44,21 @@ namespace SA46Team12BookShopApp
             {
                 string orderString = GetOrderString();
 
-                SqlDataSource4.SelectCommand = "SELECT Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID where Book.CategoryID = " + ddlCategoryFilter.SelectedValue.ToString() + " AND Book.Title like '" + txtSearchBooks.Text + "%' or Book.Author like '" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
-                lvProductsList.DataSourceID = "SqlDataSource4";
-                lvProductsList.DataBind();
+                if (ddlCategoryFilter.SelectedValue == "0")
+                {
+
+                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID where Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
+                    lvProductsList.DataSourceID = "SqlDataSource6";
+                    lvProductsList.DataBind();
+                }
+                else
+                {
+
+                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID where Book.CategoryID = " + ddlCategoryFilter.SelectedValue.ToString() + " AND Book.Title like '%" + txtSearchBooks.Text + "%' or Book.Author like '%" + txtSearchBooks.Text + "%' ORDER BY Book.Price " + orderString;
+                    lvProductsList.DataSourceID = "SqlDataSource6";
+                    lvProductsList.DataBind();
+                }
+
             }
            
         }
@@ -62,18 +81,76 @@ namespace SA46Team12BookShopApp
 
         protected void ddlFilters_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlPriceSort.SelectedIndex == 1)
+            if (ddlPriceSort.SelectedIndex == 0 && ddlCategoryFilter.SelectedValue=="0")
             {
-                lvProductsList.DataSourceID = "SqlDataSource3"; //Sort products price by Descending
+                lvProductsList.DataSourceID = "SqlDataSource5"; //Sort ALL products price by Ascending
+                lvProductsList.DataBind();
+            }
+            else if (ddlPriceSort.SelectedIndex == 1 && ddlCategoryFilter.SelectedValue == "0")
+            {
+                lvProductsList.DataSourceID = "SqlDataSource4"; //Sort ALL products price by Descending
+                lvProductsList.DataBind();
+            }
+            else if (ddlPriceSort.SelectedIndex == 0 && ddlCategoryFilter.SelectedValue != "0")
+            {
+                lvProductsList.DataSourceID = "SqlDataSource1"; //Sort products of specified CATEGORY, price by Ascending
                 lvProductsList.DataBind();
             }
             else
             {
-                lvProductsList.DataSourceID = "SqlDataSource1"; //Sort products price by Ascending
+                lvProductsList.DataSourceID = "SqlDataSource3"; //Sort products of specified CATEGORY, price by Ascending
                 lvProductsList.DataBind();
             }
 
-            txtSearchBooks.Text = "";
+
+                txtSearchBooks.Text = "";
+        }
+
+        public string ProcessMyDataItem(object myValue)
+        {
+            if (myValue == DBNull.Value)
+            {
+                return null;
+            }
+
+            return String.Format("{0:0%}", myValue);
+        }
+
+        public int getItemClicked()
+        {
+            return this.itemClicked;
+        }
+
+        protected void ProductsListView_OnItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (String.Equals(e.CommandName, "SelectedItem"))
+            {
+                ListViewDataItem dataItem = (ListViewDataItem)e.Item;
+                this.itemClicked = int.Parse(e.CommandArgument.ToString());
+
+                cartItems = (List<int>)Session["cart_items"];    // GET
+                cartItems.Add(this.itemClicked);
+                Session["cart_items"] = cartItems;
+
+                //check if selected book is already in cart
+                MessageBox.Show(this, "Book has been added to cart.");
+            }
+        }
+
+
+
+
+    }
+
+    public static class MessageBox
+    {
+        public static void Show(this Page Page, String Message)
+        {
+            Page.ClientScript.RegisterStartupScript(
+               Page.GetType(),
+               "MessageBox",
+               "<script language='javascript'>alert('" + Message + "');</script>"
+            );
         }
     }
 }

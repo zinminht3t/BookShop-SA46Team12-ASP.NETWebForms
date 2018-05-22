@@ -18,5 +18,10 @@ namespace SA46Team12BookShopApp
         public decimal Total { get; set; }
 
         public int UserID { get; set; }
+        public int PostalCode { get; set; }
+        public string Email { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+
     }
 }
