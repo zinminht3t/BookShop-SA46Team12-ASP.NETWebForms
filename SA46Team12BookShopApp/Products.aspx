@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="SA46Team12BookShopApp.Products" %>
+<%@ MasterType VirtualPath="~/Layout.Master" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">   
@@ -26,7 +28,7 @@
 <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupPlaceholderID="groupPlaceHolder1"
     ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand">
          <GroupTemplate>
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3">
                 <div class="col-item">  
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
                 </div>
@@ -46,26 +48,19 @@
                         <h5>
                             <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
                         </h5>
-                       </div>
-                        <div class="price col-md-12" >
                         Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
-                        </div>
-                    <p>
-                    <div class ="col-md-6">
-                        
-                       <h5 class="price-text-color">
-                            &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
-                       </h5>
-                     </div>
-                    <div class ="col-md-6">
-                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem" 
-                 CommandArgument='<%# Eval("BookID") %>' />
-                    </div></p>
                     </div>
-                </div>
-             <%--Discount:
-                <asp:Label ID="DiscountPercentLabel" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' />
-                <br />  --%>         
+                    <div class ="col-md-12" style="margin-top: auto; margin-bottom:auto">                    `
+                        <h5 class="price price-text-color">
+                            &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
+                        </h5>
+                    </div>
+                    <div class ="col-md-12">
+                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem"
+                             CommandArgument='<%# Eval("BookID") %>' />
+                    </div>
+                  </div>
+             </div>  
         </ItemTemplate>
 
         <LayoutTemplate>

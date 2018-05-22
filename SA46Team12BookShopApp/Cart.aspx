@@ -30,7 +30,7 @@
                                 <asp:Label ID="lblList" runat="server" Text="0" />
                             </ItemTemplate>
                             <ItemStyle Width="120px" HorizontalAlign="Center" />
-                        </asp:TemplateField>--%>    <%--list column (to delete)--%>
+                            </asp:TemplateField>--%>    <%--list column (to delete)--%>
 
                             <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" ItemStyle-Width="120">
                                 <ItemStyle Width="120px" HorizontalAlign="Center" />
@@ -49,12 +49,12 @@
 
                             <asp:TemplateField HeaderText="Qty">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton1" runat="server"
-                                        CssClass="btn btn-info" OnClick="MyButtonClick">
-<i class="fa fa-minus-square"></i></asp:LinkButton>
-                                    <%--<button class="btn btn-info" runat="server" onserverclick="MyButtonClick"><i class="fas fa-minus-square"></i></button>--%>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-info" OnClick="MyButtonClick">
+                                    <i class="fa fa-minus-square"></i></asp:LinkButton>                                   
                                     <asp:Label ID="lblQty" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
-                                    <button class="btn btn-info"><i class="fas fa-plus-square"></i></button>
+                                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-info" OnClick="MyButtonClick2">
+                                    <i class="fa fa-plus-square"></i></asp:LinkButton>   
+                                    <%--<button class="btn btn-info"><i class="fas fa-plus-square"></i></button>--%>
                                 </ItemTemplate>
                                 <ItemStyle Width="120px" HorizontalAlign="Center" />
                             </asp:TemplateField>

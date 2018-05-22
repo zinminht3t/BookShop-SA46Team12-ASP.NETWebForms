@@ -14,10 +14,8 @@ namespace SA46Team12BookShopApp
 
         [Column(TypeName = "date")]
         public DateTime OrderDate { get; set; }
-
         public decimal Total { get; set; }
-
-        public int UserID { get; set; }
+        public string UserID { get; set; }
         public int PostalCode { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }

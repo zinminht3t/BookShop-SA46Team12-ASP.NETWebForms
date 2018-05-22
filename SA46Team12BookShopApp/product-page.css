@@ -4,6 +4,7 @@
     border: 1px solid #E1E1E1;
     border-radius: 10px;
     background: #FFF;
+    min-height: 400px;
 }
 
     .col-item:hover {
@@ -42,7 +43,6 @@
 
         .col-item .price h5 {
             line-height: 20px;
-            margin: 0;
         }
 
 .price-text-color {
@@ -156,4 +156,14 @@ Hover the image
     font-size: 17px;
     color: #FFF;
     font-weight: bold;
+}
+.btn.btn-primary{
+    width: 100%;
+    height:auto;
+}
+
+.buttonClicked {
+    background-color: red;
+    width: 100%;
+    height: auto;
 }
