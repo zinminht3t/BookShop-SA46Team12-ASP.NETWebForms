@@ -59,7 +59,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-3 col-sm-12">
-                            <asp:Button ID="btnBack" CssClass="btn-primary" runat="server" OnClick="btnBack_Click" CausesValidation="False" Text="&lt; Back To Search" TabIndex="4" EnableClientScript="false" />
+                            <asp:Button ID="btnBack" CssClass="btn btn-primary" runat="server" OnClick="btnBack_Click" CausesValidation="False" Text="Back To Search" TabIndex="4" EnableClientScript="false" />
                         </div>
                         <div class="auto-style1">
                         </div>
