@@ -79,9 +79,9 @@ namespace SA46Team12BookShopApp
                 if (ddlCategoryFilter.SelectedValue == "0")
                 {
 
-                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 ORDER BY Book.Price " + orderString;
-                    lvProductsList.DataSourceID = "SqlDataSource6";
-                    lvProductsList.DataBind();
+                    //SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 ORDER BY Book.Price " + orderString;
+                    //lvProductsList.DataSourceID = "SqlDataSource6";
+                    //lvProductsList.DataBind();
                 }
                 else if (ddlCategoryFilter.SelectedValue == "sales")
                 {
