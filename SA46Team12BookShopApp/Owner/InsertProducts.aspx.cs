@@ -97,7 +97,7 @@ namespace SA46Team12BookShopApp.Owner
                     FileUpload Image1 = (FileUpload)gvInsertBooks.Rows[0].FindControl("fuBookImg");
                     if (Image1.HasFile)
                     {
-                        Image1.SaveAs(Server.MapPath("../images/") + Image1.FileName + ".jpg");
+                        Image1.SaveAs(Server.MapPath("../images/") + Image1.FileName);
                     }
                     gvInsertBooks.EditIndex = -1;
                     populate();

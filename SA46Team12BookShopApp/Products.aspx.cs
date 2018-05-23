@@ -22,7 +22,7 @@ namespace SA46Team12BookShopApp
             if (!IsPostBack)
             {
                 lvProductsList.DataBind();
-                lbl.Text = "Displaying " + lvProductsList.Items.Count.ToString() + " Products";
+                lbl.Text = "Showing " + lvProductsList.Items.Count.ToString() + " Products";
             }
 
            
