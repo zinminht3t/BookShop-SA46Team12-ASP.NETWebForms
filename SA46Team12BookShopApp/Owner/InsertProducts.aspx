@@ -59,7 +59,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-3 col-sm-12">
-                            <asp:Button ID="btnBack" CssClass="btn btn-primary" runat="server" OnClick="btnBack_Click" CausesValidation="False" Text="Back To Search" TabIndex="4" EnableClientScript="false" />
+                            <asp:Button ID="btnBack" CssClass="btn btn-warning" runat="server" OnClick="btnBack_Click" CausesValidation="False" Text="Back To Search" TabIndex="4" EnableClientScript="false" />
                         </div>
                         <div class="auto-style1">
                         </div>
@@ -85,16 +85,13 @@
                                         <asp:Label ID="lblBookID" runat="server" Text=""></asp:Label>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Image">
+                                <asp:TemplateField HeaderText="Image" ControlStyle-Width="150">
                                     <ItemTemplate>
 
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:FileUpload ID="fuBookImg" runat="server" />
-                                        <br />
-                                        <br />
-                                        <br />  
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fuBookImg" ErrorMessage="File Not Uploaded!"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator1" runat="server" ControlToValidate="fuBookImg" ErrorMessage="File Not Uploaded!"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>
@@ -102,18 +99,16 @@
                                         
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Title" ItemStyle-Width="100">
+                                <asp:TemplateField HeaderText="Title" ItemStyle-Width="200">
                                     <ItemTemplate>
                                         
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbTitle" CssClass="formcon" TabIndex="7" runat="server" />
-                                        <br />
-                                        <br />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="tbTitle" runat="server" ErrorMessage="Title must not be empty"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator2" ControlToValidate="tbTitle" runat="server" ErrorMessage="Title must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Genre">
+                                <asp:TemplateField HeaderText="Genre" ControlStyle-Width="130">
                                     <ItemTemplate>
                                         
                                     </ItemTemplate>
@@ -122,79 +117,72 @@
                                         </asp:DropDownList>                                        
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Author">
+                                <asp:TemplateField HeaderText="Author" ControlStyle-Width="80">
                                     <ItemTemplate>
                                         
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbAuthor" CssClass="formcon" TabIndex="7" runat="server" />
-                                        <br />
-                                        <br />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="tbAuthor" runat="server" ErrorMessage="Author must not be empty"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator3" ControlToValidate="tbAuthor" runat="server" ErrorMessage="Author must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ISBN">
+                                <asp:TemplateField HeaderText="ISBN" ControlStyle-Width="80">
                                     <ItemTemplate>
                                         
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbISBN" CssClass="formcon" TabIndex="7" runat="server" type="number" />
-                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="^[0-9]{13}$" ControlToValidate="tbISBN" ErrorMessage="Incorrect format. ISBN is 13 numeric digits"></asp:RegularExpressionValidator>
-                                        <br />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="tbISBN" runat="server" ErrorMessage="ISBN must not be empty"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator4" ControlToValidate="tbISBN" runat="server" ErrorMessage="ISBN must not be empty"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator CssClass="text-danger" runat="server" ValidationExpression="^[0-9]{13}$" ControlToValidate="tbISBN" ErrorMessage="Incorrect format. ISBN is 13 numeric digits"></asp:RegularExpressionValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Qty">
+                                <asp:TemplateField HeaderText="Qty" ControlStyle-Width="50">
                                     <ItemTemplate>
-                                        <asp:Button ID="btnInsert" CssClass="btn btn-outline-warning btn-sm btnedit" Text="Create New Product ID" runat="server" CommandName="Edit" ToolTip="Insert" Width="200px" Height="30px"/>
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbQty" TabIndex="5" CssClass="formcon" runat="server" />
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="tbQty" runat="server" ErrorMessage="Qty should not consist of decimal, alphabets or less than 0" ValidationExpression="^[0-9]{0,}$"></asp:RegularExpressionValidator>
-                                        <br />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="tbQty" runat="server" ErrorMessage="Quantity must not be empty"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator5" ControlToValidate="tbQty" runat="server" ErrorMessage="Quantity must not be empty"></asp:RequiredFieldValidator>
+                                       
+                                        <asp:RegularExpressionValidator CssClass="text-danger" ID="RegularExpressionValidator1" ControlToValidate="tbQty" runat="server" ErrorMessage="Qty should not consist of decimal, alphabets or less than 0" ValidationExpression="^[0-9]{0,}$"></asp:RegularExpressionValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Unit Price">
+                                <asp:TemplateField HeaderText="Unit Price" ControlStyle-Width="50">
                                     <ItemTemplate>
                                         
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbPrice" CssClass="formcon" TabIndex="6" runat="server" />
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="tbPrice" runat="server" ErrorMessage="Price should not consist of more than 2dp, alphabets or less than 0 " ValidationExpression="^\d+(\.\d\d)?$"></asp:RegularExpressionValidator>
-                                        <br />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="tbPrice" runat="server" ErrorMessage="Price must not be empty"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator6" ControlToValidate="tbPrice" runat="server" ErrorMessage="Price must not be empty"></asp:RequiredFieldValidator>
+                                       
+                                        <asp:RegularExpressionValidator CssClass="text-danger" ID="RegularExpressionValidator2" ControlToValidate="tbPrice" runat="server" ErrorMessage="Price should not consist of more than 2dp, alphabets or less than 0 " ValidationExpression="^\d+(\.\d\d)?$"></asp:RegularExpressionValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Discount(%)">
+                                <asp:TemplateField HeaderText="Discount(%)" ControlStyle-Width="50">
                                     <ItemTemplate>
                                         
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbDiscP" CssClass="formcon" TabIndex="7" runat="server" />
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount should not consist of more than 2dp, alphabets & must be between 0-100%" ValidationExpression="^0*(100\.00|[0-9]?[0-9]\.[0-9]{2})$"></asp:RegularExpressionValidator>
-                                        <br />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount must not be empty"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator7" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount must not be empty"></asp:RequiredFieldValidator>
+                                   
+                                        <asp:RegularExpressionValidator CssClass="text-danger" ID="RegularExpressionValidator3" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount should not consist of more than 2dp, alphabets & must be between 0-100%" ValidationExpression="^0*(100\.00|[0-9]?[0-9]\.[0-9]{2})$"></asp:RegularExpressionValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Discount Desc">
+                                <asp:TemplateField HeaderText="Discount Desc" ControlStyle-Width="100">
                                     <ItemTemplate>
                                         
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbDiscDesc" CssClass="formcon" TabIndex="7" runat="server" />
-                                        <br />
-                                        <br />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="tbDiscDesc" runat="server" ErrorMessage="Description must not be empty "></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator8" ControlToValidate="tbDiscDesc" runat="server" ErrorMessage="Description must not be empty "></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        
+                                        <asp:Button ID="btnInsert" CssClass="btn btn-outline-warning btn-sm btnedit" Text="Create New Product ID" runat="server" CommandName="Edit" ToolTip="Insert" Width="200px" Height="30px"/>
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:Button ID="btnUpdate" CssClass="btn btn-outline-info btn-sm btnSave" Text="Save" runat="server" CommandName="Update" Width="60px" Height="30px" />
-                                        <br />
                                         <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel" Width="60px" Height="30px" CausesValidation="False" EnableClientScript="false" />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
