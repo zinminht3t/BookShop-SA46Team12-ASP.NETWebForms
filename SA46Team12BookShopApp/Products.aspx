@@ -46,10 +46,14 @@
                 <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3 search">
                         <asp:Button ID="btnSearchBooks" runat="server" class="btn btn-primary searchbtn" OnClick="btnSearchBooks_Click" Text="Search" />
                 </div>
-        </div>    
-        <div>
+        </div>           
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-sm-12 col-md-12" align="center">
               <asp:Label ID="lblQtyDisplayed" runat="server" Text="0" AutoPostBack="true"></asp:Label>
         </div>
+    </div>
 </div>
 
 
@@ -108,10 +112,8 @@
                  </div>
              </div>
              <div class="container-fluid" id="Div1" runat="server" >
-                <div class="row" id="Div2" runat="server">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <div style="align-content:center">
+                <div class="row" runat="server">
+                    <div class="col-md-12" align="center">
                             <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvProductsList" PageSize="8" class="btn-group pager-buttons">
                             <Fields>
                                 <asp:NextPreviousPagerField ShowLastPageButton="False" ShowNextPageButton="False" ButtonType="Button" ButtonCssClass="btn" RenderNonBreakingSpacesBetweenControls="false" />
@@ -119,9 +121,7 @@
                                 <asp:NextPreviousPagerField ShowFirstPageButton="False" ShowPreviousPageButton="False" ButtonType="Button" ButtonCssClass="btn" RenderNonBreakingSpacesBetweenControls="false" />
                              </Fields>
                             </asp:DataPager>
-                        </div>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
              </div>
         </LayoutTemplate>
