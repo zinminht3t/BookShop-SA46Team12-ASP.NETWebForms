@@ -22,7 +22,7 @@
                         <th class="hidden-xs">Order ID</th>
                         <th>Order Date</th>
                         <th>Book Title</th>
-                        <th>Discounted Unit Price</th>
+                        <th>Net Unit Price</th>
                         <th>Quantity</th>
                     </tr>
 
