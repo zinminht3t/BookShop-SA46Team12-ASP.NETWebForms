@@ -136,6 +136,7 @@
     <Content Include="Products.aspx" />
     <Content Include="Style\css\cssOwner.css" />
     <Content Include="Style\css\Style.css" />
+    <Content Include="Style\images\about.jpg" />
     <Content Include="Style\images\bornACrimeCover.png" />
     <Content Include="Style\images\everybodyLiesCover.png" />
     <Content Include="Style\images\getbooksv3.png" />
