@@ -10,10 +10,12 @@
 	<div class="row">
     	<div class="col-md-6 col-sm-6 col-xs-12">
     		<h1 class="text-uppercase">About us</h1>
-    		<h2 style="font-family:black; font-style:italic;">Et crescere sapiens librorum in consummatione... 
+            <blockquote class="blockquote">
+    		<p style="font-family:black; font-style:italic;">Et crescere sapiens librorum in consummatione... 
                 <br />
                 ~J.B.Token
-    		</h2>
+    		</p>
+                </blockquote>
             <br />
             <p>
                 It is said that the pinnacle of human achievement was the creation of the Alexandra Library. It's loss meant
@@ -34,7 +36,7 @@
             </p>
     	</div>
     	<div class="col-md-6 col-sm-6 col-xs-12">
-    	    <img src="http://appwk.baidu.com/naapi/doc/view?ih=586&o=png_6_1_0_269_285_402_527_893.25_1263.375&iw=440&ix=0&iy=7&aimw=440&rn=1&doc_id=2a85e8d2a58da0116c1749b7&pn=1&sign=c0835ff7c905c14aba3e30ac7d83fc27&type=1&app_ver=2.9.8.2&ua=bd_800_800_IncredibleS_2.9.8.2_2.3.7&bid=1&app_ua=IncredibleS&uid=&cuid=&fr=3&Bdi_bear=WIFI&from=3_10000&bduss=&pid=1&screen=800_800&sys_ver=2.3.7" alt="" class="img-responsive">
+    	    <img src="Style/images/about.jpg" alt="" class="img img-thumbnail round">
     	</div>
 	</div>
 </div>

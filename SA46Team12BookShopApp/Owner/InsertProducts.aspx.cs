@@ -124,7 +124,7 @@ namespace SA46Team12BookShopApp.Owner
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Owner/Default.aspx");
+            Response.Redirect("Default.aspx");
         }
 
         protected void populate()

@@ -119,7 +119,7 @@
                     </p>
 
                     <div class ="col-md-12">
-                        <asp:Button ID="Button1" class="btn btn-lg btn-primary btn-block" runat="server" Text="Add to Cart" CommandName="SelectedItem"
+                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem"
                              CommandArgument='<%# Eval("BookID") %>' />
                     </div>
                 </div>
@@ -138,6 +138,6 @@
 
     </asp:ListView>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString3 %>" SelectCommand="SELECT * FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID WHERE Discount.DiscountID IS NOT NULL"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString3 %>" SelectCommand="SELECT * FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID WHERE Discount.DiscountID IS NOT NULL and book.Stock &gt; 0"></asp:SqlDataSource>
 
 </asp:Content>
