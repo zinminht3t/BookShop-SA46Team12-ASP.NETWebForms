@@ -172,7 +172,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="tbDiscP" CssClass="formcon" TabIndex="7" runat="server" />
-                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount should not consist of more than 2dp, alphabets & must be between 0-100%" ValidationExpression="^0*(100\.00|[0-9]?[0-9]\.[0-9]{2})$"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount should not consist of more than 2dp, alphabets & must be between 0-100%" ValidationExpression="^(?:100(?:.0(?:0)?)?|\d{1,2}(?:.\d{1,2})?)$"></asp:RegularExpressionValidator>
                                         <br />
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
