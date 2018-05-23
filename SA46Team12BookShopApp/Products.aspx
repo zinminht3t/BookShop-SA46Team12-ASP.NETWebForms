@@ -56,13 +56,13 @@
                 </div>
         </div>           
 </div>
-<div class="container-fluid">
+<%--<div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-sm-12 col-md-12" align="center">
               <asp:Label ID="lblQtyDisplayed" runat="server" Text="0" AutoPostBack="true"></asp:Label>
         </div>
     </div>
-</div>
+</div>--%>
 
 
 <asp:Literal ID="PopupBox" runat="server"></asp:Literal>
@@ -165,9 +165,9 @@
 <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="">
 </asp:SqlDataSource>
 
-<asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 AND Discount.DiscountPercent IS NOT NULL ORDER BY Book.Price DESC">
+<asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 AND Discount.DiscountPercent IS NOT NULL AND Discount.DiscountPercent<>0.00 ORDER BY Book.Price DESC">
 </asp:SqlDataSource>
 
-<asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 AND Discount.DiscountPercent IS NOT NULL ORDER BY Book.Price ASC">
+<asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString %>" SelectCommand="SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 AND Discount.DiscountPercent IS NOT NULL AND Discount.DiscountPercent<>0.00 ORDER BY Book.Price ASC">
 </asp:SqlDataSource>
 </asp:Content>
