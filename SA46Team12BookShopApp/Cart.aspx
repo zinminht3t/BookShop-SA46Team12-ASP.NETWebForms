@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Shopping Cart" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="SA46Team12BookShopApp.Cart" %>
+
 <%@ MasterType VirtualPath="~/Layout.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
@@ -13,6 +14,17 @@
             <div class="jumbotronKit">
                 <h1 class="text-center"><i class="fa fa-cart-arrow-down"></i>&nbsp;Cart</h1>
                 <hr />
+            </div>
+
+            <div class="row">
+                <asp:Panel ID="pnError" runat="server" Width="100%">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> Your quantity ordered for this book exceeds our stock balance!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </asp:Panel>
             </div>
 
             <div class="row">
@@ -47,11 +59,12 @@
                             <asp:TemplateField HeaderText="Qty">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-info" OnClick="MyButtonClick">
-                                    <i class="fa fa-minus-square"></i></asp:LinkButton>   &nbsp;  &nbsp;                              
+                                    <i class="fa fa-minus-square"></i></asp:LinkButton>
+                                    &nbsp;  &nbsp;                              
                                     <asp:Label ID="lblQty" CssClass="text-dark" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
                                     &nbsp;&nbsp;
                                     <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-info" OnClick="MyButtonClick2">
-                                    <i class="fa fa-plus-square"></i></asp:LinkButton>   
+                                    <i class="fa fa-plus-square"></i></asp:LinkButton>
                                     <%--<button class="btn btn-info"><i class="fas fa-plus-square"></i></button>--%>
                                 </ItemTemplate>
                                 <ItemStyle Width="120px" HorizontalAlign="Center" />
@@ -76,8 +89,17 @@
                     <br />
                     <%--buttons--%>
                     <div class="container">
-                        <asp:Button ID="btnCheckout" runat="server" Text="Checkout" OnClick="Checkout" CssClass="btn btn-primary" Style="float: right;" />
-                        <asp:Button ID="btnContinueShopping" runat="server" Text="Continue Shopping" OnClick="Products" CssClass="btn btn-warning" Style="float: left;" />
+                        <div class="row">
+                            <div class="col-md-2 col-sm-12">
+                                <asp:Button ID="btnContinueShopping" runat="server" Text="Continue Shopping" OnClick="Products" CssClass="btn btn-warning float-right" />
+
+                            </div>
+                            <div class="col-md-8"></div>
+                            <div class="col-md-2 col-sm-12">
+                                <asp:Button ID="btnCheckout" runat="server" Text="Checkout" OnClick="Checkout" CssClass="btn btn-primary float-left" />
+
+                            </div>
+                        </div>
                     </div>
                     <br />
 
