@@ -12,15 +12,12 @@
         <div class="col-12" id="BookOrders">
 
             <asp:Panel ID="ShowAlert" runat="server">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success fade show" role="alert">
                     <strong class="text-center">Your order is successful!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
             </asp:Panel>
             <asp:Panel ID="ShowOrders" runat="server">
-                <table class="table table-light table-responsive">
+                <table class="table table-light">
                     <tr>
                         <th class="hidden-xs">Order ID</th>
                         <th>Order Date</th>
@@ -41,7 +38,7 @@
                             <td>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("OrderID") %>' /></td>
                             <td>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("OrderDate") %>' /></td>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("OrderDate", "{0:dd/MM/yyyy}") %>' /></td>
                             <td>
                                 <asp:Label ID="Label3" runat="server" Text='<%# Eval("Title") %>' /></td>
                             <td>
@@ -61,9 +58,9 @@
             </asp:Panel>
 
             <asp:Panel ID="HideOrders" runat="server" Visible="False">
-                <p class="NoOrder">There is no order history for you at this moment. Go shop some books!</p>
+                <p class="NoOrder text-center" style="font-size:3em; color:#bbbbbb">There is no order history for you at this moment. Go shop some books!</p>
 
-                <a href="Products.aspx" class="btn btn-warning"><i class="fa fa-arrow-left"></i>Browse Books</a>
+                <a href="Products.aspx" class="btn btn-warning" style="margin-left: 40px;"><i class="fa fa-arrow-left"></i>&nbsp;Browse Books</a>
             </asp:Panel>
         </div>
     </div>

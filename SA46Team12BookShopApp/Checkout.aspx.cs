@@ -58,11 +58,11 @@ namespace SA46Team12BookShopApp
             {
                 Book b = BusinessLogic.GetBookbyISBN(entry.Key);
                 total += (double)b.Price;
-                discount += BusinessLogic.GetDiscountPrice(b.BookID);
                 OrderDetail od = new OrderDetail();
                 od.BookID = b.BookID;
                 od.DiscountID = BusinessLogic.GetDiscountID(b.BookID);
                 od.Qty = entry.Value; //todo
+                discount += (od.Qty * BusinessLogic.GetDiscountPrice(b.BookID));
                 od.UnitPrice = b.Price;
                 od.NetPrice = (b.Price - (decimal)BusinessLogic.GetDiscountPrice(b.BookID));
                 lstOD.Add(od);
@@ -106,9 +106,28 @@ namespace SA46Team12BookShopApp
             order.PostalCode = Convert.ToInt32(txtPostCode.Text);
             order.Name = txtName.Text;
             BusinessLogic.AddOrder(order, lstOD);
-            Session["cart_items"] = null;
-            Response.Redirect("ConfirmOrder.aspx?Ordered=" + true);
 
+
+            using (BooksDB entities = new BooksDB())
+            {
+                entities.OrderHeaders.Add(order);
+                entities.SaveChanges();
+
+                foreach (OrderDetail orddet in lstOD)
+                {
+                    OrderDetail odet = new OrderDetail();
+                    odet.Qty = orddet.Qty;
+                    odet.UnitPrice = orddet.UnitPrice;
+                    odet.NetPrice = orddet.NetPrice;
+                    odet.BookID = orddet.BookID;
+                    odet.DiscountID = orddet.DiscountID;
+                    odet.OrderID = order.OrderID;
+                    entities.OrderDetails.Add(odet);
+                }
+                entities.SaveChanges();
+            }
+            Session["cart_items"] = null;
+            Response.Redirect("ConfirmOrder.aspx?orderid=" + order.OrderID);
         }
 
     }

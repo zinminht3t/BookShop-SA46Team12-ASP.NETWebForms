@@ -10,7 +10,7 @@
 namespace SA46Team12BookShopApp.Owner {
     
     
-    public partial class Default {
+    public partial class InsertProducts {
         
         /// <summary>
         /// form1 control.
@@ -31,51 +31,6 @@ namespace SA46Team12BookShopApp.Owner {
         protected global::System.Web.UI.WebControls.Label lblTitle;
         
         /// <summary>
-        /// ddlCategoryFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategoryFilter;
-        
-        /// <summary>
-        /// lblSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearch;
-        
-        /// <summary>
-        /// tbSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbSearch;
-        
-        /// <summary>
-        /// btnSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
-        
-        /// <summary>
-        /// btnViewAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewAll;
-        
-        /// <summary>
         /// btnBack control.
         /// </summary>
         /// <remarks>
@@ -85,13 +40,13 @@ namespace SA46Team12BookShopApp.Owner {
         protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
-        /// gvEditBooks control.
+        /// gvInsertBooks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEditBooks;
+        protected global::System.Web.UI.WebControls.GridView gvInsertBooks;
         
         /// <summary>
         /// lblSuccess control.
