@@ -71,10 +71,10 @@
                         <div class="col-md-3 col-sm-12">
                             <asp:TextBox ID="tbSearch" CssClass="form-control float-right" runat="server" AutoPostBack="false" TabIndex="2"></asp:TextBox>
                         </div>
-                        <div class="col-md-2 col-sm-12">
+                        <div class="col-md-1 col-sm-12">
                             <asp:Button ID="btnSearch" CssClass="btn btn-info" runat="server" Text="Search" OnClick="btnSubmit_Click" AutoPostBack="false" TabIndex="3" />
                         </div>
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <asp:Button ID="btnViewAll" CssClass="btn btn-success" runat="server" OnClick="btnViewAll_Click" Text="View All" TabIndex="4" />
                             <asp:Button ID="btnBack" CssClass="auto-style1" runat="server" OnClick="btnBack_Click" Text="New Products &gt;" TabIndex="4" />
                         </div>
