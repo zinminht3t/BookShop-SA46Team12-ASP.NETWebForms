@@ -7,21 +7,22 @@
 <!-- Two Column Section -->
 <div class="container-fluid padding">
 	<div class="row padding">
-		<div class="col-lg-6">
-			 <asp:Login ID="Login2" runat="server">
+        <div class="col-lg-1"></div>
+		<div class="col-lg-4">
+			 <asp:Login ID="Login2" runat="server" Width="100%">
                    
                  <LayoutTemplate>                  
-                        <table style="border-collapse:collapse">
+                        <table style="border-collapse:collapse;" >
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <table>
                                          
                                             <tr>
-                                                <td colspan="2"><h3>Login</h3></td>
-                                                
-                                            </tr>
+                                                <td colspan="2"><h3> <i class="fa fa-key text-primary"></i> &nbsp; Login</h3></td>
+                                                </tr>
                                       
                                     </table>
+                                    <hr />
                                 </td>
                             </tr>
                             <tr>
@@ -69,13 +70,16 @@
 
 		</div>
 		<div class="col-lg-6">
-			 <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser">
+			 <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser" Width="100%">
                     <WizardSteps>
-                        <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
+                        <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server" >
                             <ContentTemplate>
-                                <table>
+                                <table style="width:100%;">
                                     <tr>
-                                        <td colspan="2"><h3>Sign Up</h3></td>
+                                        <td colspan="2">
+                                            <h3 class="text-center"> <i class="fa fa-user text-success"></i> &nbsp; Sign Up</h3>
+                                            <hr />
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -178,6 +182,8 @@
                     </WizardSteps>
                 </asp:CreateUserWizard>
 		</div>
+        <div class="col-lg-1"></div>
+
 	</div>
 </div>
 

@@ -21,14 +21,14 @@
                     <asp:GridView ID="cartBooks" runat="server" AutoGenerateColumns="False" CssClass="table table-hover">
                         <Columns>
                             <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
-                            <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" />
-                            <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
+                            <asp:BoundField DataField="Qty" HeaderText="Qty" SortExpression="Qty" ItemStyle-HorizontalAlign="Center"/>
+                            <asp:BoundField DataField="Amount" HeaderText="Net Amount" SortExpression="Amount" HeaderStyle-HorizontalAlign="Right"  ItemStyle-HorizontalAlign="Right"/>
                         </Columns>
                     </asp:GridView>
 
                     <table class="table table-light">
-                        <tr>
-                            <td>Amount :</td>
+<%--                        <tr>
+                            <td>Total :</td>
                             <td>
                                 <asp:Label ID="lblAmount" runat="server" Text="0" CssClass="text-primary float-right"></asp:Label>
                             </td>
@@ -38,7 +38,7 @@
                             <td>
                                 <asp:Label ID="lblDiscount" runat="server" Text="0" CssClass="text-danger float-right"></asp:Label>
                             </td>
-                        </tr>
+                        </tr>--%>
                         <tr>
                             <td>Total :</td>
                             <td>

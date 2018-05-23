@@ -74,7 +74,8 @@ namespace SA46Team12BookShopApp
                 ca.BookID = b.BookID;
                 ca.Discount = (decimal)BusinessLogic.GetDiscountPrice(b.BookID);
                 ca.Qty = entry.Value;
-                ca.Amount = (decimal)ca.Price - (ca.Price * (ca.Discount / 100));
+                ca.Amount = (decimal)((ca.Price - ca.Discount) * ca.Qty);
+                ca.Amount = Math.Round(ca.Amount, 2);
                 lstCart.Add(ca);
             }
 
@@ -86,8 +87,8 @@ namespace SA46Team12BookShopApp
             string samount = String.Format("{0:C}", total);
             string sdiscount = String.Format("{0:C}", discount);
             string stotal = String.Format("{0:C}", (total - discount));
-            lblAmount.Text = samount;
-            lblDiscount.Text = sdiscount;
+            //lblAmount.Text = samount;
+            //lblDiscount.Text = sdiscount;
             lblTotal.Text = stotal;
         }
         protected void btnPay_Click(object sender, EventArgs e)
