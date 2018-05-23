@@ -221,7 +221,7 @@ namespace SA46Team12BookShopApp.Owner
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Owner/InsertProducts.aspx");
+            Response.Redirect("~/Owner/InsertProducts.aspx");
         }
 
         protected void populate(string query)

@@ -119,7 +119,7 @@
                     </p>
 
                     <div class ="col-md-12">
-                        <asp:Button ID="Button1" class="btn btn-lg btn-primary btn-block" runat="server" Text="Add to Cart" CommandName="SelectedItem"
+                        <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem"
                              CommandArgument='<%# Eval("BookID") %>' />
                     </div>
                 </div>
