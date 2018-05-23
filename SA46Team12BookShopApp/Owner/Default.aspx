@@ -179,9 +179,9 @@
                                         <asp:Button ID="btnDelete" CssClass="btn btn-outline-danger btn-sm" Text="Delete" runat="server" CommandName="Delete" Width="60px" Height="30px"  />                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Button ID="btnUpdate" CssClass="btn btn-outline-success btn-sm btnSave" Text="Save" runat="server" CommandName="Update" Width="60px" Height="30px" />
+                                        <asp:Button ID="btnUpdate" CssClass="btn btn-outline-success btn-sm btnSave" TabIndex="7" Text="Save" runat="server" CommandName="Update" Width="60px" Height="30px" />
                                         <br />
-                                        <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel" Width="60px" Height="30px" />
+                                        <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger btn-sm" TabIndex="7" Text="Cancel" runat="server" CommandName="Cancel" Width="60px" Height="30px" />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
