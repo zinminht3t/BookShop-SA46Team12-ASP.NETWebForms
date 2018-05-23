@@ -125,6 +125,7 @@ namespace SA46Team12BookShopApp
                     entities.OrderDetails.Add(odet);
 
                     Book b = new Book();
+                    b = BusinessLogic.GetBookbyID(odet.BookID);
                     b.Stock -= odet.Qty;
 
                     entities.SaveChanges();

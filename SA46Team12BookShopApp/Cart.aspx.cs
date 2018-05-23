@@ -133,12 +133,22 @@ namespace SA46Team12BookShopApp
 
             ids = (List<int>)Session["cart_items"];
 
-            var index = ids.FindIndex(x => x == cm.BookID);
-            if (index >= 0)
+            var index = ids.FindIndex(x => x == cm.BookID); //returns bookId
+
+            //search db for book stock based on bookOID
+            Book b = new Book();
+            b = BusinessLogic.GetBookbyID(cm.BookID);
+            CartModel ca = new CartModel();
+
+            Label lbl = (Label)cartGridview.Rows[gvr.RowIndex].FindControl("lblQty");
+            int displayedQty = int.Parse(lbl.Text);
+
+            if (index >= 0 && b.Stock != displayedQty)
             {
-                ids.Insert(index, cm.BookID);
+                ids.Insert(index, cm.BookID); //insert into list of bookIDs
             }
 
+            
 
             Session["cart_items"] = ids;
             Master.ChangeCartItemQty(ids.Count.ToString());
