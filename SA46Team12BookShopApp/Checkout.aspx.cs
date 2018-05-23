@@ -57,11 +57,11 @@ namespace SA46Team12BookShopApp
             foreach (KeyValuePair<string, int> entry in cartDis)
             {
                 Book b = BusinessLogic.GetBookbyISBN(entry.Key);
-                total += (double)b.Price;
                 OrderDetail od = new OrderDetail();
                 od.BookID = b.BookID;
                 od.DiscountID = BusinessLogic.GetDiscountID(b.BookID);
                 od.Qty = entry.Value; //todo
+                total += (double)(b.Price * od.Qty);
                 discount += (od.Qty * BusinessLogic.GetDiscountPrice(b.BookID));
                 od.UnitPrice = b.Price;
                 od.NetPrice = (b.Price - (decimal)BusinessLogic.GetDiscountPrice(b.BookID));
@@ -125,9 +125,8 @@ namespace SA46Team12BookShopApp
                     entities.OrderDetails.Add(odet);
 
                     Book b = new Book();
-                    b = BusinessLogic.GetBookbyID(odet.BookID);
+                    b = entities.Books.Where(x => x.BookID == odet.BookID).FirstOrDefault(); //todo
                     b.Stock -= odet.Qty;
-
                     entities.SaveChanges();
                 }
             }

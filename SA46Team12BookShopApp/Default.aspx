@@ -138,6 +138,6 @@
 
     </asp:ListView>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString3 %>" SelectCommand="SELECT * FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID WHERE Discount.DiscountID IS NOT NULL and book.Stock &gt; 0"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString3 %>" SelectCommand="SELECT * FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID = Discount.BookID WHERE Discount.DiscountID IS NOT NULL and book.Stock &gt; 0 and Discount.DiscountPercent &gt; 0"></asp:SqlDataSource>
 
 </asp:Content>

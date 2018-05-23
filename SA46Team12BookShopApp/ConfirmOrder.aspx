@@ -17,14 +17,13 @@
                 </div>
             </asp:Panel>
             <asp:Panel ID="ShowOrders" runat="server">
-                <table class="table table-light">
+                <table class="table table-striped">
                     <tr>
                         <th class="hidden-xs">Order ID</th>
                         <th>Order Date</th>
                         <th>Book Title</th>
-                        <th>Unit Price</th>
+                        <th>Discounted Unit Price</th>
                         <th>Quantity</th>
-                        <th>Net Price</th>
                     </tr>
 
                     <asp:ListView ID="lstOrders" runat="server" DataSourceID="SQLDataSourceConfirmOrder" GroupPlaceholderID="groupPlaceHolder1"
@@ -41,12 +40,10 @@
                                 <asp:Label ID="Label2" runat="server" Text='<%# Eval("OrderDate", "{0:dd/MM/yyyy}") %>' /></td>
                             <td>
                                 <asp:Label ID="Label3" runat="server" Text='<%# Eval("Title") %>' /></td>
-                            <td>
-                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("UnitPrice") %>' /></td>
+                            <td class="text-center">
+                                <asp:Label ID="Label7" runat="server" Text='<%# Eval("NetPrice") %>' /></td>
                             <td>
                                 <asp:Label ID="Label5" runat="server" Text='<%# Eval("Qty") %>' /></td>
-                            <td>
-                                <asp:Label ID="Label7" runat="server" Text='<%# Eval("NetPrice") %>' /></td>
                         </ItemTemplate>
 
                     </asp:ListView>

@@ -7,9 +7,14 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
+    <div class="row">
+        <div class="col">
+    		<h1 class="text-uppercase text-center"> <i class="fa fa-users text-warning"></i> &nbsp; About us</h1>
+            <hr />
+        </div>
+    </div>
 	<div class="row">
     	<div class="col-md-6 col-sm-6 col-xs-12">
-    		<h1 class="text-uppercase">About us</h1>
             <blockquote class="blockquote">
     		<p style="font-family:black; font-style:italic;">Et crescere sapiens librorum in consummatione... 
                 <br />
@@ -36,7 +41,7 @@
             </p>
     	</div>
     	<div class="col-md-6 col-sm-6 col-xs-12">
-    	    <img src="Style/images/about.jpg" alt="" class="img img-thumbnail round">
+    	    <img src="Style/images/about.jpg" alt="" class="img img-responsive circle">
     	</div>
 	</div>
 </div>
