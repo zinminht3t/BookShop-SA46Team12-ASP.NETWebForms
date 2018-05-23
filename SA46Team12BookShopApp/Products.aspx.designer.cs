@@ -58,6 +58,15 @@ namespace SA46Team12BookShopApp {
         protected global::System.Web.UI.WebControls.Button btnSearchBooks;
         
         /// <summary>
+        /// lblQtyDisplayed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblQtyDisplayed;
+        
+        /// <summary>
         /// PopupBox control.
         /// </summary>
         /// <remarks>
