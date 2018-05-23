@@ -124,10 +124,10 @@
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                  </div>
              </div>
-             <div class="container-fluid" id="Div1" runat="server" >
+             <div class="container" id="Div1" runat="server" >
                 <div class="row" runat="server">
                     <div class="col-md-12" align="center">
-                            <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvProductsList" PageSize="8" class="btn-group pager-buttons">
+                            <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvProductsList" PageSize="8" class="btn-group pager-buttons" style="flex-wrap:wrap">
                             <Fields>
                                 <asp:NextPreviousPagerField ShowLastPageButton="False" ShowNextPageButton="False" ButtonType="Button" ButtonCssClass="btn" RenderNonBreakingSpacesBetweenControls="false" />
                                 <asp:NumericPagerField ButtonType="Button" RenderNonBreakingSpacesBetweenControls="false" NumericButtonCssClass="btn" CurrentPageLabelCssClass="btn disabled" NextPreviousButtonCssClass="btn" />
