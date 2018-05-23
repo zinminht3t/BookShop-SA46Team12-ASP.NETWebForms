@@ -6,7 +6,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">   
 
 <link rel="stylesheet" type="text/css" href="product-page.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" align="center">
+            <span style="font-size:40px;"><i class="fa fa-shopping-bag" aria-hidden="true" style="font-size:50px;color:#3a96d7;"></i> Products Page</span>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row search">
             <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3 search">
