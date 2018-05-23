@@ -11,22 +11,10 @@ namespace SA46Team12BookShopApp
     {
         private int itemClicked;
         private List<int> cartItems;
-        private Label lbl;
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
                 cartItems = new List<int>();
-                lbl = (Label)this.Master.FindControl("ContentPlaceHolder1").FindControl("lblQtyDisplayed");
-            //lbl.Text = "Displaying " + lvProductsList.Items.Count.ToString() + " Products";
-            if (!IsPostBack)
-            {
-                lvProductsList.DataBind();
-                lbl.Text = "Showing " + lvProductsList.Items.Count.ToString() + " Products";
-            }
-
-           
-
         }
 
 
@@ -62,7 +50,7 @@ namespace SA46Team12BookShopApp
                 }
                 else if (ddlCategoryFilter.SelectedValue == "sales")
                 {
-                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 AND Discount.DiscountPercent IS NOT NULL AND (Book.Title like '%" + txtSearchBooks.Text + "%' OR Book.Author like '%" + txtSearchBooks.Text + "%') ORDER BY Book.Price " + orderString;
+                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 AND Discount.DiscountPercent IS NOT NULL AND Discount.DiscountPercent<>0.00 AND (Book.Title like '%" + txtSearchBooks.Text + "%' OR Book.Author like '%" + txtSearchBooks.Text + "%') ORDER BY Book.Price " + orderString;
                     lvProductsList.DataSourceID = "SqlDataSource6";
                     lvProductsList.DataBind();
                 }
@@ -85,7 +73,7 @@ namespace SA46Team12BookShopApp
                 }
                 else if (ddlCategoryFilter.SelectedValue == "sales")
                 {
-                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 AND Discount.DiscountPercent IS NOT NULL ORDER BY Book.Price " + orderString;
+                    SqlDataSource6.SelectCommand = "SELECT Book.BookID,Book.Title, Book.Author, Book.Price, Category.Name, Book.ISBN,Discount.DiscountPercent FROM Book INNER JOIN Category ON Book.CategoryID = Category.CategoryID LEFT OUTER JOIN Discount ON Book.BookID=Discount.BookID WHERE Book.Stock<>0 AND Discount.DiscountPercent IS NOT NULL AND Discount.DiscountPercent<>0.00 ORDER BY Book.Price " + orderString;
                     lvProductsList.DataSourceID = "SqlDataSource6";
                     lvProductsList.DataBind();
                 }
@@ -96,9 +84,6 @@ namespace SA46Team12BookShopApp
                     lvProductsList.DataBind();
                 }
             }
-
-            lbl.Text = "Displaying " + lvProductsList.Items.Count.ToString() + " Products";
-
 
         }
 
@@ -150,18 +135,13 @@ namespace SA46Team12BookShopApp
                 lvProductsList.DataSourceID = "SqlDataSource3"; //Sort products of specified CATEGORY, price by Desc
                 lvProductsList.DataBind();
             }
-
-            lbl.Text = "Displaying " + lvProductsList.Items.Count.ToString() + " Products";
-
-
-
-
+            
             txtSearchBooks.Text = "";
         }
 
         public string ProcessMyDataItem(object myValue)
         {
-            if (myValue == DBNull.Value)
+            if (myValue == DBNull.Value || myValue.ToString()=="0.00")
             {
                 return null;
             }
