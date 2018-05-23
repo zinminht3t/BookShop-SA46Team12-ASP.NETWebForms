@@ -106,8 +106,6 @@ namespace SA46Team12BookShopApp
             order.Email = txtEmail.Text;
             order.PostalCode = Convert.ToInt32(txtPostCode.Text);
             order.Name = txtName.Text;
-            BusinessLogic.AddOrder(order, lstOD);
-
 
             using (BooksDB entities = new BooksDB())
             {
