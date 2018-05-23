@@ -51,7 +51,7 @@
 
                     <h4>
                         <i class="text-warning fa fa-user"></i>
-                        &nbsp;Personal Details</h4>
+                        &nbsp;Delivery Details</h4>
                     <br />
                     <div class="form-group">
                         <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Name" ToolTip="Enter your name" ValidateRequestMode="Enabled"></asp:TextBox>

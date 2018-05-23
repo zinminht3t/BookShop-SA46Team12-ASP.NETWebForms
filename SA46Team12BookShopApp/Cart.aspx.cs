@@ -22,8 +22,27 @@ namespace SA46Team12BookShopApp
         protected void Page_Load(object sender, EventArgs e)
         {
             lstBooks = new List<Book>();
+            pnError.Visible = false;
 
             List<int> carts = (List<int>)Session["cart_items"];
+
+            bool errormsg;
+
+            if (Session["errorQty"] == null)
+            {
+                errormsg = false;
+            }
+            else
+            {
+                errormsg = (bool)Session["errorQty"];
+            }
+
+
+            if (errormsg)
+            {
+                pnError.Visible = true;
+                Session["errorQty"] = false;
+            }
 
             if (carts == null)
             {
@@ -104,10 +123,10 @@ namespace SA46Team12BookShopApp
 
             List<int> ids = new List<int>();
 
-            ids = (List<int>) Session["cart_items"];
+            ids = (List<int>)Session["cart_items"];
 
             var index = ids.FindIndex(x => x == cm.BookID);
-            if(index >= 0)
+            if (index >= 0)
             {
                 ids.RemoveAt(index);
             }
@@ -147,8 +166,12 @@ namespace SA46Team12BookShopApp
             {
                 ids.Insert(index, cm.BookID); //insert into list of bookIDs
             }
+            else
+            {
+                Session["errorQty"] = true;
+            }
 
-            
+
 
             Session["cart_items"] = ids;
             Master.ChangeCartItemQty(ids.Count.ToString());

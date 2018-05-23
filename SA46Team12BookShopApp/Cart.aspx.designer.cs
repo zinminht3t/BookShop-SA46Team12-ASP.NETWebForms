@@ -13,6 +13,15 @@ namespace SA46Team12BookShopApp {
     public partial class Cart {
         
         /// <summary>
+        /// pnError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnError;
+        
+        /// <summary>
         /// cartGridview control.
         /// </summary>
         /// <remarks>
@@ -22,15 +31,6 @@ namespace SA46Team12BookShopApp {
         protected global::System.Web.UI.WebControls.GridView cartGridview;
         
         /// <summary>
-        /// btnCheckout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckout;
-        
-        /// <summary>
         /// btnContinueShopping control.
         /// </summary>
         /// <remarks>
@@ -38,6 +38,15 @@ namespace SA46Team12BookShopApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnContinueShopping;
+        
+        /// <summary>
+        /// btnCheckout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCheckout;
         
         /// <summary>
         /// Master property.
