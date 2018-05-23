@@ -78,7 +78,7 @@
                         </h5>
                         Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
                     </div>
-                    <div class ="col-md-12" style="margin-top: auto; margin-bottom:auto">                    `
+                    <div class ="col-md-12" style="margin-top: auto; margin-bottom:auto">
                      <%--   <h5 class="price price-text-color">
                             &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
                         </h5>--%>
@@ -104,6 +104,23 @@
                 <div class="row" id="groupPlaceholder" runat="server">
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                  </div>
+             </div>
+             <div class="container-fluid" id="Div1" runat="server" >
+                <div class="row" id="Div2" runat="server">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div style="align-content:center">
+                            <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvProductsList" PageSize="8" class="btn-group pager-buttons">
+                            <Fields>
+                                <asp:NextPreviousPagerField ShowLastPageButton="False" ShowNextPageButton="False" ButtonType="Button" ButtonCssClass="btn" RenderNonBreakingSpacesBetweenControls="false" />
+                                <asp:NumericPagerField ButtonType="Button" RenderNonBreakingSpacesBetweenControls="false" NumericButtonCssClass="btn" CurrentPageLabelCssClass="btn disabled" NextPreviousButtonCssClass="btn" />
+                                <asp:NextPreviousPagerField ShowFirstPageButton="False" ShowPreviousPageButton="False" ButtonType="Button" ButtonCssClass="btn" RenderNonBreakingSpacesBetweenControls="false" />
+                             </Fields>
+                            </asp:DataPager>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
              </div>
         </LayoutTemplate>
     <EmptyItemTemplate>
