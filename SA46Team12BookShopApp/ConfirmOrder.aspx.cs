@@ -32,7 +32,7 @@ namespace SA46Team12BookShopApp.Members
                 if (Request.QueryString["orderid"] == null)
                 {
                     ShowAlert.Visible = false;
-                    SQLDataSourceConfirmOrder.SelectCommand = "SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = '" + userid + "' Order by OrderHeader.OrderID";
+                    SQLDataSourceConfirmOrder.SelectCommand = "SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = '" + userid + "' Order by OrderHeader.OrderID DESC";
 
                 }
                 else
@@ -40,7 +40,7 @@ namespace SA46Team12BookShopApp.Members
                     ShowAlert.Visible = true;
                     string orid = Request.QueryString["orderid"];
                     int oid = Convert.ToInt32(orid);
-                    SQLDataSourceConfirmOrder.SelectCommand = "SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = '" + userid + "' and OrderHeader.OrderID = '" + oid + "' Order by OrderHeader.OrderID";
+                    SQLDataSourceConfirmOrder.SelectCommand = "SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = '" + userid + "' and OrderHeader.OrderID = '" + oid + "' Order by OrderHeader.OrderID DESC";
                 }
 
 
