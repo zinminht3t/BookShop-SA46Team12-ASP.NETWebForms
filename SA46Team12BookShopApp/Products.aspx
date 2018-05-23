@@ -70,7 +70,7 @@
 <asp:ListView ID="lvProductsList" runat="server" DataSourceID="SqlDataSource5" GroupPlaceholderID="groupPlaceHolder1" AutoPostBack="true"
     ItemPlaceholderID="itemPlaceHolder1" OnItemCommand="ProductsListView_OnItemCommand" OnItemDataBound="lvProductsList_ItemDataBound">
          <GroupTemplate>
-            <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-sm-4 col-md-3" style="padding:5px;">
                 <div class="col-item">  
                     <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
                 </div>
@@ -97,7 +97,7 @@
                     <div class="col-md-12 price" style="padding:5px;">
                         Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
                     </div>
-                    <div class ="col-md-12 price" style="margin-top: auto; margin-bottom:auto; padding:5px;">
+                    <div class ="col-md-12 price" style="position: absolute; top:390px; left: 5px;">
                      <%--   <h5 class="price price-text-color">
                             &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
                         </h5>--%>
@@ -105,7 +105,8 @@
                             <asp:Label ID="Label1" runat="server" Text='<%# ProcessProductDiscount(Eval("DiscountPercent"), Eval("Price")) %>' />
                         </h5>
                     </div>
-                    <div class ="col-md-12 price" style="margin-top: auto; margin-bottom:auto; padding:5px;">
+                </div>
+                    <div class ="col-md-12 price" style="position: absolute; top: 443px; right: 1px;">
                         <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                              <ContentTemplate>--%>
                                 <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem"
@@ -113,7 +114,6 @@
                               <%--</ContentTemplate>--%>
                         <%--</asp:UpdatePanel>--%>
                     </div>
-                  </div>
              </div>  
         </ItemTemplate>
 
@@ -124,10 +124,10 @@
                     <asp:PlaceHolder runat="server" ID="groupPlaceHolder1"></asp:PlaceHolder>
                  </div>
              </div>
-             <div class="container-fluid" id="Div1" runat="server" >
+             <div class="container" id="Div1" runat="server" >
                 <div class="row" runat="server">
                     <div class="col-md-12" align="center">
-                            <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvProductsList" PageSize="8" class="btn-group pager-buttons">
+                            <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="lvProductsList" PageSize="8" class="btn-group pager-buttons" style="flex-wrap:wrap">
                             <Fields>
                                 <asp:NextPreviousPagerField ShowLastPageButton="False" ShowNextPageButton="False" ButtonType="Button" ButtonCssClass="btn" RenderNonBreakingSpacesBetweenControls="false" />
                                 <asp:NumericPagerField ButtonType="Button" RenderNonBreakingSpacesBetweenControls="false" NumericButtonCssClass="btn" CurrentPageLabelCssClass="btn disabled" NextPreviousButtonCssClass="btn" />
