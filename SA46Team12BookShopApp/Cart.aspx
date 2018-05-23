@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
 
                     <%--gridview--%>
-                    <asp:GridView ID="cartGridview" runat="server" CssClass="Grid" AutoGenerateColumns="False" GridLines="None"
+                    <asp:GridView ID="cartGridview" runat="server" CssClass="Grid table table-striped" AutoGenerateColumns="False" GridLines="None"
                         EmptyDataText="No records has been added." Width="100%" CellPadding="5">
 
                         <HeaderStyle HorizontalAlign="Center" BackColor="#3D7169" ForeColor="#FFFFFF" />
@@ -39,27 +39,28 @@
                             </asp:BoundField>
                             <%--title column--%>
 
-                            <asp:BoundField DataField="Unit Price" HeaderText="Price" SortExpression="Price" ItemStyle-Width="120">
+                            <asp:BoundField DataField="Price" HeaderText="Unit Price" SortExpression="Price" ItemStyle-Width="120">
                                 <ItemStyle Width="120px" HorizontalAlign="Center" />
                             </asp:BoundField>
                             <%--price column--%>
 
-                            <asp:BoundField DataField="Discount" HeaderText="Discount" SortExpression="Discount" ItemStyle-Width="120">
-                                <ItemStyle Width="120px" HorizontalAlign="Center" />
-                            </asp:BoundField>
-                            <%--discount column--%>
-
                             <asp:TemplateField HeaderText="Qty">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-info" OnClick="MyButtonClick">
-                                    <i class="fa fa-minus-square"></i></asp:LinkButton>                                   
-                                    <asp:Label ID="lblQty" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
+                                    <i class="fa fa-minus-square"></i></asp:LinkButton>   &nbsp;  &nbsp;                              
+                                    <asp:Label ID="lblQty" CssClass="text-dark" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
+                                    &nbsp;&nbsp;
                                     <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-info" OnClick="MyButtonClick2">
                                     <i class="fa fa-plus-square"></i></asp:LinkButton>   
                                     <%--<button class="btn btn-info"><i class="fas fa-plus-square"></i></button>--%>
                                 </ItemTemplate>
                                 <ItemStyle Width="120px" HorizontalAlign="Center" />
                             </asp:TemplateField>
+
+                            <asp:BoundField DataField="Discount" HeaderText="Discount" SortExpression="Discount" ItemStyle-Width="120">
+                                <ItemStyle Width="120px" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <%--discount column--%>
                             <%--qty column--%>
 
                             <asp:TemplateField HeaderText="Subtotal">

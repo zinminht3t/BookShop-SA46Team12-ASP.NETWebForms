@@ -130,6 +130,7 @@
     <Content Include="images\9781616205676.jpg" />
     <Content Include="images\9781619634480.jpg" />
     <Content Include="images\9781911015222.jpg" />
+    <Content Include="Owner\InsertProducts.aspx" />
     <Content Include="Owner\Default.aspx" />
     <Content Include="product-page.css" />
     <Content Include="Products.aspx" />
@@ -143,6 +144,7 @@
     <Content Include="Style\images\overwatchCover.png" />
     <Content Include="Style\images\personaCover.png" />
     <Content Include="Style\images\zeldaCover.png" />
+    <Content Include="Style\js\carousel.js" />
     <Content Include="UnauthorizedAccess.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -209,6 +211,13 @@
     </Compile>
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\OrderHeader.cs" />
+    <Compile Include="Owner\InsertProducts.aspx.cs">
+      <DependentUpon>InsertProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Owner\InsertProducts.aspx.designer.cs">
+      <DependentUpon>InsertProducts.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Owner\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,7 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Style\fonts\" />
-    <Folder Include="Style\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

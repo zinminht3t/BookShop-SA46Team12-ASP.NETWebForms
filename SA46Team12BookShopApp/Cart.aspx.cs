@@ -69,7 +69,7 @@ namespace SA46Team12BookShopApp
                 ca.Discount = (decimal)BusinessLogic.GetDiscountPrice(b.BookID);
                 ca.Discount = Math.Round(ca.Discount * entry.Value, 2);
                 ca.Qty = entry.Value;
-                ca.Amount = ca.Qty * ((decimal)(ca.Price - ca.Discount));
+                ca.Amount = (ca.Qty * ca.Price) - ca.Discount;
                 ca.Amount = Math.Round(ca.Amount, 2);
                 lstCart.Add(ca);
             }

@@ -16,39 +16,10 @@ namespace SA46Team12BookShopApp.Owner
         #region Properties
         private string connection;
         private string sqlquery;
-        private static DataTable dtbl;
-        private static string sqlwhere;
 
-        protected void logout(object sender, EventArgs e)
-        {
-            FormsAuthentication.SignOut();
-            Session.Clear();
-            Response.Redirect("../default.aspx");
-        }
+        private static string Sqlwhere { get; set; }
 
-        private static string Sqlwhere
-        {
-            get
-            {
-                return sqlwhere;
-            }
-            set
-            {
-                sqlwhere = value;
-            }
-        }
-
-        private static DataTable Dtbl
-        {
-            get
-            {
-                return dtbl;
-            }
-            set
-            {
-                dtbl = value;
-            }
-        }
+        private static DataTable Dtbl { get; set; }
 
         public string Sqlquery
         {
@@ -75,6 +46,7 @@ namespace SA46Team12BookShopApp.Owner
             }
         }
 
+        #region Event Listeners - Gridview Buttons
         protected void gbEditBooks_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvEditBooks.EditIndex = e.NewEditIndex;
@@ -128,12 +100,51 @@ namespace SA46Team12BookShopApp.Owner
                     sqlcom.ExecuteNonQuery();
                     gvEditBooks.EditIndex = -1;
                     populate(ViewState["SqlQuery"].ToString());
+                    Response.Write("<script>alert('Data inserted successfully')</script>");
                     lblSuccess.Visible = true;
+                    lblSuccess.Text = "Save Successful!";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
+        }
+
+        protected void gvEditBooks_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                using (SqlConnection sqlcon = new SqlConnection(connection))
+                {
+                    sqlcon.Open();
+                    // Delete from Book Table
+                    string sql = "Delete FROM book where bookid = @id";
+                    SqlCommand sqlcom = new SqlCommand(sql, sqlcon);
+                    sqlcom.Parameters.AddWithValue
+                        ("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
+                    sqlcom.ExecuteNonQuery();
+
+                    // Delete from Discount Table
+                    sql = "Delete FROM Discount where bookid = @id";
+                    sqlcom = new SqlCommand(sql, sqlcon);
+                    sqlcom.Parameters.AddWithValue
+                        ("id", (gvEditBooks.Rows[e.RowIndex].FindControl("lblBookID") as Label).Text);
+                    sqlcom.ExecuteNonQuery();
+
+                    populate(ViewState["SqlQuery"].ToString());
+                    lblSuccess.Visible = true;
+                    lblSuccess.Text = "Delete Successful";
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        protected void gbEditBooks_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvEditBooks.EditIndex = -1;
+            populate(ViewState["SqlQuery"].ToString());
         }
 
         protected void gbEditBooks_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -143,12 +154,9 @@ namespace SA46Team12BookShopApp.Owner
             gvEditBooks.DataSource = Dtbl;
             gvEditBooks.DataBind();
         }
-        protected void gbEditBooks_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            gvEditBooks.EditIndex = -1;
-            populate(ViewState["SqlQuery"].ToString());
-        }
+        #endregion
 
+        #region Event Listeners - Filtering
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (ddlCategoryFilter.SelectedItem.Text == "All")
@@ -202,6 +210,19 @@ namespace SA46Team12BookShopApp.Owner
             populate(Sqlwhere);
             ViewState.Add("SqlQuery", Sqlwhere);
         }
+        #endregion
+
+        protected void logout(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            Response.Redirect("../default.aspx");
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Owner/InsertProducts.aspx");
+        }
 
         protected void populate(string query)
         {
@@ -215,6 +236,7 @@ namespace SA46Team12BookShopApp.Owner
             }
             gvEditBooks.DataSource = Dtbl;
             gvEditBooks.DataBind();
+            lblSuccess.Visible = false;
         }
     }
 }

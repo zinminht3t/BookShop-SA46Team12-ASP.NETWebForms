@@ -1,9 +1,15 @@
-﻿.mDivGrid {
+﻿@import url('https://fonts.googleapis.com/css?family=Tangerine');
+
+.mDivGrid {
     width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
+
+#imgLogo {
+    font-family: 'Tangerine';
+}
 .gridtable{
     font-size:0.8em;
 }

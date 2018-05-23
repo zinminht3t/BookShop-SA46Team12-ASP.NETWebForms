@@ -12,37 +12,52 @@ namespace SA46Team12BookShopApp.Members
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (BusinessLogic.GetUserOrders().Count < 1)
-            {
-                ShowOrders.Visible = false;
-                HideOrders.Visible = true;
-            }
-            else
-            {
-                ShowOrders.Visible = true;
-                HideOrders.Visible = false;
-
-
-                MembershipUser user = Membership.GetUser();
-                Guid UserID = (Guid)user.ProviderUserKey;
-                string userid = UserID.ToString(); //todo
-
-                SQLDataSourceConfirmOrder.SelectCommand = "SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = '" + userid + "' Order by OrderHeader.OrderDate DESC";
-            lstOrders.DataSourceID = "SQLDataSourceConfirmOrder";
-                lstOrders.DataBind();
-            }
-
             if (!IsPostBack)
             {
-                if (Request.QueryString["Ordered"] == null)
+                string userid = "";
+                MembershipUser user = Membership.GetUser();
+
+                if (user == null)
+                {
+                    Response.Redirect("default.aspx");
+                }
+                else
+                {
+
+                    Guid UserID = (Guid)user.ProviderUserKey;
+                    userid = UserID.ToString();
+                }
+
+
+                if (Request.QueryString["orderid"] == null)
                 {
                     ShowAlert.Visible = false;
+                    SQLDataSourceConfirmOrder.SelectCommand = "SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = '" + userid + "' Order by OrderHeader.OrderID";
+
                 }
                 else
                 {
                     ShowAlert.Visible = true;
+                    string orid = Request.QueryString["orderid"];
+                    int oid = Convert.ToInt32(orid);
+                    SQLDataSourceConfirmOrder.SelectCommand = "SELECT * FROM Book INNER JOIN OrderDetail ON Book.BookID = OrderDetail.BookID INNER JOIN OrderHeader ON OrderDetail.OrderID = OrderHeader.OrderID WHERE OrderHeader.UserID = '" + userid + "' and OrderHeader.OrderID = '" + oid + "' Order by OrderHeader.OrderID";
+                }
+
+
+                if (BusinessLogic.GetUserOrders().Count < 1)
+                {
+                    ShowOrders.Visible = false;
+                    HideOrders.Visible = true;
+                }
+                else
+                {
+                    ShowOrders.Visible = true;
+                    HideOrders.Visible = false;
+                    lstOrders.DataSourceID = "SQLDataSourceConfirmOrder";
+                    lstOrders.DataBind();
                 }
             }
+
         }
     }
 }
