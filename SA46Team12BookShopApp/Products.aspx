@@ -78,21 +78,26 @@
         </GroupTemplate>
 
         <ItemTemplate>
-                <div class="post-img-content">
-                    <image src="images/<%# Eval("ISBN") %>.jpg" class="img-responsive"></image>
-                    <span class="post-title">
-                    <b><asp:Label ID="lblSalesTag" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' /></b>
-                    </span>
+            <div class="row">
+                <div class="col-md-12" style="max-height:auto; max-width:auto">
+                    <div class="post-img-content">
+                        <image src="images/<%# Eval("ISBN") %>.jpg" class="img-responsive"></image>
+                        <span class="post-title">
+                        <b><asp:Label ID="lblSalesTag" runat="server" Text='<%# ProcessMyDataItem(Eval("DiscountPercent")) %>' /></b>
+                        </span>
+                    </div>
                 </div>
-            <div class="info">
-		        <div class="row">          
-			        <div class="price col-md-12">
+
+            <div class="info">		               
+			        <div class="col-md-12 price" style="padding:5px;">
                         <h5>
                             <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
                         </h5>
+                     </div>
+                    <div class="col-md-12 price" style="padding:5px;">
                         Author:<asp:Label ID="AuthorLabel" runat="server" Text='<%# Eval("Author") %>' />
                     </div>
-                    <div class ="col-md-12" style="margin-top: auto; margin-bottom:auto">
+                    <div class ="col-md-12 price" style="margin-top: auto; margin-bottom:auto; padding:5px;">
                      <%--   <h5 class="price price-text-color">
                             &#36<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
                         </h5>--%>
@@ -100,7 +105,7 @@
                             <asp:Label ID="Label1" runat="server" Text='<%# ProcessProductDiscount(Eval("DiscountPercent"), Eval("Price")) %>' />
                         </h5>
                     </div>
-                    <div class ="col-md-12">
+                    <div class ="col-md-12 price" style="margin-top: auto; margin-bottom:auto; padding:5px;">
                         <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                              <ContentTemplate>--%>
                                 <asp:Button ID="Button1" runat="server" Text="Add to Cart" class="btn btn-primary" CommandName="SelectedItem"

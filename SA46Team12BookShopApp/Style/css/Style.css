@@ -80,6 +80,17 @@ img {
     border: 1px solid #563d7c;
 }
 
+.btn.btn-primary {
+    width: 100%;
+    height: auto;
+}
+
+.buttonClicked {
+    background-color: red;
+    width: 100%;
+    height: auto;
+}
+
 .jumbotron {
     padding: 1rem;
     border-radius: 0;
@@ -150,27 +161,6 @@ hr.light-100 {
     margin-bottom: 1rem;
 }
 
-.card {
-    width: 100%;
-    min-height: 520px;
-    margin-bottom: -80px;
-    border: 1px solid #E1E1E1;
-    border-radius: 10px;
-    background: #FFF;
-}
-.card:hover {
-        box-shadow: 0px 2px 5px -1px #000;
-        -moz-box-shadow: 0px 2px 5px -1px #000;
-        -webkit-box-shadow: 0px 2px 5px -1px #000;
-        -webkit-border-radius: 0px;
-        -moz-border-radius: 0px;
-        border-radius: 10px;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-        border-bottom: 2px solid #52A1D5;
-    }
 .post-img-content {
     height: 196px;
     position: relative;
@@ -207,13 +197,6 @@ hr.light-100 {
             font-size: 14px;
         }
 
-
-.card-img-top {
-    width: 50%;
-    height: 50%;
-    margin-top: 2rem;
-    padding-bottom: 20px;
-}
 
 .col-item {
     border: 1px solid #E1E1E1;
@@ -469,3 +452,36 @@ Extra (xl) large devices (large desktops, 1200px and up)
 .multi-item-carousel .carouse-control.right {
     background-image: none;
 }
+
+
+
+
+
+/*.card {
+    width: 100%;
+    min-height: 520px;
+    margin-bottom: -80px;
+    border: 1px solid #E1E1E1;
+    border-radius: 10px;
+    background: #FFF;
+}
+.card:hover {
+        box-shadow: 0px 2px 5px -1px #000;
+        -moz-box-shadow: 0px 2px 5px -1px #000;
+        -webkit-box-shadow: 0px 2px 5px -1px #000;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 10px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        border-bottom: 2px solid #52A1D5;
+    }*/
+
+/*.card-img-top {
+    width: 50%;
+    height: 50%;
+    margin-top: 2rem;
+    padding-bottom: 20px;
+}*/
