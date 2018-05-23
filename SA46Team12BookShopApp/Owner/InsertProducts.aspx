@@ -113,7 +113,7 @@
                                         
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:DropDownList ID="ddlCategoryFilter" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" CssClass="form-control">
+                                        <asp:DropDownList ID="ddlCategoryFilter" TabIndex="7" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" CssClass="form-control">
                                         </asp:DropDownList>                                        
                                     </EditItemTemplate>
                                 </asp:TemplateField>
@@ -140,7 +140,7 @@
                                     <ItemTemplate>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbQty" TabIndex="5" CssClass="formcon" runat="server" />
+                                        <asp:TextBox ID="tbQty" TabIndex="7" CssClass="formcon" runat="server" />
                                         <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator5" ControlToValidate="tbQty" runat="server" ErrorMessage="Quantity must not be empty"></asp:RequiredFieldValidator>
                                        
                                         <asp:RegularExpressionValidator CssClass="text-danger" ID="RegularExpressionValidator1" ControlToValidate="tbQty" runat="server" ErrorMessage="Qty should not consist of decimal, alphabets or less than 0" ValidationExpression="^[0-9]{0,}$"></asp:RegularExpressionValidator>
@@ -151,7 +151,7 @@
                                         
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbPrice" CssClass="formcon" TabIndex="6" runat="server" />
+                                        <asp:TextBox ID="tbPrice" CssClass="formcon" TabIndex="7" runat="server" />
                                         <asp:RequiredFieldValidator CssClass="text-danger" ID="RequiredFieldValidator6" ControlToValidate="tbPrice" runat="server" ErrorMessage="Price must not be empty"></asp:RequiredFieldValidator>
                                        
                                         <asp:RegularExpressionValidator CssClass="text-danger" ID="RegularExpressionValidator2" ControlToValidate="tbPrice" runat="server" ErrorMessage="Price should not consist of more than 2dp, alphabets or less than 0 " ValidationExpression="^\d+(\.\d\d)?$"></asp:RegularExpressionValidator>
@@ -182,8 +182,8 @@
                                         <asp:Button ID="btnInsert" CssClass="btn btn-outline-warning btn-sm btnedit" Text="Create New Product ID" runat="server" CommandName="Edit" ToolTip="Insert" Width="200px" Height="30px"/>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Button ID="btnUpdate" CssClass="btn btn-outline-info btn-sm btnSave" Text="Save" runat="server" CommandName="Update" Width="60px" Height="30px" />
-                                        <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel" Width="60px" Height="30px" CausesValidation="False" EnableClientScript="false" />
+                                        <asp:Button ID="btnUpdate" CssClass="btn btn-outline-info btn-sm btnSave" TabIndex="7" Text="Save" runat="server" CommandName="Update" Width="60px" Height="30px" />
+                                        <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger btn-sm" TabIndex="7" Text="Cancel" runat="server" CommandName="Cancel" Width="60px" Height="30px" CausesValidation="False" EnableClientScript="false" />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
