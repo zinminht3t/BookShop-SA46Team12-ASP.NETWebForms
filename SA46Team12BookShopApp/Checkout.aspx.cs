@@ -123,8 +123,12 @@ namespace SA46Team12BookShopApp
                     odet.DiscountID = orddet.DiscountID;
                     odet.OrderID = order.OrderID;
                     entities.OrderDetails.Add(odet);
+
+                    Book b = new Book();
+                    b.Stock -= odet.Qty;
+
+                    entities.SaveChanges();
                 }
-                entities.SaveChanges();
             }
             Session["cart_items"] = null;
             Response.Redirect("ConfirmOrder.aspx?orderid=" + order.OrderID);

@@ -76,7 +76,7 @@
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <asp:Button ID="btnViewAll" CssClass="btn btn-success" runat="server" OnClick="btnViewAll_Click" Text="View All" TabIndex="4" />
-                            <asp:Button ID="btnBack" CssClass="auto-style1" runat="server" OnClick="btnBack_Click" Text="New Products &gt;" TabIndex="4" />
+                            <asp:Button ID="btnBack" CssClass="btn btn-warning float-right" runat="server" OnClick="btnBack_Click" Text="New Products" TabIndex="4" />
                         </div>
                     </div>
                     <br />
@@ -174,12 +174,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:Button ID="btnEdit" CssClass="btn btn-outline-warning btn-sm btnedit" Text="Edit" runat="server" CommandName="Edit" ToolTip="Edit"/>
+                                        <asp:Button ID="btnEdit" CssClass="btn btn-outline-info btn-sm btnedit btnSave" Text="Edit" runat="server" CommandName="Edit" ToolTip="Edit" Width="60px" Height="30px" />
                                         <br />
-                                        <asp:Button ID="btnDelete" CssClass="btn btn-outline-danger btn-sm" Text="Delete" runat="server" CommandName="Delete" />                                        
+                                        <asp:Button ID="btnDelete" CssClass="btn btn-outline-danger btn-sm" Text="Delete" runat="server" CommandName="Delete" Width="60px" Height="30px"  />                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Button ID="btnUpdate" CssClass="btn btn-outline-info btn-sm btnSave" Text="Save" runat="server" CommandName="Update" Width="60px" Height="30px" />
+                                        <asp:Button ID="btnUpdate" CssClass="btn btn-outline-success btn-sm btnSave" Text="Save" runat="server" CommandName="Update" Width="60px" Height="30px" />
                                         <br />
                                         <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel" Width="60px" Height="30px" />
                                     </EditItemTemplate>
