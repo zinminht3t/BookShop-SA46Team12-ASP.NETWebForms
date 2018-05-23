@@ -44,11 +44,6 @@
                             </asp:BoundField>
                             <%--price column--%>
 
-                            <asp:BoundField DataField="Discount" HeaderText="Discount" SortExpression="Discount" ItemStyle-Width="120">
-                                <ItemStyle Width="120px" HorizontalAlign="Center" />
-                            </asp:BoundField>
-                            <%--discount column--%>
-
                             <asp:TemplateField HeaderText="Qty">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-info" OnClick="MyButtonClick">
@@ -60,6 +55,11 @@
                                 </ItemTemplate>
                                 <ItemStyle Width="120px" HorizontalAlign="Center" />
                             </asp:TemplateField>
+
+                            <asp:BoundField DataField="Discount" HeaderText="Discount" SortExpression="Discount" ItemStyle-Width="120">
+                                <ItemStyle Width="120px" HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <%--discount column--%>
                             <%--qty column--%>
 
                             <asp:TemplateField HeaderText="Subtotal">
