@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SA46Team12BookShopApp.Owner.Default" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="InsertProducts.aspx.cs" Inherits="SA46Team12BookShopApp.Owner.InsertProducts" %>
 
 <!DOCTYPE html>
 
@@ -14,10 +14,8 @@
     <script src="https://use.fontawesome.com/756b538f64.js"></script>
     <style type="text/css">
         .auto-style1 {
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
-            float: right;
+            left: 0px;
+            top: 0px;
         }
     </style>
 </head>
@@ -61,127 +59,143 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-3 col-sm-12">
-                            <asp:DropDownList ID="ddlCategoryFilter" runat="server" AutoPostBack="true" AppendDataBoundItems="true" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" OnSelectedIndexChanged="ddlCategoryFilter_SelectedIndexChanged" TabIndex="1" CssClass="form-control">
-                                <asp:ListItem Value="0">All</asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:Button ID="btnBack" CssClass="btn-primary" runat="server" OnClick="btnBack_Click" CausesValidation="False" Text="&lt; Back To Search" TabIndex="4" EnableClientScript="false" />
                         </div>
-                        <div class="col-md-1 col-sm-12">
-                            <asp:Label ID="lblSearch" runat="server" Text="Search: "></asp:Label>
+                        <div class="auto-style1">
                         </div>
-                        <div class="col-md-3 col-sm-12">
-                            <asp:TextBox ID="tbSearch" CssClass="form-control float-right" runat="server" AutoPostBack="false" TabIndex="2"></asp:TextBox>
+                        <div class="auto-style1">
                         </div>
                         <div class="col-md-2 col-sm-12">
-                            <asp:Button ID="btnSearch" CssClass="btn btn-info" runat="server" Text="Search" OnClick="btnSubmit_Click" AutoPostBack="false" TabIndex="3" />
                         </div>
                         <div class="col-md-3 col-sm-12">
-                            <asp:Button ID="btnViewAll" CssClass="btn btn-success" runat="server" OnClick="btnViewAll_Click" Text="View All" TabIndex="4" />
-                            <asp:Button ID="btnBack" CssClass="auto-style1" runat="server" OnClick="btnBack_Click" Text="New Products &gt;" TabIndex="4" />
                         </div>
                     </div>
                     <br />
                     <div>
-                        <asp:GridView ID="gvEditBooks" runat="server" AutoGenerateColumns="False" DataKeyNames="BookID"
-                            OnRowEditing="gbEditBooks_RowEditing" PageSize="5" AllowPaging="True" AllowSorting="True" HorizontalAlign="Center"
-                            EmptyDataText="No Records Found!" OnRowUpdating="gbEditBooks_RowUpdating" CellPadding="5" CssClass="gridtable table table-striped"
-                            GridLines="Horizontal" ShowFooter="True" OnPageIndexChanging="gbEditBooks_PageIndexChanging"
-                            OnRowCancelingEdit="gbEditBooks_RowCancelingEdit" OnRowDeleting="gvEditBooks_RowDeleting">
+                        <asp:GridView ID="gvInsertBooks" runat="server" AutoGenerateColumns="False" DataKeyNames="BookID"
+                            AllowSorting="True" HorizontalAlign="Center" ShowHeaderWhenEmpty="true"
+                             CellPadding="5" CssClass="gridtable table table-striped"
+                            GridLines="Horizontal" ShowFooter="True" OnRowCancelingEdit="gbInsertBooks_RowCancelingEdit" OnRowEditing="gbInsertBooks_RowEditing" OnRowUpdating="gbInsertBooks_RowUpdating">
                             <Columns>
                                 <asp:TemplateField HeaderText="ID">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblBookID" Text='<%#Eval("BookID") %>' runat="server" />
+                                        <asp:Label ID="lblBookID" runat="server" Text=""></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Label ID="lblBookID" Text='<%#Eval("BookID") %>' runat="server" />
+                                        <asp:Label ID="lblBookID" runat="server" Text=""></asp:Label>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Image">
+                                    <ItemTemplate>
+
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:FileUpload ID="fuBookImg" runat="server" />
+                                        <br />
+                                        <br />
+                                        <br />  
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="fuBookImg" ErrorMessage="File Not Uploaded!"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <image src="../images/<%# Eval("ISBN") %>.jpg" width="90"></image>
+                                        
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Title" ItemStyle-Width="100">
                                     <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("Title") %>' runat="server" />
+                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Label Text='<%#Eval("Title") %>' runat="server" />
+                                        <asp:TextBox ID="tbTitle" CssClass="formcon" TabIndex="7" runat="server" />
+                                        <br />
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="tbTitle" runat="server" ErrorMessage="Title must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Genre">
                                     <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("Name") %>' runat="server" />
+                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Label Text='<%#Eval("Name") %>' runat="server" />
+                                        <asp:DropDownList ID="ddlCategoryFilter" runat="server" DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="CategoryID" CssClass="form-control">
+                                        </asp:DropDownList>                                        
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Author">
                                     <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("Author") %>' runat="server" />
+                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Label Text='<%#Eval("Author") %>' runat="server" />
+                                        <asp:TextBox ID="tbAuthor" CssClass="formcon" TabIndex="7" runat="server" />
+                                        <br />
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="tbAuthor" runat="server" ErrorMessage="Author must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="IBSN">
+                                <asp:TemplateField HeaderText="ISBN">
                                     <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("ISBN") %>' runat="server" />
+                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:Label Text='<%#Eval("ISBN") %>' runat="server" />
+                                        <asp:TextBox ID="tbISBN" CssClass="formcon" TabIndex="7" runat="server" type="number" />
+                                        <asp:RegularExpressionValidator runat="server" ValidationExpression="^[0-9]{13}$" ControlToValidate="tbISBN" ErrorMessage="Incorrect format. ISBN is 13 numeric digits"></asp:RegularExpressionValidator>
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="tbISBN" runat="server" ErrorMessage="ISBN must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Qty">
                                     <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("Stock") %>' runat="server" />
+                                        <asp:Button ID="btnInsert" CssClass="btn btn-outline-warning btn-sm btnedit" Text="Create New Product ID" runat="server" CommandName="Edit" ToolTip="Insert" Width="200px" Height="30px"/>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbQty" TabIndex="5" CssClass="formcon" Text='<%#Eval("Stock") %>' runat="server" Type="number" min="0" />
+                                        <asp:TextBox ID="tbQty" TabIndex="5" CssClass="formcon" runat="server" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="tbQty" runat="server" ErrorMessage="Qty should not consist of decimal, alphabets or less than 0" ValidationExpression="^[0-9]{0,}$"></asp:RegularExpressionValidator>
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="tbQty" runat="server" ErrorMessage="Quantity must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Unit Price">
                                     <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("Price") %>' runat="server" />
+                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbPrice" CssClass="formcon" TabIndex="6" Text='<%#Eval("Price") %>' runat="server" Type="number" Step=".01" min="0" />
+                                        <asp:TextBox ID="tbPrice" CssClass="formcon" TabIndex="6" runat="server" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="tbPrice" runat="server" ErrorMessage="Price should not consist of more than 2dp, alphabets or less than 0 " ValidationExpression="^\d+(\.\d\d)?$"></asp:RegularExpressionValidator>
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="tbPrice" runat="server" ErrorMessage="Price must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Discount(%)">
                                     <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("DiscountPercent") %>' runat="server" />
+                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbDiscP" CssClass="formcon" TabIndex="7" Text='<%#Eval("DiscountPercent") %>' runat="server" Type="number" Step=".01" min="0" max="100" />
+                                        <asp:TextBox ID="tbDiscP" CssClass="formcon" TabIndex="7" runat="server" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount should not consist of more than 2dp, alphabets & must be between 0-100%" ValidationExpression="^0*(100\.00|[0-9]?[0-9]\.[0-9]{2})$"></asp:RegularExpressionValidator>
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ControlToValidate="tbDiscP" runat="server" ErrorMessage="Discount must not be empty"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Discount Desc">
                                     <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("DiscountDesc") %>' runat="server" />
+                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="tbDiscDesc" CssClass="formcon" TabIndex="7" Text='<%#Eval("DiscountDesc") %>' runat="server" />
-                                    </EditItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Net Price">
-                                    <ItemTemplate>
-                                        <asp:Label Text='<%#Eval("Total") %>' runat="server" />
-                                    </ItemTemplate>
-                                    <EditItemTemplate>
-                                        <asp:Label Text='<%#Eval("Total") %>' runat="server" />
+                                        <asp:TextBox ID="tbDiscDesc" CssClass="formcon" TabIndex="7" runat="server" />
+                                        <br />
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" ControlToValidate="tbDiscDesc" runat="server" ErrorMessage="Description must not be empty "></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <asp:Button ID="btnEdit" CssClass="btn btn-outline-warning btn-sm btnedit" Text="Edit" runat="server" CommandName="Edit" ToolTip="Edit"/>
-                                        <br />
-                                        <asp:Button ID="btnDelete" CssClass="btn btn-outline-danger btn-sm" Text="Delete" runat="server" CommandName="Delete" />                                        
+                                        
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:Button ID="btnUpdate" CssClass="btn btn-outline-info btn-sm btnSave" Text="Save" runat="server" CommandName="Update" Width="60px" Height="30px" />
                                         <br />
-                                        <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel" Width="60px" Height="30px" />
+                                        <asp:Button ID="btnCancel" CssClass="btn btn-outline-danger btn-sm" Text="Cancel" runat="server" CommandName="Cancel" Width="60px" Height="30px" CausesValidation="False" EnableClientScript="false" />
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -195,9 +209,9 @@
                             <SortedDescendingHeaderStyle BackColor="#242121" />
                         </asp:GridView>
                     </div>
+                    <asp:Label ID="lblSuccess" runat="server" CssClass="alert alert-success" Visible="False" />
                     <br />
-                    <asp:Label ID="lblSuccess" Text="Save Success!" runat="server" CssClass="alert alert-success" Visible="False" />
-                    <br />
+                    
                     <br />
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BookshopConnectionString2 %>" SelectCommand="SELECT [Name], [CategoryID] FROM [Category]"></asp:SqlDataSource>
                 </div>
